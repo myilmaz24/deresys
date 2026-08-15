@@ -1,0 +1,40 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+import Draft from '../../components/Draft.astro';
+import Cta from '../../components/Cta.astro';
+
+const sections = [
+  { id: 'cerceve', title: 'Kullanılan çerçeve', need: 'Değerlendirmenin dayandığı kontrol seti; domain ve kontrol sayısı; hangi standartlarla eşleştiği.' },
+  { id: 'surec', title: 'Nasıl ilerliyor', need: 'Fazlar, her fazın süresi, kurumdan beklenen katılım ve ayrılması gereken adam-gün.' },
+  { id: 'paketler', title: 'Paketler', need: 'OP-1, OP-2, OP-3, OP-4 paketlerinin adları ve birbirinden hangi kritere göre ayrıldığı. Fiyat bu sayfada yer almayacak.' },
+  { id: 'ciktilar', title: 'Çıktılar', need: 'Teslim edilen doküman ve raporların listesi.' },
+  { id: 'kimler', title: 'Kimler için uygun', need: 'Bu hizmetin uygun olduğu ve olmadığı kurum profilleri.' },
+];
+---
+<Base title="Siber Güvenlik Olgunluk Değerlendirmesi | DERESYS">
+  <PageHead eyebrow="OP · OLGUNLUK PROGRAMI" title="Siber güvenlik olgunluk değerlendirmesi">
+    <div class="head-draft"><Draft need="Programın çözdüğü problemin bir paragraflık tanımı." /></div>
+  </PageHead>
+
+  <section class="section">
+    <div class="wrap stack stack-12">
+      {sections.map((s) => (
+        <div class="block" id={s.id}>
+          <h2 class="h-sm block__title">{s.title}</h2>
+          <Draft need={s.need} />
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <hr class="rule" />
+  <Cta />
+</Base>
+
+<style>
+  .head-draft { margin-top: var(--space-8); max-width: var(--prose-max-width); }
+  .block { display: grid; grid-template-columns: 1fr 2fr; gap: var(--space-16); align-items: start; }
+  .block__title { padding-top: 2px; }
+  @media (max-width: 900px) { .block { grid-template-columns: 1fr; gap: var(--space-6); } }
+</style>

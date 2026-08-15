@@ -1,0 +1,39 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+import Draft from '../../components/Draft.astro';
+import Cta from '../../components/Cta.astro';
+
+const sections = [
+  { id: 'kurulum-entegrator', title: 'SOC kurulumu: entegratör ve MSSP\u2019ler için', need: 'Kapsam, çıktı, süre.' },
+  { id: 'kurulum-sonkullanici', title: 'SOC kurulumu: son kullanıcı kurumlar için', need: 'Kapsam, çıktı, süre.' },
+  { id: 'mssp-denetim', title: 'MSSP etkinlik denetimi', need: 'Kapsam, çıktı, süre. Denetimin neyi ölçtüğü — kural kapsamı, tespit kabiliyeti, SLA uyumu vb.' },
+  { id: 'saglik-kontrolu', title: 'Periyodik siber sağlık kontrolü', need: 'Kapsam, çıktı, periyot.' },
+];
+---
+<Base title="SOC Kurulumu ve MSSP Etkinlik Denetimi | DERESYS">
+  <PageHead eyebrow="SOC · SOC ADVISORY" title="SOC kurulumu ve SOC etkinlik denetimi">
+    <div class="head-draft"><Draft need="Dört hizmeti tek çatı altında toplayan bir paragraf." /></div>
+  </PageHead>
+
+  <section class="section">
+    <div class="wrap stack stack-12">
+      {sections.map((s) => (
+        <div class="block" id={s.id}>
+          <h2 class="h-sm block__title">{s.title}</h2>
+          <Draft need={s.need} />
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <hr class="rule" />
+  <Cta />
+</Base>
+
+<style>
+  .head-draft { margin-top: var(--space-8); max-width: var(--prose-max-width); }
+  .block { display: grid; grid-template-columns: 1fr 2fr; gap: var(--space-16); align-items: start; }
+  .block__title { padding-top: 2px; }
+  @media (max-width: 900px) { .block { grid-template-columns: 1fr; gap: var(--space-6); } }
+</style>
