@@ -1,0 +1,77 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import Draft from '../components/Draft.astro';
+
+const principles = [
+  { t: 'Kapsamı baştan yazıyoruz.', b: 'Ne yapılacağı, ne teslim edileceği ve neyin kapsam dışı olduğu sözleşme öncesinde netleşir. Proje ortasında kapsam tartışması yaşanmasını kimse istemiyor.' },
+  { t: 'Çıktı üzerinden ilerliyoruz.', b: 'Bir programın sonunda elinizde ölçülmüş bir durum, üzerinde anlaşılmış bir hedef ve ikisi arasındaki adımlar olur. İlerlemeyi bu tablo üzerinden takip edebilirsiniz.' },
+  { t: 'Kapsamımız dışındaki işi almıyoruz.', b: 'Sızma testi, SOC operasyonu ve MDR hizmeti vermiyoruz. Bu ihtiyaçlar için yönlendirme yapabiliriz.' },
+  { t: 'Değerlendirdiğimiz kuruma ürün satmıyoruz.', b: 'Ürün tedariki ayrı bir iş kolu olarak devam ediyor, ancak iki müşteri grubu ayrı tutuluyor. Değerlendirme raporunu yazan tarafın o rapordan gelir elde etmemesi bizce doğru olan.' },
+];
+---
+<Base title="Hakkında | DERESYS" description="DERESYS Siber Güvenlik ve Teknoloji Ltd. Şti. — çalışma modeli ve yaklaşım.">
+  <PageHead
+    eyebrow="HAKKINDA"
+    title="DERESYS hakkında"
+    lead="DERESYS Siber Güvenlik ve Teknoloji Ltd. Şti., kurumların güvenlik olgunluğunu ölçen, SOC yapılarını kuran ve denetleyen, olay müdahale kabiliyeti geliştiren bir danışmanlık şirketidir."
+  />
+
+  <section class="section">
+    <div class="wrap">
+      <div class="block">
+        <h2 class="h-sm">Nasıl çalışıyoruz</h2>
+        <ul class="prin">
+          {principles.map((p, i) => (
+            <li class="prin__item">
+              <span class="prin__tick" aria-hidden="true"></span>
+              <div class="stack stack-3">
+                <h3 class="subheading">{p.t}</h3>
+                <p class="muted">{p.b}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <section class="section">
+    <div class="wrap">
+      <div class="block">
+        <h2 class="h-sm">Neden içerik yayınlıyoruz</h2>
+        <div class="stack stack-8">
+          <p class="lead prose">
+            Yeni kurulmuş bir şirketiz ve gösterebileceğimiz bir referans listemiz yok. Bunun
+            yerine nasıl düşündüğümüzü okuyabilmeniz için yazıyoruz. Teknik içerik, bir müşteri
+            logosuna göre daha fazla bilgi verir.
+          </p>
+          <a class="arrow-link" href="/blog">
+            Blog
+            <svg class="chev" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M3 7h8M7.5 3.5 11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" />
+            </svg>
+          </a>
+          <Draft label="KARAR BEKLİYOR" need={'Kurucu biyografisi bu sayfaya eklenecek mi?\nTek kişilik danışmanlıkta alıcı çoğunlukla kişisel geçmişi değerlendiriyor; isimsiz bir kurumsal sayfa bu beklentiyi karşılamıyor. Eklenirse hangi bilgilerin (deneyim, sertifika, önceki roller) yayınlanacağı ayrıca netleştirilmeli.'} />
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .block { display: grid; grid-template-columns: 1fr 2fr; gap: var(--space-16); align-items: start; }
+  .prin { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-10); }
+  .prin__item { display: grid; grid-template-columns: 22px 1fr; gap: var(--space-5, 20px); align-items: start; }
+  .prin__tick {
+    width: 22px; height: 2px;
+    background: var(--color-accent);
+    margin-top: 14px;
+  }
+  @media (max-width: 900px) {
+    .block { grid-template-columns: 1fr; gap: var(--space-8); }
+    .prin__item { grid-template-columns: 22px 1fr; gap: var(--space-4); }
+  }
+</style>

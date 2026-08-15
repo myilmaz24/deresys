@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Bu sayfa bulunamadı | DERESYS">
+  <section class="section nf">
+    <div class="wrap stack stack-8">
+      <span class="eyebrow eyebrow--accent">404</span>
+      <h1 class="h-lg">Bu sayfa bulunamadı</h1>
+      <p class="lead prose">Aradığınız sayfa taşınmış veya adres yanlış yazılmış olabilir.</p>
+      <div class="btn-row">
+        <a class="btn btn--primary" href="/">Ana sayfa</a>
+        <a class="btn btn--secondary" href="/cozumler">Çözümler</a>
+        <a class="btn btn--secondary" href="/blog">Blog</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .nf { padding-block: calc(var(--section-gap) * 1.2); }
+</style>

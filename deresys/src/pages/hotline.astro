@@ -1,0 +1,61 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import Draft from '../components/Draft.astro';
+---
+<Base
+  title="Olay Müdahale Hattı | DERESYS"
+  description="Abonelik modeliyle sunulacak olay müdahale hattı. Hazırlık aşamasında."
+>
+  <PageHead eyebrow="OM-4 · HAZIRLIK AŞAMASINDA" title="Olay müdahale hattı"
+    lead="Abonelik modeliyle sunulacak olay müdahale hattı üzerinde çalışıyoruz. Hat henüz açık değil.">
+    <p class="muted prose head-follow">
+      Bunu açıkça yazıyoruz, çünkü olay anında arayacağınız bir numaranın cevap verip
+      vermeyeceği tahmin edilebilecek bir konu değil.
+    </p>
+  </PageHead>
+
+  <section class="section">
+    <div class="wrap stack stack-12">
+      <div class="block">
+        <h2 class="h-sm">Hat açıldığında haber verelim</h2>
+        <div class="stack stack-6">
+          <p class="muted prose">
+            Hizmet devreye girdiğinde bilgilendirilmek isterseniz e-posta adresinizi bırakabilirsiniz.
+          </p>
+          <form class="inline-form" method="post" action="#">
+            <div class="field">
+              <label for="h-email">E-posta</label>
+              <input id="h-email" name="email" type="email" autocomplete="email" placeholder="ad@kurum.com.tr" required />
+            </div>
+            <button class="btn btn--primary" type="submit">Haberdar et</button>
+          </form>
+          <Draft label="ENTEGRASYON BEKLİYOR" need="Form gönderim adresi (VPS endpoint) bağlanmadı." />
+        </div>
+      </div>
+
+      <div class="block">
+        <h2 class="h-sm">Bu arada</h2>
+        <div class="stack stack-6">
+          <p class="muted prose">
+            Bir müdahale hattı, kurum içi hazırlığın yerini tutmuyor. Süreçler ve roller tanımlı
+            değilse hattan alınacak fayda da sınırlı kalıyor. Hazırlık tarafında bugün
+            yapılabilecekler için:
+          </p>
+          <a class="arrow-link" href="/cozumler/olay-mudahalesi">
+            Olay Müdahalesi
+            <svg class="chev" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M3 7h8M7.5 3.5 11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .head-follow { margin-top: var(--space-4); }
+  .block { display: grid; grid-template-columns: 1fr 2fr; gap: var(--space-16); align-items: start; }
+  @media (max-width: 900px) { .block { grid-template-columns: 1fr; gap: var(--space-6); } }
+</style>

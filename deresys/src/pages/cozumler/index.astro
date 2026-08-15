@@ -1,0 +1,141 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+import Draft from '../../components/Draft.astro';
+
+const lines = [
+  {
+    code: 'OP',
+    title: 'Siber Güvenlik Olgunluk Programı',
+    body: 'Güvenlik kontrollerinizin mevcut durumunu ölçer, puanlar ve önceliklendirilmiş bir iyileştirme planı üretiriz.',
+    fit: 'Şu durumda uygun: yatırım yapılmış ama bütünsel resim yok; ya da yönetime mevcut durumu ve gidilecek yeri ölçülebilir biçimde anlatmanız gerekiyor.',
+    href: '/cozumler/olgunluk-programi',
+  },
+  {
+    code: 'SOC',
+    title: 'SOC Advisory',
+    body: 'SOC kurulumu, mevcut SOC\u2019un değerlendirilmesi ve MSSP etkinlik denetimi.',
+    fit: 'Şu durumda uygun: SOC kurmaya karar verdiniz ve tasarımı doğru yapmak istiyorsunuz; ya da hizmet aldığınız MSSP\u2019nin ürettiği tespitlerin kapsamını bağımsız bir gözle görmek istiyorsunuz.',
+    href: '/cozumler/soc-advisory',
+  },
+  {
+    code: 'OM',
+    title: 'Olay Müdahalesi',
+    body: 'Eğitim, hazırlık projesi, masabaşı tatbikat ve müdahale hattı.',
+    fit: 'Şu durumda uygun: bir olay planınız var ama hiç denenmedi; ya da ekipte müdahale deneyimi sınırlı ve bunu olay anında keşfetmek istemiyorsunuz.',
+    href: '/cozumler/olay-mudahalesi',
+  },
+];
+---
+<Base
+  title="Çözümler — Siber Güvenlik Danışmanlık Hizmetleri | DERESYS"
+  description="Olgunluk değerlendirmesi, SOC Advisory, olay müdahalesi ve vCISO hizmetleri."
+>
+  <PageHead
+    eyebrow="ÇÖZÜMLER"
+    title="Siber güvenlik danışmanlık hizmetleri"
+    lead="Dört hizmet hattımız var. Her biri ayrı alınabilir, birlikte alındığında da birbirini tekrar etmez. Hangisinin uygun olduğu kurumunuzun bugün nerede olduğuna bağlı."
+  >
+    <p class="muted prose lead-follow">
+      Aşağıdaki kısa tariflerden hangisinin durumunuza benzediğine bakabilirsiniz.
+    </p>
+  </PageHead>
+
+  <section class="section">
+    <div class="wrap stack stack-6">
+      {lines.map((l) => (
+        <a class="line card--ray" href={l.href}>
+          <div class="line__code"><span class="eyebrow eyebrow--accent">{l.code}</span></div>
+          <div class="line__main">
+            <h2 class="subheading">{l.title}</h2>
+            <p class="muted">{l.body}</p>
+            <p class="dim small">{l.fit}</p>
+          </div>
+          <div class="line__go">
+            <span class="arrow-link">
+              Ayrıntılar
+              <svg class="chev" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M3 7h8M7.5 3.5 11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" />
+              </svg>
+            </span>
+          </div>
+        </a>
+      ))}
+
+      <div class="line line--static">
+        <div class="line__code"><span class="eyebrow eyebrow--accent">vCISO</span></div>
+        <div class="line__main">
+          <h2 class="subheading">vCISO</h2>
+          <Draft need="İki cümlelik özet ve uygunluk tarifi." />
+        </div>
+        <div class="line__go"></div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <section class="section">
+    <div class="wrap">
+      <div class="excl">
+        <div>
+          <span class="eyebrow">KAPSAM</span>
+          <h2 class="h">Yapmadığımız işler</h2>
+        </div>
+        <div class="stack stack-6">
+          <p class="lead prose">Sızma testi, SOC operasyonu ve MDR hizmeti vermiyoruz.</p>
+          <p class="muted prose">
+            SOC Advisory kapsamı kurulum ve denetimle sınırlıdır, işletmeyi içermez. Bu
+            hizmetlere ihtiyacınız varsa çalıştığımız firmalara yönlendirebiliriz.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .lead-follow { margin-top: var(--space-4); }
+
+  .line {
+    position: relative;
+    display: grid;
+    grid-template-columns: 90px 1fr auto;
+    gap: var(--space-8);
+    align-items: start;
+    background: var(--bg-surface-1);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-card);
+    padding: var(--card-padding);
+    text-decoration: none;
+    color: inherit;
+    transition: background-color 140ms ease, border-color 140ms ease;
+  }
+  a.line:hover { background: var(--bg-surface-2); border-color: var(--border-strong); }
+  .line--static { cursor: default; }
+  .line__code { padding-top: 6px; }
+  .line__main { display: flex; flex-direction: column; gap: var(--space-3); }
+  .line__go { padding-top: 4px; }
+
+  .card--ray::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: var(--space-8);
+    width: 40px;
+    height: 2px;
+    background: var(--color-accent);
+    opacity: 0;
+    transition: opacity 140ms ease, width 140ms ease;
+  }
+  a.card--ray:hover::before { opacity: 1; width: 72px; }
+
+  .excl { display: grid; grid-template-columns: 1fr 2fr; gap: var(--space-16); align-items: start; }
+  .excl .eyebrow { margin-bottom: var(--space-4); }
+
+  @media (max-width: 900px) {
+    .line { grid-template-columns: 1fr; gap: var(--space-4); }
+    .line__code { padding-top: 0; }
+    .excl { grid-template-columns: 1fr; gap: var(--space-8); }
+  }
+</style>

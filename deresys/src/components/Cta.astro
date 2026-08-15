@@ -1,0 +1,14 @@
+---
+// COPY.md bu bölümlerde yalnızca "[CTA: Görüşme talep edin]" diyor.
+// Başlık veya açıklama metni uydurulmaz.
+const { href = '/iletisim', label = 'Görüşme talep edin' } = Astro.props;
+---
+<section class="cta-band">
+  <div class="wrap">
+    <a class="btn btn--primary" href={href}>{label}</a>
+  </div>
+</section>
+
+<style>
+  .cta-band { padding-block: calc(var(--section-gap) * 0.7); }
+</style>

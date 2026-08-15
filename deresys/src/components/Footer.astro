@@ -1,0 +1,104 @@
+---
+import emblem from '../assets/emblem-orange.svg?raw';
+const year = new Date().getFullYear();
+---
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__top">
+      <div class="foot__brand">
+        <span class="foot__emblem" set:html={emblem} />
+        <p class="foot__tagline">Siber Güvenlik ve Teknoloji</p>
+      </div>
+
+      <div class="foot__cols">
+        <div>
+          <h2 class="foot__head">Çözümler</h2>
+          <ul>
+            <li><a href="/cozumler/olgunluk-programi">Olgunluk Programı</a></li>
+            <li><a href="/cozumler/soc-advisory">SOC Advisory</a></li>
+            <li><a href="/cozumler/olay-mudahalesi">Olay Müdahalesi</a></li>
+            <li><a href="/cozumler/vciso">vCISO</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="foot__head">Şirket</h2>
+          <ul>
+            <li><a href="/hakkinda">Hakkında</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/urunler">Ürünler</a></li>
+            <li><a href="/iletisim">İletişim</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="foot__head">Yasal</h2>
+          <ul>
+            <li><a href="/kvkk">KVKK Aydınlatma Metni</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <hr class="rule" />
+
+    <div class="foot__bottom">
+      <p class="dim small">Deresys Siber Güvenlik ve Teknoloji Ltd. Şti.</p>
+      <p class="dim small">© {year}</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .foot {
+    background: var(--bg-surface-1);
+    border-top: 1px solid var(--border-subtle);
+    padding-block: var(--space-16) var(--space-8);
+    margin-top: var(--space-12);
+  }
+  .foot__top {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: var(--space-16);
+    padding-bottom: var(--space-12);
+  }
+  .foot__emblem :global(svg) { height: 34px; width: auto; }
+  .foot__tagline {
+    font-family: var(--font-mono);
+    font-size: var(--text-eyebrow);
+    letter-spacing: var(--tracking-eyebrow);
+    color: var(--text-muted);
+    margin-top: var(--space-4);
+  }
+  .foot__cols {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-8);
+  }
+  .foot__head {
+    font-family: var(--font-mono);
+    font-size: var(--text-eyebrow);
+    letter-spacing: var(--tracking-eyebrow);
+    color: var(--text-muted);
+    font-weight: var(--weight-medium);
+    margin-bottom: var(--space-4);
+    text-transform: none;
+  }
+  .foot__cols ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-3); }
+  .foot__cols a {
+    font-size: var(--text-body-sm);
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 140ms ease;
+  }
+  .foot__cols a:hover { color: var(--color-accent); }
+  .foot__bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-4);
+    padding-top: var(--space-8);
+    flex-wrap: wrap;
+  }
+  @media (max-width: 900px) {
+    .foot__top { grid-template-columns: 1fr; gap: var(--space-12); }
+    .foot__cols { grid-template-columns: 1fr 1fr; gap: var(--space-8); }
+  }
+</style>

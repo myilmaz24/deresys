@@ -1,0 +1,30 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+import Draft from '../../components/Draft.astro';
+---
+<Base title="vCISO Hizmeti | DERESYS">
+  <PageHead eyebrow="vCISO" title="vCISO" />
+
+  <section class="section">
+    <div class="wrap stack stack-8">
+      <Draft need={'Hizmetin tanımı; olgunluk programından farkı; taahhüt edilen zaman modeli; çıktılar; hangi kurum profiline uygun olduğu.'} />
+      <div class="note">
+        <span class="eyebrow">NOT</span>
+        <p class="muted small">
+          vCISO taahhüdü eşzamanlı kapasiteyi doğrudan bağlar. Sayfa metni yazılmadan önce
+          aynı anda kaç vCISO müşterisi kabul edileceğine karar verilmesi gerekir.
+        </p>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .note {
+    border-left: 2px solid var(--color-accent);
+    padding-left: var(--space-6);
+    max-width: var(--prose-max-width);
+    display: flex; flex-direction: column; gap: var(--space-3);
+  }
+</style>
