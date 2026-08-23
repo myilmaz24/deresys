@@ -13,6 +13,21 @@ Sürüm 2 — 2026-08-12
 
 ---
 
+## Site geneli — üst menü
+
+Üst menüde, sayfa linklerinin yanında iki buton bulunur:
+
+- **Olay müdahale talebi** — WhatsApp'a (`905521238956`) doğrudan yönlendirir,
+  yeni sekmede açılır. Ön dolgulu mesaj: "Merhaba, bir güvenlik olayıyla
+  ilgili DERESYS ile iletişime geçmek istiyorum." Bu, `/hotline` sayfasındaki
+  abonelik modelli müdahale hattından farklıdır; hattın "hazırlık
+  aşamasında" olduğuna dair not (bkz. bölüm 11) geçerliliğini korur — bu
+  buton hattın kendisi değil, doğrudan bir iletişim kanalıdır. Yanıt süresi
+  veya SLA taahhüdü ima edilmez.
+- **Görüşme talep edin** — `/iletisim` sayfasına gider (mevcut).
+
+---
+
 ## Sayfa envanteri
 
 | # | Sayfa | URL | Durum |
@@ -26,7 +41,7 @@ Sürüm 2 — 2026-08-12
 | 7 | Hakkında | `/hakkinda` | Metin hazır — karar bekliyor |
 | 8 | Blog | `/blog` | Metin hazır |
 | 9 | Ürünler | `/urunler` | Metin hazır |
-| 10 | İletişim | `/iletisim` | Metin hazır |
+| 10 | İletişim | `/iletisim` | Metin hazır — form entegre edildi |
 | 11 | Olay Müdahale Hattı | `/hotline` | Metin hazır |
 | 12 | KVKK Aydınlatma Metni | `/kvkk` | Hukuki metin bekliyor |
 | 13 | 404 | — | Metin hazır |
@@ -395,6 +410,14 @@ olacağını konuşuruz.
 
 Bıraktığınız bilgiler yalnızca talebinize dönüş yapmak için kullanılır.
 [Bağlantı: KVKK Aydınlatma Metni]
+
+> Entegrasyon: Form, FormSubmit.co üzerinden `info@deresys.com.tr`
+> adresine e-posta olarak iletilir (VPS backend'i olmadan, üçüncü parti
+> servis). İlk gönderimde FormSubmit, bu adrese bir "Activate Form"
+> onay e-postası gönderir — o e-postadaki bağlantıya tıklanmadan
+> gönderimler teslim edilmez. Başarılı gönderim sonrası ziyaretçi
+> `/iletisim?gonderildi=1` adresine yönlendirilir ve sayfada başarı
+> mesajı gösterilir.
 
 ### H2 — Doğrudan iletişim
 E-posta: info@deresys.com.tr

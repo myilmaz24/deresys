@@ -14,7 +14,19 @@ import Draft from '../components/Draft.astro';
     <div class="wrap contact">
       <div class="contact__form">
         <h2 class="h-sm">Görüşme talebi</h2>
-        <form class="form-grid" method="post" action="#">
+        <p id="c-success" class="form-success" hidden>
+          Talebiniz alındı. En kısa sürede size dönüş yapacağız.
+        </p>
+        <form
+          id="c-form"
+          class="form-grid"
+          method="post"
+          action="https://formsubmit.co/info@deresys.com.tr"
+        >
+          <input type="hidden" name="_subject" value="Yeni görüşme talebi — deresys.com.tr" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_next" value="https://deresys.com.tr/iletisim?gonderildi=1" />
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
           <div class="field">
             <label for="c-name">Ad soyad</label>
             <input id="c-name" name="ad" type="text" autocomplete="name" required />
@@ -43,7 +55,6 @@ import Draft from '../components/Draft.astro';
           Bıraktığınız bilgiler yalnızca talebinize dönüş yapmak için kullanılır.
           <a class="link" href="/kvkk">KVKK Aydınlatma Metni</a>
         </p>
-        <div class="mt"><Draft label="ENTEGRASYON BEKLİYOR" need="Form gönderim adresi (VPS endpoint) bağlanmadı." /></div>
       </div>
 
       <aside class="contact__side">
@@ -71,5 +82,22 @@ import Draft from '../components/Draft.astro';
   .dl { margin: 0; display: grid; gap: var(--space-2); }
   .dl dd { margin: 0; }
   .mt { margin-top: 0; }
+  .form-success {
+    margin: 0;
+    padding: var(--space-4);
+    border: 1px solid var(--color-accent);
+    border-radius: var(--radius-control);
+    color: var(--text-primary);
+    font-size: var(--text-body-sm);
+  }
   @media (max-width: 900px) { .contact { grid-template-columns: 1fr; gap: var(--space-10); } }
 </style>
+
+<script>
+  // FormSubmit, gönderimden sonra _next ile ?gonderildi=1 parametresine döner.
+  if (new URLSearchParams(window.location.search).has('gonderildi')) {
+    document.getElementById('c-success')?.removeAttribute('hidden');
+    document.getElementById('c-form')?.setAttribute('hidden', '');
+    window.history.replaceState({}, '', window.location.pathname);
+  }
+</script>
