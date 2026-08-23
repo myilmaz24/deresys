@@ -26,7 +26,7 @@ import Draft from '../components/Draft.astro';
           <input type="hidden" name="_subject" value="Yeni görüşme talebi — deresys.com.tr" />
           <input type="hidden" name="_template" value="table" />
           <input type="hidden" name="_next" value="https://deresys.com.tr/iletisim?gonderildi=1" />
-          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+          <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
           <div class="field">
             <label for="c-name">Ad soyad</label>
             <input id="c-name" name="ad" type="text" autocomplete="name" required />
@@ -82,6 +82,10 @@ import Draft from '../components/Draft.astro';
   .dl { margin: 0; display: grid; gap: var(--space-2); }
   .dl dd { margin: 0; }
   .mt { margin-top: 0; }
+  /* Spam tuzağı — görme engelli kullanıcılara ve arama motorlarına gizli,
+     bot doldurunca gönderim reddedilir. Satır içi style="" CSP style-src
+     'self' ile çakıştığı için sınıf olarak tanımlanır. */
+  .honey { display: none; }
   .form-success {
     margin: 0;
     padding: var(--space-4);

@@ -418,6 +418,13 @@ Bıraktığınız bilgiler yalnızca talebinize dönüş yapmak için kullanıl�
 > gönderimler teslim edilmez. Başarılı gönderim sonrası ziyaretçi
 > `/iletisim?gonderildi=1` adresine yönlendirilir ve sayfada başarı
 > mesajı gösterilir.
+>
+> CSP notu: `deploy/apache/deresys-security.conf` içindeki
+> `form-action` yönergesine `https://formsubmit.co` eklendi — eklenmezse
+> tarayıcı gönderimi sessizce reddeder. Bu dosya VPS'e yalnızca elle
+> kopyalanır (git push ile otomatik yayılmaz); sunucudaki
+> `/etc/apache2/conf-available/deresys-security.conf` de güncellenip
+> Apache reload edilmeli.
 
 ### H2 — Doğrudan iletişim
 E-posta: info@deresys.com.tr
