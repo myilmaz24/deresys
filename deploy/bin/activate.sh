@@ -24,6 +24,8 @@ TARGET="$RELEASES/$RELEASE"
 [[ -f "$TARGET/index.html" ]] || { echo "HATA: index.html yok, yayın iptal" >&2; exit 1; }
 
 # İzinleri sabitle: sahibi deploy, grup www-data, yalnızca okuma
+
+chgrp -R www-data "$TARGET"
 chmod -R u=rwX,g=rX,o= "$TARGET"
 
 # Atomik geçiş: geçici symlink oluştur, sonra rename ile yer değiştir
