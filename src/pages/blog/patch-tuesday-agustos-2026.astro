@@ -13,7 +13,7 @@ const cves = [
     id: 'CVE-2026-62737',
     title: 'Windows Kernel — Yetki Yükseltme',
     cvss: '7.8',
-    note: 'Kavram kanıtı (PoC) yayınlandı. Kaynak, güvenilmeyen işaretçi referansı (untrusted pointer dereference) zafiyeti.',
+    note: 'Kavram kanıtı (PoC) yayınlandı. Kök neden: güvenilmeyen işaretçi referansı (untrusted pointer dereference).',
   },
   {
     id: 'CVE-2026-62832',
@@ -44,7 +44,7 @@ const cves = [
           <span class="eyebrow eyebrow--accent">TL;DR</span>
           <ul>
             <li>11 Ağustos 2026 tarihli Patch Tuesday'de toplam 398 CVE yayınlandı, bunlardan 3'ü zero-day.</li>
-            <li>169 CVE yetki yükseltme (elevation of privilege), 110 CVE uzaktan kod yürütme (RCE) kategorisinde.</li>
+            <li>169 CVE yetki yükseltme, 110 CVE ise RCE (uzaktan kod yürütme) kategorisinde.</li>
             <li>Yama kapasiteniz kısıtlıysa aşağıdaki üç zero-day'e öncelik verin.</li>
           </ul>
         </div>
@@ -59,10 +59,9 @@ const cves = [
 
         <h2 class="h-sm">Önce bunlara bakın</h2>
         <p class="muted">
-          Aşağıdaki üç CVE, bu ayki duyuru içinde önceliklendirme yaparken ilk sırada
-          değerlendirilmesi gereken zafiyetler. Ortak noktaları: hepsi yerel yetki
-          yükseltme (local privilege escalation) sağlıyor ve hepsi ilk erişimden sonraki
-          adımda saldırganın işini kolaylaştırıyor.
+          Aşağıdaki üç CVE, bu ayki duyuru içinde ilk sırada değerlendirilmesi gereken
+          zafiyetler. Ortak noktaları: üçü de yerel yetki yükseltmesi sağlıyor ve
+          saldırganın ilk erişimden sonraki adımını kolaylaştırıyor.
         </p>
 
         <div class="cve-table">
@@ -106,11 +105,12 @@ const cves = [
 
         <h3 class="subheading">CVE-2026-62737 — Kernel'de yayınlanmış PoC</h3>
         <p>
-          Windows Kernel'deki bu yetki yükseltme zafiyeti henüz aktif istismar
-          raporlanmasa da kavram kanıtı kodu zaten herkese açık; kök neden güvenilmeyen
-          işaretçi referansı (CWE-822) zafiyeti. PoC yayınlandıktan sonra istismar
-          kodunun silahlanması genellikle gün meselesi olduğundan, kapsamı diğer ikisine
-          göre daha dar olsa da bu CVE'yi bekletmemenizi öneririz.
+          Windows Kernel'deki bu yetki yükseltme zafiyetinde henüz aktif istismar
+          bildirilmedi, ama kavram kanıtı kodu zaten herkese açık; kök nedeni CWE-822
+          olarak sınıflandırılan güvenilmeyen işaretçi referansı hatası. Yayınlanan bir
+          PoC'nin birkaç gün içinde çalışan bir istismar koduna dönüşmesi sık görülen bir
+          durum olduğundan, kapsamı diğer ikisine göre daha dar olsa da bu CVE'yi
+          bekletmemenizi öneririz.
         </p>
 
         <h3 class="subheading">CVE-2026-62832 — Kullanıcı etkileşimi gerektirmiyor</h3>
