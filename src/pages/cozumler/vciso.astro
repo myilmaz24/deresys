@@ -5,19 +5,19 @@ import Cta from '../../components/Cta.astro';
 
 const tiers = [
   {
-    code: 'A',
+    code: '1',
     title: 'Outsource CISO',
     body: 'Şirketinizin fiilen CISO’su gibi çalışırız: politika seti, risk analizinin yönetimi, pentest ve iç denetim koordinasyonu, olay müdahale planı ve yönetim kuruluna düzenli raporlama.',
     fit: 'Resmi bir CISO’su olmayan, SPK / EPDK / kritik altyapı kapsamındaki orta ölçekli şirketler için.',
   },
   {
-    code: 'B',
+    code: '2',
     title: 'CISO Danışmanlığı',
     body: 'Mevcut güvenlik ekibinize ikinci göz, regülasyon uzmanlığı ve proje bazlı destek sağlarız; politika ve prosedür taslaklarını inceleriz.',
     fit: 'Kendi BT/güvenlik ekibi olan bankalar ve büyük kuruluşlar için.',
   },
   {
-    code: 'C',
+    code: '3',
     title: 'Yönetim Kurulu Danışmanlığı',
     body: 'CISO’nun yerine geçmeden, doğrudan yönetim kurulunuza veya denetim komitenize periyodik, anlaşılır ve regülasyona bağlanmış siber risk brifingleri sunarız.',
     fit: 'Bankalar, halka açık şirket yönetim kurulları ve büyük kurumlar için.',
@@ -53,7 +53,7 @@ const tiers = [
         <div class="stack stack-8 tiers">
           {tiers.map((t) => (
             <div class="tier">
-              <span class="eyebrow eyebrow--accent">Katman {t.code}</span>
+              <span class="eyebrow eyebrow--accent">Model {t.code}</span>
               <h3 class="subheading">{t.title}</h3>
               <p class="muted">{t.body}</p>
               <p class="dim small">{t.fit}</p>
@@ -84,7 +84,7 @@ const tiers = [
       <div class="block" id="kimler-icin">
         <h2 class="h-sm block__title">Kimler için uygun</h2>
         <p class="muted">
-          Hangi katmanın size uyduğu, kurumunuzun tabi olduğu regülasyona ve mevcut güvenlik
+          Hangi modelin size uyduğu, kurumunuzun tabi olduğu regülasyona ve mevcut güvenlik
           ekibinizin büyüklüğüne göre değişir. Bunu birlikte netleştiririz.
         </p>
       </div>

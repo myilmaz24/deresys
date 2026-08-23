@@ -59,7 +59,7 @@ başlanır" bölümündeki CTA olduğu gibi kalıyor.
 | 2 | Hizmetler | `/cozumler` | — | Metin hazır |
 | 3 | Olay Müdahalesi | `/cozumler/olay-mudahalesi` | Danışmanlık | Metin hazır |
 | 4 | vCISO | `/cozumler/vciso` | Danışmanlık | Metin hazır |
-| 5 | Siber Güvenlik Olgunluk Programı | `/cozumler/olgunluk-programi` | Danışmanlık | İskelet |
+| 5 | Siber Güvenlik Olgunluk Programı | `/cozumler/olgunluk-programi` | Danışmanlık | Metin hazır |
 | 6 | MSS — Güvenlik Sağlığı İzleme | `/cozumler/mss` | Operasyonel | Metin hazır (ek kapsam bölümü iskelet) |
 | 7 | Splunk Destek ve Kural İçeriği | `/cozumler/splunk-destek` | Operasyonel | İskelet — brif bekleniyor |
 | 8 | Olay Müdahale Eğitimi | `/cozumler/olay-mudahale-egitimi` | Akademi | Metin hazır |
@@ -92,8 +92,12 @@ operasyonel hizmetler ve siber güvenlik akademisi.
 
 Çalışmalarımız genellikle aynı soruyla başlıyor. Bir güvenlik yatırımı
 yapılmış, araçlar kurulmuş, süreçler tanımlanmış oluyor; ama bunların
-gerçekte ne kadarının çalıştığı kurum içinden bakınca net görünmüyor.
-Yapıyı kuran ekiple onu değerlendiren ekip aynı olduğunda bu normaldir.
+gerçekte ne kadarının efektif bir koruma sağladığı kurum içinden bakınca
+net görünmüyor.
+
+Bu noktada DERESYS kendine özgü metodolojilerle, yapılan yatırımlardan en
+yüksek faydayı ve korumayı sağlamak üzere planı çıkarır ve programı
+kurumla birlikte uygulamaya koyar.
 
 *(Hero'daki [CTA: Görüşme talep edin] kaldırıldı — bkz. "Site geneli".)*
 
@@ -285,19 +289,19 @@ atanmasını açıkça şart koşmuyor — ama hepsi, birinin bu sorumluluğu fi
 taşımasını bekliyor.
 
 ### H2 — Üç model
-**Katman A — Outsource CISO**
+**Model 1 — Outsource CISO**
 Şirketinizin fiilen CISO'su gibi çalışırız: politika seti, risk
 analizinin yönetimi, pentest ve iç denetim koordinasyonu, olay müdahale
 planı ve yönetim kuruluna düzenli raporlama.
 Resmi bir CISO'su olmayan, SPK / EPDK / kritik altyapı kapsamındaki orta
 ölçekli şirketler için.
 
-**Katman B — CISO Danışmanlığı**
+**Model 2 — CISO Danışmanlığı**
 Mevcut güvenlik ekibinize ikinci göz, regülasyon uzmanlığı ve proje bazlı
 destek sağlarız; politika ve prosedür taslaklarını inceleriz.
 Kendi BT/güvenlik ekibi olan bankalar ve büyük kuruluşlar için.
 
-**Katman C — Yönetim Kurulu Danışmanlığı**
+**Model 3 — Yönetim Kurulu Danışmanlığı**
 CISO'nun yerine geçmeden, doğrudan yönetim kurulunuza veya denetim
 komitenize periyodik, anlaşılır ve regülasyona bağlanmış siber risk
 brifingleri sunarız.
@@ -322,7 +326,7 @@ kendimiz yürütmeyiz.
 > sayfalarında geçiyor.
 
 ### H2 — Kimler için uygun
-Hangi katmanın size uyduğu, kurumunuzun tabi olduğu regülasyona ve mevcut
+Hangi modelin size uyduğu, kurumunuzun tabi olduğu regülasyona ve mevcut
 güvenlik ekibinizin büyüklüğüne göre değişir. Bunu birlikte netleştiririz.
 
 [CTA: Görüşme talep edin]
@@ -335,31 +339,114 @@ güvenlik ekibinizin büyüklüğüne göre değişir. Bunu birlikte netleştiri
 
 ## 5. Siber Güvenlik Olgunluk Programı — `/cozumler/olgunluk-programi` (Danışmanlık)
 
-*(Değişmedi — hâlâ iskelet. Bkz. sürüm 2.)*
+*(Sürüm 3 — D:\Deresys\hizmetler\sgop altındaki Metodoloji v1.0, Kapsam
+v1.0 ve Pazarlama İçerik Seti v1.0 dokümanlarına göre yazıldı. Başlık
+"Değerlendirmesi" değil "Programı" olarak değiştirildi. "Kimler için
+uygun" ayrı bir bölüm olmaktan çıktı, "Bu sayfa size mi?" öz
+değerlendirme listesiyle birleştirildi; paket tablosundaki "uygun
+olduğu profil" satırı bu bilgiyi paket bazında zaten taşıyor.)*
 
-**Title:** Siber Güvenlik Olgunluk Değerlendirmesi | DERESYS
-**Meta description:** [DOLDURULACAK]
+**Title:** Siber Güvenlik Olgunluk Programı | DERESYS
+**Meta description:** Deresys Güvenlik Kontrolleri (DGK) ile 18 alanda 99
+kontrolü ölçen, önceliklendirilmiş bir yol haritasına çeviren ve yıllık
+olarak tekrar ölçen siber güvenlik olgunluk programı.
+
+### Lead
+Deresys Siber Güvenlik Olgunluk Programı, kurumunuzun güvenlik
+olgunluğunu 99 kontrol üzerinden ölçer, çıkan boşlukları 12 aylık bir
+yol haritasına çevirir, bu yol haritasını sizinle birlikte yürütür ve
+bir yıl sonra aynı kontrol setiyle tekrar ölçer — ürün satmadan.
+
+### H2 — Bu sayfa size mi?
+Aşağıdakilerden biri sizin durumunuzsa, bu program size göre:
+- Güvenlikten sorumlu birisi var, ama o kişinin asıl işi güvenlik değil.
+- Bir müşteriniz veya iş ortağınız güvenlik anketi gönderdi ve hangi
+  cevabın doğru olduğundan emin olamadınız.
+- ISO 27001 belgelendirmesine karar verdiniz ama nereden başlayacağınızı
+  bilmiyorsunuz.
+- Bir denetimden bulgu aldınız ve bulguları kapatacak bir plana
+  ihtiyacınız var.
+- Güvenliğe para harcıyorsunuz ama harcamanın işe yarayıp yaramadığını
+  gösteren bir sayı yok.
+- Geçmiş bir danışmanlık raporu hâlâ bir klasörde duruyor.
+- Güvenlik ekibiniz var, ama nereye ilerlediğinizi gösteren ortak bir
+  ölçü yok.
 
 ### H2 — Kullanılan çerçeve
-[DOLDURULACAK] — değerlendirmenin dayandığı kontrol seti; domain ve
-kontrol sayısı; hangi standartlarla eşleştiği.
+Satılan şey danışmanlık saati değil, iki ölçüm arasındaki farktır. Ölçüm
+Deresys Güvenlik Kontrolleri'ne (DGK) dayanır: 18 kontrol alanında 99
+kontrolü kapsayan, kanıt bazlı altı seviyeli bir olgunluk skalasıyla
+puanlanan bir çerçeve. Beyan puan almaz; her kontrolün gösterilebilir
+bir kanıtı olması gerekir.
+
+Skorunuz ISO/IEC 27001:2022, NIST CSF 2.0, CIS Controls v8.1, KVKK ve
+7545 sayılı Siber Güvenlik Kanunu'na eşlenmiş halde teslim edilir —
+denetçi, sigortacı, müşteri anketi ve düzenleyici için ayrı ayrı çalışma
+yapmak yerine tek bir ölçüm yeterli olur.
 
 ### H2 — Nasıl ilerliyor
-[DOLDURULACAK] — fazlar, her fazın süresi, kurumdan beklenen katılım ve
-ayrılması gereken adam-gün.
+1. **Ölçeriz** — DGK ile 18 alanda 99 kontrolü kanıta dayalı olarak
+   puanlarız, beyanla değil gösterilebilen çıktıyla. Dört adam-günlük bu
+   çalışmanın sonunda olgunluk skorunuz, öncelikli bulgularınız ve 12
+   aylık yol haritanız elinizde olur.
+2. **Yol haritasını kurarız** — bulgular kritiklik ve iş etkisine göre
+   önceliklendirilir (P1/P2/P3) ve çeyreklere dağıtılır. Her maddenin
+   sahibi, bağımlılığı ve kabul kriteri yazılıdır.
+3. **Yürütürüz** — seçtiğiniz pakete göre düzenli temas, yazılı
+   raporlama ve periyodik yönetim sunumuyla yol haritasını birlikte
+   ilerletiriz. Kapanan her madde kanıtla doğrulanır ve yeniden
+   puanlanır.
+4. **Yılda bir tekrar ölçeriz** — aynı kontrol seti, aynı skala.
+   İlerleme yorumla değil, iki sayı arasındaki farkla gösterilir.
 
 ### H2 — Paketler
-[DOLDURULACAK] — OP-1, OP-2, OP-3, OP-4 paketlerinin adları ve
-birbirinden hangi kritere göre ayrıldığı. Fiyat bu sayfada yer almayacak.
+Dört pakette de aynı kontrol seti yürütülür ve aynı rapor tipleri
+üretilir. Farklılaşan şey temas sıklığı, raporlama periyodu ve bir
+çeyrekte fiilen çalışılabilecek kontrol alanı sayısıdır — kapsamı
+daraltarak ucuzlatmıyoruz.
+
+| | OP-1 Temel | OP-2 Düzenli | OP-3 Aktif | OP-4 Yerleşik |
+|---|---|---|---|---|
+| Temas | Çeyrekte 1 | Ayda 1 | 2 haftada 1 | Haftada 1 |
+| Raporlama | Aylık özet | Aylık rapor | 2 haftada 1 not | Haftalık |
+| Yönetim bilgilendirmesi | Yılda 2 | Çeyreklik | Çeyreklik + kurul | Aylık + kurul |
+| Yanıt süresi | 48 saat | 24 saat | 8 saat | 4 saat |
+| 12 ayda kapsanan alan | 4 | 8 | 16 | 18 (tamamı) |
+
+Fiyat bu sayfada yer almıyor; hangi paketin uygun olduğu birlikte
+netleştirilir.
 
 ### H2 — Çıktılar
-[DOLDURULACAK] — teslim edilen doküman ve raporların listesi.
+- **Olgunluk skor kartı** — yönetim kuruluna güvenliği tek sayfada anlatır
+- **Kontrol bazlı bulgu kaydı** — teknik ekibin çalışma listesi
+- **Önceliklendirilmiş yol haritası** — bütçe ve takvim kararlarının dayanağı
+- **Risk kaydı** — denetimde ilk istenen belge
+- **Çerçeve uyum matrisi** — ISO, NIST CSF, CIS ve KVKK'ya eşlenmiş skor;
+  anket ve ihale dosyalarına doğrudan girdi
+- **Dönemsel yönetim raporu** — programın ilerlediğinin kanıtı
 
-### H2 — Kimler için uygun
-[DOLDURULACAK] — bu hizmetin uygun olduğu ve olmadığı kurum profilleri.
+Tüm çıktılar kurumun mülkiyetindedir.
 
-> Not: D:\Deresys\hizmetler\sgop altında bu programa dair kapsam ve
-> metodoloji dokümanları var; henüz web metnine işlenmedi.
+### H2 — Yapmadıklarımız
+- Ürün satmıyoruz. Değerlendirdiğimiz kuruma lisans, donanım veya
+  bayilik hizmeti vermiyoruz.
+- 7/24 izleme (SOC/MDR) yapmıyoruz. İhtiyacınız varsa bağımsız bir
+  sağlayıcı seçiminde yardımcı oluruz.
+- Sızma testi yapmıyoruz. Kontrolün tasarımına katkı veren taraf aynı
+  kontrolü test etmemeli; testi bağımsız bir taraf yapar, biz bulguları
+  yönetiriz.
+- Sistemlerinizi işletmiyoruz. Program bir yönetişim çalışmasıdır;
+  kurulum ve bakım BT ekibinizin işidir.
+- CISO'nuzun yerine geçmiyoruz. Bu bir ölçüm ve yürütme programıdır;
+  güvenlik yöneticiliğinin dışarıdan üstlenilmesini istiyorsanız bu ayrı
+  bir hizmettir (vCISO).
+
+[CTA: Görüşme talep edin]
+
+> Not: Fiyatlandırma, sektörel varyasyonlar (EKS/OTG, EPDK, 7545) ve
+> R1–R7 rapor kodları bilinçli olarak sayfaya taşınmadı — bunlar iç
+> kullanım/teklif dokümanlarında kalıyor; web metni müşteriye dönük
+> özetle sınırlı tutuldu.
 
 ---
 
@@ -672,7 +759,9 @@ Adres: Deresys Siber Güvenlik - Gölbaşı/Ankara
 
 ## 13. Olay Müdahale Hattı — `/hotline`
 
-*(Değişmedi. Bkz. sürüm 2.)*
+*(E-posta formu info@deresys.com.tr'ye bağlandı — bkz. sürüm 3. VPS
+entegrasyonu artık gerekmiyor, FormSubmit.co kullanılıyor; bkz. İletişim
+sayfasındaki aynı desen.)*
 
 **Title:** Olay Müdahale Hattı | DERESYS
 **Meta description:** Abonelik modeliyle sunulacak olay müdahale hattı. Hazırlık aşamasında.
@@ -685,13 +774,15 @@ Abonelik modeliyle sunulacak olay müdahale hattı üzerinde çalışıyoruz.
 Hat henüz açık değil.
 
 Bunu açıkça yazıyoruz, çünkü olay anında arayacağınız bir numaranın
-cevap verip vermeyeceği tahmin edilebilecek bir konu değil.
+cevap verip vermeyeceği tahmin edilebilecek bir konu değil. Bu arada
+bize doğrudan yazmak isterseniz info@deresys.com.tr adresinden
+ulaşabilirsiniz.
 
 ### H2 — Hat açıldığında haber verelim
 Hizmet devreye girdiğinde bilgilendirilmek isterseniz e-posta adresinizi
 bırakabilirsiniz.
 
-[E-posta formu]
+[E-posta formu — info@deresys.com.tr'ye gönderir, FormSubmit.co]
 [Buton: Haberdar et]
 
 ### H2 — Bu arada

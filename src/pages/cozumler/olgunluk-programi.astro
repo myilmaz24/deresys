@@ -1,30 +1,181 @@
 ---
 import Base from '../../layouts/Base.astro';
 import PageHead from '../../components/PageHead.astro';
-import Draft from '../../components/Draft.astro';
 import Cta from '../../components/Cta.astro';
 
-const sections = [
-  { id: 'cerceve', title: 'Kullanılan çerçeve', need: 'Değerlendirmenin dayandığı kontrol seti; domain ve kontrol sayısı; hangi standartlarla eşleştiği.' },
-  { id: 'surec', title: 'Nasıl ilerliyor', need: 'Fazlar, her fazın süresi, kurumdan beklenen katılım ve ayrılması gereken adam-gün.' },
-  { id: 'paketler', title: 'Paketler', need: 'OP-1, OP-2, OP-3, OP-4 paketlerinin adları ve birbirinden hangi kritere göre ayrıldığı. Fiyat bu sayfada yer almayacak.' },
-  { id: 'ciktilar', title: 'Çıktılar', need: 'Teslim edilen doküman ve raporların listesi.' },
-  { id: 'kimler', title: 'Kimler için uygun', need: 'Bu hizmetin uygun olduğu ve olmadığı kurum profilleri.' },
+const checklist = [
+  'Güvenlikten sorumlu birisi var, ama o kişinin asıl işi güvenlik değil.',
+  'Bir müşteriniz veya iş ortağınız güvenlik anketi gönderdi ve hangi cevabın doğru olduğundan emin olamadınız.',
+  'ISO 27001 belgelendirmesine karar verdiniz ama nereden başlayacağınızı bilmiyorsunuz.',
+  'Bir denetimden bulgu aldınız ve bulguları kapatacak bir plana ihtiyacınız var.',
+  'Güvenliğe para harcıyorsunuz ama harcamanın işe yarayıp yaramadığını gösteren bir sayı yok.',
+  'Geçmiş bir danışmanlık raporu hâlâ bir klasörde duruyor.',
+  'Güvenlik ekibiniz var, ama nereye ilerlediğinizi gösteren ortak bir ölçü yok.',
+];
+
+const steps = [
+  {
+    code: '1',
+    title: 'Ölçeriz',
+    body: 'Deresys Güvenlik Kontrolleri (DGK) ile 18 alanda 99 kontrolü kanıta dayalı olarak puanlarız — beyanla değil, gösterilebilen çıktıyla. Dört adam-günlük bu çalışmanın sonunda olgunluk skorunuz, öncelikli bulgularınız ve 12 aylık yol haritanız elinizde olur.',
+  },
+  {
+    code: '2',
+    title: 'Yol haritasını kurarız',
+    body: 'Bulgular kritiklik ve iş etkisine göre önceliklendirilir (P1/P2/P3) ve çeyreklere dağıtılır. Her maddenin sahibi, bağımlılığı ve kabul kriteri yazılıdır.',
+  },
+  {
+    code: '3',
+    title: 'Yürütürüz',
+    body: 'Seçtiğiniz pakete göre düzenli temas, yazılı raporlama ve periyodik yönetim sunumuyla yol haritasını birlikte ilerletiriz. Kapanan her madde kanıtla doğrulanır ve yeniden puanlanır — ölçen taraf ile yürüten taraf aynı olduğu için bulgular arada kaybolmaz.',
+  },
+  {
+    code: '4',
+    title: 'Yılda bir tekrar ölçeriz',
+    body: 'Aynı kontrol seti, aynı skala. İlerleme yorumla değil, iki sayı arasındaki farkla gösterilir.',
+  },
+];
+
+const packages = [
+  { code: 'OP-1', name: 'Temel', temas: 'Çeyrekte 1', rapor: 'Aylık özet', yonetim: 'Yılda 2', yanit: '48 saat', alan: '4' },
+  { code: 'OP-2', name: 'Düzenli', temas: 'Ayda 1', rapor: 'Aylık rapor', yonetim: 'Çeyreklik', yanit: '24 saat', alan: '8' },
+  { code: 'OP-3', name: 'Aktif', temas: '2 haftada 1', rapor: '2 haftada 1 not', yonetim: 'Çeyreklik + kurul', yanit: '8 saat', alan: '16' },
+  { code: 'OP-4', name: 'Yerleşik', temas: 'Haftada 1', rapor: 'Haftalık', yonetim: 'Aylık + kurul', yanit: '4 saat', alan: '18 (tamamı)' },
+];
+const pkgRows = [
+  { label: 'Temas', key: 'temas' },
+  { label: 'Raporlama', key: 'rapor' },
+  { label: 'Yönetim bilgilendirmesi', key: 'yonetim' },
+  { label: 'Yanıt süresi', key: 'yanit' },
+  { label: '12 ayda kapsanan alan', key: 'alan' },
+];
+
+const outputs = [
+  { name: 'Olgunluk skor kartı', body: 'yönetim kuruluna güvenliği tek sayfada anlatır' },
+  { name: 'Kontrol bazlı bulgu kaydı', body: 'teknik ekibin çalışma listesi' },
+  { name: 'Önceliklendirilmiş yol haritası', body: 'bütçe ve takvim kararlarının dayanağı' },
+  { name: 'Risk kaydı', body: 'denetimde ilk istenen belge' },
+  { name: 'Çerçeve uyum matrisi', body: 'ISO, NIST CSF, CIS ve KVKK’ya eşlenmiş skor; anket ve ihale dosyalarına doğrudan girdi' },
+  { name: 'Dönemsel yönetim raporu', body: 'programın ilerlediğinin kanıtı' },
+];
+
+const outOfScope = [
+  'Ürün satmıyoruz. Değerlendirdiğimiz kuruma lisans, donanım veya bayilik hizmeti vermiyoruz.',
+  '7/24 izleme (SOC/MDR) yapmıyoruz. İhtiyacınız varsa bağımsız bir sağlayıcı seçiminde yardımcı oluruz.',
+  'Sızma testi yapmıyoruz. Kontrolün tasarımına katkı veren taraf aynı kontrolü test etmemeli; testi bağımsız bir taraf yapar, biz bulguları yönetiriz.',
+  'Sistemlerinizi işletmiyoruz. Program bir yönetişim çalışmasıdır; kurulum ve bakım BT ekibinizin işidir.',
+  'CISO’nuzun yerine geçmiyoruz. Bu bir ölçüm ve yürütme programıdır; güvenlik yöneticiliğinin dışarıdan üstlenilmesini istiyorsanız bu ayrı bir hizmettir (vCISO).',
 ];
 ---
-<Base title="Siber Güvenlik Olgunluk Değerlendirmesi | DERESYS">
-  <PageHead eyebrow="OP · OLGUNLUK PROGRAMI" title="Siber güvenlik olgunluk değerlendirmesi">
-    <div class="head-draft"><Draft need="Programın çözdüğü problemin bir paragraflık tanımı." /></div>
-  </PageHead>
+<Base
+  title="Siber Güvenlik Olgunluk Programı | DERESYS"
+  description="Deresys Güvenlik Kontrolleri (DGK) ile 18 alanda 99 kontrolü ölçen, önceliklendirilmiş bir yol haritasına çeviren ve yıllık olarak tekrar ölçen siber güvenlik olgunluk programı."
+>
+  <PageHead
+    eyebrow="OP · OLGUNLUK PROGRAMI"
+    title="Siber güvenlik olgunluk programı"
+    lead="Deresys Siber Güvenlik Olgunluk Programı, kurumunuzun güvenlik olgunluğunu 99 kontrol üzerinden ölçer, çıkan boşlukları 12 aylık bir yol haritasına çevirir, bu yol haritasını sizinle birlikte yürütür ve bir yıl sonra aynı kontrol setiyle tekrar ölçer — ürün satmadan."
+  />
 
   <section class="section">
     <div class="wrap stack stack-12">
-      {sections.map((s) => (
-        <div class="block" id={s.id}>
-          <h2 class="h-sm block__title">{s.title}</h2>
-          <Draft need={s.need} />
+      <div class="block" id="bu-size-mi">
+        <h2 class="h-sm block__title">Bu sayfa size mi?</h2>
+        <div class="stack stack-4">
+          <p class="muted">Aşağıdakilerden biri sizin durumunuzsa, bu program size göre:</p>
+          <ul class="prose muted checklist">
+            {checklist.map((c) => <li>{c}</li>)}
+          </ul>
         </div>
-      ))}
+      </div>
+
+      <div class="block" id="cerceve">
+        <h2 class="h-sm block__title">Kullanılan çerçeve</h2>
+        <div class="stack stack-4">
+          <p class="muted">
+            Satılan şey danışmanlık saati değil, iki ölçüm arasındaki farktır. Ölçüm Deresys
+            Güvenlik Kontrolleri'ne (DGK) dayanır: 18 kontrol alanında 99 kontrolü kapsayan,
+            kanıt bazlı altı seviyeli bir olgunluk skalasıyla puanlanan bir çerçeve. Beyan puan
+            almaz; her kontrolün gösterilebilir bir kanıtı olması gerekir.
+          </p>
+          <p class="muted">
+            Skorunuz ISO/IEC 27001:2022, NIST CSF 2.0, CIS Controls v8.1, KVKK ve 7545 sayılı
+            Siber Güvenlik Kanunu'na eşlenmiş halde teslim edilir — denetçi, sigortacı, müşteri
+            anketi ve düzenleyici için ayrı ayrı çalışma yapmak yerine tek bir ölçüm yeterli olur.
+          </p>
+        </div>
+      </div>
+
+      <div class="block" id="surec">
+        <h2 class="h-sm block__title">Nasıl ilerliyor</h2>
+        <div class="stack stack-8 steps">
+          {steps.map((s) => (
+            <div class="step">
+              <span class="eyebrow eyebrow--accent">{s.code}</span>
+              <h3 class="subheading">{s.title}</h3>
+              <p class="muted">{s.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="block" id="paketler">
+        <h2 class="h-sm block__title">Paketler</h2>
+        <div class="stack stack-4">
+          <p class="muted">
+            Dört pakette de aynı kontrol seti yürütülür ve aynı rapor tipleri üretilir.
+            Farklılaşan şey temas sıklığı, raporlama periyodu ve bir çeyrekte fiilen
+            çalışılabilecek kontrol alanı sayısıdır — kapsamı daraltarak ucuzlatmıyoruz.
+          </p>
+          <div class="pkg-table-wrap">
+            <table class="pkg-table">
+              <thead>
+                <tr>
+                  <th scope="col"></th>
+                  {packages.map((p) => (
+                    <th scope="col">
+                      <span class="pkg-code">{p.code}</span>
+                      <span class="dim small">{p.name}</span>
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {pkgRows.map((row) => (
+                  <tr>
+                    <th scope="row">{row.label}</th>
+                    {packages.map((p) => <td>{p[row.key]}</td>)}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p class="dim small">Fiyat bu sayfada yer almıyor; hangi paketin size uygun olduğunu birlikte netleştiririz.</p>
+        </div>
+      </div>
+
+      <div class="block" id="ciktilar">
+        <h2 class="h-sm block__title">Çıktılar</h2>
+        <div class="stack stack-4">
+          <ul class="prose muted">
+            {outputs.map((o) => <li><strong>{o.name}</strong> — {o.body}</li>)}
+          </ul>
+          <p class="dim small">Tüm çıktılar kurumunuzun mülkiyetindedir.</p>
+        </div>
+      </div>
+
+      <div class="block" id="yapmadiklarimiz">
+        <h2 class="h-sm block__title">Yapmadıklarımız</h2>
+        <div class="stack stack-4">
+          <p class="muted">
+            Açıkça yazıyoruz, çünkü ne yapmadığını söylemeyen bir danışmanlık her şeyi
+            yapıyormuş gibi görünür:
+          </p>
+          <ul class="prose muted">
+            {outOfScope.map((o) => <li>{o}</li>)}
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -33,8 +184,55 @@ const sections = [
 </Base>
 
 <style>
-  .head-draft { margin-top: var(--space-8); max-width: var(--prose-max-width); }
   .block { display: grid; grid-template-columns: 1fr 2fr; gap: var(--space-16); align-items: start; }
   .block__title { padding-top: 2px; }
-  @media (max-width: 900px) { .block { grid-template-columns: 1fr; gap: var(--space-6); } }
+  ul.prose { padding-left: 1.1em; display: grid; gap: var(--space-2); }
+  .checklist { gap: var(--space-3); }
+
+  .steps { display: grid; gap: var(--space-8); }
+  .step {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    background: var(--bg-surface-1);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-card);
+    padding: var(--card-padding);
+  }
+
+  .pkg-table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-card);
+  }
+  .pkg-table { width: 100%; border-collapse: collapse; font-size: var(--text-body-sm); }
+  .pkg-table th, .pkg-table td {
+    padding: var(--space-4);
+    text-align: left;
+    white-space: nowrap;
+  }
+  .pkg-table thead th {
+    background: var(--bg-surface-1);
+    border-bottom: 1px solid var(--border-subtle);
+    vertical-align: top;
+  }
+  .pkg-table thead th:first-child { background: transparent; border-bottom: none; }
+  .pkg-code {
+    display: block;
+    font-family: var(--font-mono);
+    letter-spacing: var(--tracking-eyebrow);
+    color: var(--color-accent);
+  }
+  .pkg-table tbody th {
+    font-weight: var(--weight-medium);
+    color: var(--text-primary);
+    white-space: normal;
+  }
+  .pkg-table tbody td { color: var(--text-secondary); }
+  .pkg-table tbody tr:not(:last-child) th,
+  .pkg-table tbody tr:not(:last-child) td { border-bottom: 1px solid var(--border-subtle); }
+
+  @media (max-width: 900px) {
+    .block { grid-template-columns: 1fr; gap: var(--space-6); }
+  }
 </style>
