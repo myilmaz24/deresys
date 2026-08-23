@@ -57,7 +57,7 @@ Sürüm 2 — 2026-08-12
 SİBER GÜVENLİK DANIŞMANLIĞI
 
 ### H1
-Güvenli, akıllı, sürdürülebilir
+Güvenli, akıllı, sürekli
 
 ### Açılış
 DERESYS, kurumların siber güvenlik yapısını değerlendiren ve geliştiren bir
@@ -428,8 +428,8 @@ Bıraktığınız bilgiler yalnızca talebinize dönüş yapmak için kullanıl�
 
 ### H2 — Doğrudan iletişim
 E-posta: info@deresys.com.tr
-Telefon: [DOLDURULACAK]
-Adres: [DOLDURULACAK]
+Telefon: 0552 123 89 56
+Adres: Deresys Siber Güvenlik - Gölbaşı/Ankara
 
 ---
 
