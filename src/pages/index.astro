@@ -2,6 +2,12 @@
 import Base from '../layouts/Base.astro';
 import Draft from '../components/Draft.astro';
 import emblem from '../assets/emblem-orange.svg?raw';
+import { getCollection } from 'astro:content';
+
+const latestPosts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+const dateFmt = new Intl.DateTimeFormat('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
 
 const services = [
   {
@@ -100,7 +106,14 @@ const services = [
             Nasıl çalıştığımızı görmek isterseniz blogu okuyabilirsiniz. Tespit kuralları,
             SIEM içerik yönetimi, olay müdahale pratiği ve uyum çerçeveleri üzerine yazıyoruz.
           </p>
-          <Draft label="İÇERİK BEKLİYOR" need="Son 3 blog yazısı. Henüz yayınlanmış yazı yok." />
+          <div class="stack stack-4 blog-teaser">
+            {latestPosts.map((post) => (
+              <a class="teaser-post" href={`/blog/${post.slug}`}>
+                <span class="dim small"><time datetime={post.data.pubDate.toISOString()}>{dateFmt.format(post.data.pubDate)}</time></span>
+                <span class="teaser-post__title">{post.data.title}</span>
+              </a>
+            ))}
+          </div>
           <a class="arrow-link" href="/blog">
             Tüm yazılar
             <svg class="chev" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
@@ -191,6 +204,22 @@ const services = [
     align-items: start;
   }
   .split .eyebrow { margin-bottom: var(--space-4); }
+
+  .blog-teaser { border-top: 1px solid var(--border-subtle); padding-top: var(--space-4); }
+  .teaser-post {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-3);
+    text-decoration: none;
+    color: inherit;
+    padding-block: var(--space-2);
+  }
+  .teaser-post__title {
+    font-weight: var(--weight-medium);
+    transition: color 140ms ease;
+  }
+  .teaser-post:hover .teaser-post__title { color: var(--color-accent); }
 
   @media (max-width: 900px) {
     .vciso, .split { grid-template-columns: 1fr; gap: var(--space-8); }

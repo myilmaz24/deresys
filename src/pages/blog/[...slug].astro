@@ -1,0 +1,124 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const { title, description, pubDate, author, tags } = post.data;
+
+const dateFmt = new Intl.DateTimeFormat('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+<Base title={`${title} | DERESYS Blog`} description={description}>
+  <PageHead eyebrow="BLOG" title={title} lead={description} />
+
+  <article class="section section--tight">
+    <div class="wrap">
+      <div class="prose article">
+        <p class="article__meta small dim">
+          <time datetime={pubDate.toISOString()}>{dateFmt.format(pubDate)}</time>
+          <span aria-hidden="true"> · </span>
+          {author}
+          {tags?.length > 0 && (
+            <>
+              <span aria-hidden="true"> · </span>
+              {tags.join(', ')}
+            </>
+          )}
+        </p>
+        <Content />
+      </div>
+
+      <hr class="rule article__rule" />
+
+      <p class="small dim">
+        <a class="arrow-link" href="/blog">
+          <svg class="chev chev--back" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M11 7H3M6.5 3.5 3 7l3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" />
+          </svg>
+          Tüm yazılar
+        </a>
+      </p>
+    </div>
+  </article>
+</Base>
+
+<style>
+  .article__meta {
+    font-family: var(--font-mono);
+    margin-bottom: var(--space-8);
+    padding-bottom: var(--space-6);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .article :global(h2) {
+    font-size: var(--text-heading-sm);
+    line-height: var(--leading-heading-sm);
+    letter-spacing: -0.01em;
+    margin-top: var(--space-12);
+    margin-bottom: var(--space-4);
+  }
+  .article :global(h2:first-child) { margin-top: 0; }
+  .article :global(h3) {
+    font-size: var(--text-subheading);
+    line-height: var(--leading-subheading);
+    font-family: var(--font-display);
+    font-weight: var(--weight-medium);
+    margin-top: var(--space-8);
+    margin-bottom: var(--space-3);
+  }
+  .article :global(p) {
+    color: var(--text-secondary);
+    margin-top: var(--space-4);
+  }
+  .article :global(p:first-of-type) { margin-top: 0; }
+  .article :global(strong) { color: var(--text-primary); font-weight: var(--weight-semibold); }
+  .article :global(em) { color: var(--text-muted); }
+  .article :global(ul), .article :global(ol) {
+    color: var(--text-secondary);
+    margin: var(--space-4) 0;
+    padding-left: 1.3em;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+  .article :global(li) { padding-left: var(--space-2); }
+  .article :global(code) {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    background: var(--bg-surface-2);
+    border: 1px solid var(--border-subtle);
+    border-radius: 4px;
+    padding: 0.1em 0.4em;
+  }
+  .article :global(a) {
+    color: var(--text-primary);
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-accent);
+    transition: color 140ms ease;
+  }
+  .article :global(a:hover) { color: var(--color-accent); }
+  .article :global(hr) {
+    border: 0;
+    border-top: 1px solid var(--border-subtle);
+    margin: var(--space-12) 0;
+  }
+  .article :global(blockquote) {
+    margin: var(--space-6) 0;
+    padding-left: var(--space-4);
+    border-left: 2px solid var(--color-accent);
+    color: var(--text-muted);
+  }
+
+  .article__rule { margin-top: var(--section-gap); margin-bottom: var(--space-8); }
+  .chev--back { transform: scaleX(1); }
+  .arrow-link:hover .chev--back { transform: translateX(-4px); }
+</style>
