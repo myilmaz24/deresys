@@ -4,8 +4,30 @@ import PageHead from '../components/PageHead.astro';
 import Draft from '../components/Draft.astro';
 import { getCollection } from 'astro:content';
 
-const posts = (await getCollection('blog', ({ data }) => !data.draft))
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const collectionPosts = (await getCollection('blog', ({ data }) => !data.draft)).map((post) => ({
+  href: `/blog/${post.slug}`,
+  title: post.data.title,
+  description: post.data.description,
+  pubDate: post.data.pubDate,
+  tags: post.data.tags,
+}));
+
+// Yazılar bazen içerik koleksiyonundaki markdown yerine, tablo/CTA gibi özel bir
+// yerleşim gerektirdiği için doğrudan src/pages/blog/ altında .astro sayfası olarak
+// yazılıyor (örn. aylık Patch Tuesday özetleri). Listede görünmeleri için burada
+// elle ekleniyor.
+const customPosts = [
+  {
+    href: '/blog/patch-tuesday-agustos-2026',
+    title: 'Patch Tuesday: Ağustos 2026 — öncelik sırası',
+    description: "Ağustos 2026 Patch Tuesday'de 398 CVE ve 3 zero-day yayınlandı. Hangi üçüne öncelik vermeniz gerektiğini derledik.",
+    pubDate: new Date('2026-08-23'),
+    tags: ['Tehdit İstihbaratı'],
+  },
+];
+
+const posts = [...collectionPosts, ...customPosts]
+  .sort((a, b) => b.pubDate.valueOf() - a.pubDate.valueOf());
 
 const dateFmt = new Intl.DateTimeFormat('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
 ---
@@ -22,14 +44,14 @@ const dateFmt = new Intl.DateTimeFormat('tr-TR', { day: 'numeric', month: 'long'
   <section class="section">
     <div class="wrap stack stack-6">
       {posts.map((post) => (
-        <a class="line card--ray" href={`/blog/${post.slug}`}>
+        <a class="line card--ray" href={post.href}>
           <div class="line__main">
             <span class="eyebrow eyebrow--accent">
-              <time datetime={post.data.pubDate.toISOString()}>{dateFmt.format(post.data.pubDate)}</time>
-              {post.data.tags?.length > 0 && <> · {post.data.tags.join(', ')}</>}
+              <time datetime={post.pubDate.toISOString()}>{dateFmt.format(post.pubDate)}</time>
+              {post.tags?.length > 0 && <> · {post.tags.join(', ')}</>}
             </span>
-            <h2 class="subheading">{post.data.title}</h2>
-            <p class="muted">{post.data.description}</p>
+            <h2 class="subheading">{post.title}</h2>
+            <p class="muted">{post.description}</p>
           </div>
           <div class="line__go">
             <span class="arrow-link">

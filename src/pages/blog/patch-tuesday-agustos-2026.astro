@@ -1,0 +1,201 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+
+const cves = [
+  {
+    id: 'CVE-2026-68820',
+    title: 'Windows Ancillary Function Driver for WinSock — Yetki Yükseltme',
+    cvss: '7.0',
+    note: 'Aktif istismar edildiği doğrulandı, CISA KEV listesine 11 Ağustos 2026’da eklendi.',
+  },
+  {
+    id: 'CVE-2026-62737',
+    title: 'Windows Kernel — Yetki Yükseltme',
+    cvss: '7.8',
+    note: 'Kavram kanıtı (PoC) yayınlandı. Kaynak, güvenilmeyen işaretçi referansı (untrusted pointer dereference) zafiyeti.',
+  },
+  {
+    id: 'CVE-2026-62832',
+    title: 'Windows User Profile Service — Yetki Yükseltme',
+    cvss: '7.8',
+    note: 'Düşük yetkili kimliği doğrulanmış saldırgan, kullanıcı etkileşimi olmadan başka bir kullanıcının registry hive’ını yükleyip yönetici yetkisi kazanabiliyor.',
+  },
+];
+---
+<Base
+  title="Patch Tuesday: Ağustos 2026 — Öncelik Sırası | DERESYS Blog"
+  description="Ağustos 2026 Patch Tuesday'de 398 CVE ve 3 zero-day yayınlandı. Hangi üçüne öncelik vermeniz gerektiğini derledik."
+>
+  <PageHead
+    eyebrow="BLOG — TEHDİT İSTİHBARATI"
+    title="Patch Tuesday: Ağustos 2026 — öncelik sırası"
+    lead="Bu ayki Patch Tuesday 398 CVE ile geldi; üçü zero-day. Yama kapasiteniz sınırlıysa nereden başlamanız gerektiğini derledik."
+  />
+
+  <section class="section">
+    <div class="wrap">
+      <article class="stack stack-8 prose">
+        <p class="muted small">
+          Yayın: 23 Ağustos 2026 · Kaynak: Microsoft Security Response Center (MSRC), 11 Ağustos 2026 duyurusu; CISA KEV kaydı
+        </p>
+
+        <div class="tldr">
+          <span class="eyebrow eyebrow--accent">TL;DR</span>
+          <ul>
+            <li>11 Ağustos 2026 tarihli Patch Tuesday'de toplam 398 CVE yayınlandı, bunlardan 3'ü zero-day.</li>
+            <li>169 CVE yetki yükseltme (elevation of privilege), 110 CVE uzaktan kod yürütme (RCE) kategorisinde.</li>
+            <li>Yama kapasiteniz kısıtlıysa aşağıdaki üç zero-day'e öncelik verin.</li>
+          </ul>
+        </div>
+
+        <p>
+          Ağustos ayı hacim olarak sakin geçmedi. Microsoft'un bu ayki toplu güncellemesi 398
+          CVE içeriyor ve bunların üçü zero-day olarak işaretlenmiş durumda — yani yama
+          yayınlandığı anda ya aktif istismar ediliyorlar ya da kavram kanıtı (PoC) kodu zaten
+          herkese açık. Envanterinizdeki Windows sistemleri için yama penceresini
+          daraltmanızı öneriyoruz.
+        </p>
+
+        <h2 class="h-sm">Önce bunlara bakın</h2>
+        <p class="muted">
+          Aşağıdaki üç CVE, bu ayki duyuru içinde önceliklendirme yaparken ilk sırada
+          değerlendirilmesi gereken zafiyetler. Ortak noktaları: hepsi yerel yetki
+          yükseltme (local privilege escalation) sağlıyor ve hepsi ilk erişimden sonraki
+          adımda saldırganın işini kolaylaştırıyor.
+        </p>
+
+        <div class="cve-table">
+          <table>
+            <thead>
+              <tr>
+                <th>CVE</th>
+                <th>Etkilenen bileşen</th>
+                <th>CVSS</th>
+                <th>Not</th>
+              </tr>
+            </thead>
+            <tbody>
+              {cves.map((c) => (
+                <tr>
+                  <td>
+                    <a href={`https://msrc.microsoft.com/update-guide/vulnerability/${c.id}`} target="_blank" rel="noopener noreferrer">
+                      {c.id}
+                    </a>
+                  </td>
+                  <td>{c.title}</td>
+                  <td>{c.cvss}</td>
+                  <td class="muted small">{c.note}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <h3 class="subheading">CVE-2026-68820 — WinSock sürücüsünde aktif istismar</h3>
+        <p>
+          Bu zafiyet listenin en acil maddesi. Saldırganlar, Windows Ancillary Function
+          Driver for WinSock bileşenini hedef alarak yerel makinede yönetici yetkisine
+          çıkabiliyor ve bu istismar hâlihazırda sahada görüldü — CVE, 11 Ağustos 2026'da
+          CISA'nın Bilinen İstismar Edilen Zafiyetler (KEV) kataloğuna eklendi. Güvenlik
+          araştırmacıları bu etkinliği Lazarus grubuyla ilişkilendiriyor. CVSS puanı (7.0)
+          tek başına yüksek görünmese de aktif istismar durumu bu CVE'yi ilk sıraya taşıyor;
+          etkilenen tüm Windows 10, Windows 11 ve Windows Server sürümlerinde Ağustos 2026
+          birikimli güncellemesinin uygulanmasını önceliklendirin.
+        </p>
+
+        <h3 class="subheading">CVE-2026-62737 — Kernel'de yayınlanmış PoC</h3>
+        <p>
+          Windows Kernel'deki bu yetki yükseltme zafiyeti henüz aktif istismar
+          raporlanmasa da kavram kanıtı kodu zaten herkese açık; kök neden güvenilmeyen
+          işaretçi referansı (CWE-822) zafiyeti. PoC yayınlandıktan sonra istismar
+          kodunun silahlanması genellikle gün meselesi olduğundan, kapsamı diğer ikisine
+          göre daha dar olsa da bu CVE'yi bekletmemenizi öneririz.
+        </p>
+
+        <h3 class="subheading">CVE-2026-62832 — Kullanıcı etkileşimi gerektirmiyor</h3>
+        <p>
+          Windows User Profile Service'te bulunan bu zafiyet, düşük yetkili ama kimliği
+          doğrulanmış bir saldırganın başka bir kullanıcıya ait registry hive'ını
+          yükleyerek yönetici yetkisi kazanmasına izin veriyor — ve bunun için herhangi bir
+          kullanıcı etkileşimine ihtiyaç yok. Kullanıcı etkileşimi gerektirmeyen yetki
+          yükseltme zafiyetleri otomasyona en uygun olanlardır; bu nedenle CVSS puanı
+          (7.8) diğerleriyle aynı olsa da operasyonel riskini yüksek değerlendiriyoruz.
+        </p>
+
+        <h2 class="h-sm">Ne yapmalı</h2>
+        <p>
+          398 CVE'nin tamamını tek seferde kapatmak çoğu ekip için gerçekçi değil.
+          Kapasiteniz sınırlıysa sırayı şöyle önerebiliriz: önce CISA KEV'de yer alan ve
+          aktif istismar edilen CVE-2026-68820, ardından PoC'si yayınlanmış
+          CVE-2026-62737, son olarak da etkileşimsiz istismar edilebilen
+          CVE-2026-62832. Geri kalan 169 yetki yükseltme ve 110 uzaktan kod yürütme
+          CVE'sini de standart yama döngünüze dahil etmeyi ihmal etmeyin — bu ayki hacim
+          yüksek, ama öncelik listesi kısa.
+        </p>
+
+        <p class="muted small">
+          Bu yazı, Microsoft'un 11 Ağustos 2026 tarihli güvenlik güncellemeleri
+          duyurusuna ve CISA'nın Bilinen İstismar Edilen Zafiyetler (KEV) kataloğuna
+          dayanarak hazırlanmıştır.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <section class="section">
+    <div class="wrap">
+      <div class="split">
+        <div>
+          <span class="eyebrow">İLETİŞİM</span>
+          <h2 class="h">Yama önceliklendirmesinde yardım mı lazım?</h2>
+        </div>
+        <div class="stack stack-8">
+          <p class="lead prose">
+            Envanterinizin ne kadarının bu CVE'lerden etkilendiğinden emin değilseniz kısa
+            bir görüşme genellikle yeterli oluyor.
+          </p>
+          <div class="btn-row">
+            <a class="btn btn--primary" href="/iletisim">Görüşme talep edin</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .tldr {
+    background: var(--bg-surface-1);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-card);
+    padding: var(--card-padding);
+  }
+  .tldr .eyebrow { display: block; margin-bottom: var(--space-4); }
+  .tldr ul { margin: 0; padding-left: 1.2em; display: grid; gap: var(--space-3); }
+
+  .cve-table { overflow-x: auto; }
+  .cve-table table { width: 100%; border-collapse: collapse; font-size: 0.92em; }
+  .cve-table th, .cve-table td {
+    text-align: left;
+    padding: var(--space-4) var(--space-5, 16px);
+    border-bottom: 1px solid var(--border-subtle);
+    vertical-align: top;
+  }
+  .cve-table th { font-weight: 600; }
+  .cve-table a { color: var(--color-accent); }
+
+  .split {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: var(--space-16);
+    align-items: start;
+  }
+  .split .eyebrow { margin-bottom: var(--space-4); }
+
+  @media (max-width: 900px) {
+    .split { grid-template-columns: 1fr; gap: var(--space-8); }
+  }
+</style>
