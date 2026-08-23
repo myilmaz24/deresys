@@ -1,6 +1,5 @@
 ---
 import Base from '../layouts/Base.astro';
-import Draft from '../components/Draft.astro';
 import emblem from '../assets/emblem-orange.svg?raw';
 import { getCollection } from 'astro:content';
 
@@ -11,31 +10,31 @@ const dateFmt = new Intl.DateTimeFormat('tr-TR', { day: 'numeric', month: 'long'
 
 const services = [
   {
-    code: 'OP',
-    title: 'Siber güvenlik olgunluk değerlendirmesi',
-    body: 'Güvenlik kontrollerinizi tanımlı bir çerçeveye göre inceler, mevcut durumu puanlar ve önceliklendirilmiş bir iyileştirme planı çıkarırız. Program sonunda elinizde yönetime sunabileceğiniz ölçülebilir bir tablo ve önümüzdeki dönem için üzerinde anlaşılmış bir yol haritası olur.',
-    note: 'Bütçe görüşmesine somut bir gerekçeyle girmek isteyen ekipler için genellikle buradan başlamak mantıklı oluyor.',
-    href: '/cozumler/olgunluk-programi',
+    code: 'DH',
+    title: 'Danışmanlık Hizmetleri',
+    body: 'Güvenlik olgunluğunuzu ölçer, olay müdahale hazırlığınızı kurar ve vCISO olarak bilgi güvenliği yönetişimini üstleniriz.',
+    note: 'Olay Müdahalesi, vCISO ve Siber Güvenlik Olgunluk Programı bu başlık altında.',
+    href: '/cozumler#danismanlik',
   },
   {
-    code: 'SOC',
-    title: 'SOC kurulumu ve etkinlik denetimi',
-    body: 'SOC kurmayı planlıyorsanız tasarım ve devreye alma sürecinde çalışırız. Halihazırda bir SOC\u2019unuz ya da hizmet aldığınız bir MSSP varsa, üretilen tespitlerin kapsamını ve kalitesini inceleriz.',
-    note: 'MSSP etkinlik denetimi en çok şu durumda işe yarıyor: hizmet alıyorsunuz, raporlar düzenli geliyor, ama alınan hizmetin gerçekte hangi saldırı tekniklerini kapsadığı belirsiz kalıyor.',
-    href: '/cozumler/soc-advisory',
+    code: 'OH',
+    title: 'Operasyonel Hizmetler',
+    body: 'SIEM ortamınızın işletimsel sağlığını ve tespit kapsamını periyodik olarak doğrular, Splunk destek ve kural ihtiyaçlarınızı karşılarız.',
+    note: 'MSS ve Splunk Destek ve Kural İçeriği bu başlık altında.',
+    href: '/cozumler#operasyonel',
   },
   {
-    code: 'OM',
-    title: 'Olay müdahale hazırlığı',
-    body: 'Olay anında işleyen bir müdahale süreci olaydan önce kurulur. Eğitim, hazırlık projesi ve masabaşı tatbikatlarla ekibinizin kimin neyi ne zaman yapacağını önceden bilmesini sağlarız.',
-    note: 'Tatbikatlar çoğu kurumda süreç dokümanındaki boşlukları ilk kez görünür kılıyor.',
-    href: '/cozumler/olay-mudahalesi',
+    code: 'SGA',
+    title: 'Siber Güvenlik Akademisi',
+    body: 'Bilgi işlem ve güvenlik ekibinizi olay müdahalesinde uygulamalı, laboratuvar ağırlıklı eğitimle hazırlarız.',
+    note: 'Olay Müdahale Eğitimi bu başlık altında.',
+    href: '/cozumler#akademi',
   },
 ];
 ---
 <Base
   title="DERESYS — Siber Güvenlik Danışmanlığı"
-  description="Siber güvenlik olgunluk değerlendirmesi, SOC kurulumu ve etkinlik denetimi, olay müdahale hazırlığı."
+  description="Danışmanlık hizmetleri, operasyonel hizmetler ve siber güvenlik akademisi ile siber güvenlik yapınızı değerlendirir ve geliştiririz."
 >
   <section class="hero">
     <div class="hero__mark" aria-hidden="true" set:html={emblem} />
@@ -44,8 +43,8 @@ const services = [
       <div class="stack stack-6 hero__body">
         <p class="lead">
           DERESYS, kurumların siber güvenlik yapısını değerlendiren ve geliştiren bir
-          danışmanlık şirketidir. Üç alanda çalışıyoruz: güvenlik olgunluğunun ölçülmesi,
-          SOC kurulumu ve etkinlik denetimi, olay müdahale hazırlığı.
+          danışmanlık şirketidir. Üç başlıkta çalışıyoruz: danışmanlık hizmetleri, operasyonel
+          hizmetler ve siber güvenlik akademisi.
         </p>
         <p class="muted">
           Çalışmalarımız genellikle aynı soruyla başlıyor. Bir güvenlik yatırımı yapılmış,
@@ -53,9 +52,6 @@ const services = [
           çalıştığı kurum içinden bakınca net görünmüyor. Yapıyı kuran ekiple onu değerlendiren
           ekip aynı olduğunda bu normaldir.
         </p>
-      </div>
-      <div class="btn-row hero__actions">
-        <a class="btn btn--primary" href="/iletisim">Görüşme talep edin</a>
       </div>
     </div>
   </section>
@@ -80,14 +76,6 @@ const services = [
             </span>
           </a>
         ))}
-      </div>
-
-      <div class="vciso">
-        <div class="vciso__head">
-          <span class="eyebrow eyebrow--accent">vCISO</span>
-          <h2 class="h-sm">vCISO</h2>
-        </div>
-        <Draft need="Bir paragraflık özet." />
       </div>
     </div>
   </section>
@@ -163,7 +151,6 @@ const services = [
     font-size: clamp(22px, 4.4vw, 44px);
   }
   .hero__body { margin-top: var(--space-8); max-width: 62ch; }
-  .hero__actions { margin-top: var(--space-10); }
 
   /* İmza: amblem ışınları sağ kenardan taşarak giriyor */
   .hero__mark {
@@ -183,19 +170,6 @@ const services = [
   @media (max-width: 720px) {
     .hero__mark { right: -40%; width: 460px; opacity: 0.04; }
   }
-
-  .vciso {
-    margin-top: var(--grid-gap);
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: var(--grid-gap);
-    align-items: start;
-    background: var(--bg-surface-1);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-card);
-    padding: var(--card-padding);
-  }
-  .vciso__head .eyebrow { margin-bottom: var(--space-3); }
 
   .split {
     display: grid;
@@ -222,6 +196,6 @@ const services = [
   .teaser-post:hover .teaser-post__title { color: var(--color-accent); }
 
   @media (max-width: 900px) {
-    .vciso, .split { grid-template-columns: 1fr; gap: var(--space-8); }
+    .split { grid-template-columns: 1fr; gap: var(--space-8); }
   }
 </style>

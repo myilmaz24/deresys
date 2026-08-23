@@ -1,15 +1,34 @@
 # COPY.md
 
-deresys.com.tr sayfa metinleri. Kaynak: CONTEXT.md.
+deresys.com.tr sayfa metinleri. Kaynak: CONTEXT.md, D:\Deresys\hizmetler
+altındaki hizmet tasarımı ve pazarlama dokümanları.
 
 Bu dosya Türkçe metni içerir. İngilizce sürüm, Türkçe onaylandıktan sonra
 ayrı geçişte eklenecektir.
 
-`[DOLDURULACAK]` işaretli bölümler CONTEXT.md'de doğrulanmış veri
-bulunmadığı için boş bırakılmıştır. Her birinin altında hangi bilginin
-gerektiği yazılıdır.
+`[DOLDURULACAK]` işaretli bölümler için doğrulanmış veri bulunmadığından
+boş bırakılmıştır. Her birinin altında hangi bilginin gerektiği yazılıdır.
 
-Sürüm 2 — 2026-08-12
+Sürüm 3 — 2026-08-23
+
+**Sürüm 3'te değişenler:**
+- Ana sayfadaki hero CTA'sı ("Görüşme talep edin") kaldırıldı — üst menüde
+  zaten aynı buton bulunduğu için sayfa açılışında iki kez tekrar ediyordu.
+- Üst menüdeki "Çözümler" etiketi "Hizmetler" olarak güncellendi (URL
+  `/cozumler` değişmedi).
+- Hizmetler üç ana başlıkta yeniden gruplandı: Danışmanlık Hizmetleri
+  (Olay Müdahalesi, vCISO, Siber Güvenlik Olgunluk Programı), Operasyonel
+  Hizmetler (MSS, Splunk Destek ve Kural İçeriği), Siber Güvenlik Akademisi
+  (Olay Müdahale Eğitimi).
+- SOC Advisory sayfası kaldırıldı; kapsamı MSS sayfasına taşındı. Eski URL
+  (`/cozumler/soc-advisory`) `/cozumler/mss`'e yönlendiriyor.
+- Olay Müdahalesi sayfasındaki OM-1 (eğitim) modülü, kendi ayrıntılı
+  sayfasına taşındı (Siber Güvenlik Akademisi > Olay Müdahale Eğitimi);
+  Olay Müdahalesi sayfasında artık kısa bir bağlantı kartı olarak duruyor.
+- vCISO, MSS ve Olay Müdahale Eğitimi sayfalarının metni dolduruldu
+  (önceden iskeletti).
+- Splunk Destek ve Kural İçeriği yeni bir sayfa olarak eklendi; içerik
+  brifi bekleniyor, şu an iskelet.
 
 ---
 
@@ -21,37 +40,44 @@ Sürüm 2 — 2026-08-12
   yeni sekmede açılır. Ön dolgulu mesaj: "Merhaba, bir güvenlik olayıyla
   ilgili DERESYS ile iletişime geçmek istiyorum." Bu, `/hotline` sayfasındaki
   abonelik modelli müdahale hattından farklıdır; hattın "hazırlık
-  aşamasında" olduğuna dair not (bkz. bölüm 11) geçerliliğini korur — bu
+  aşamasında" olduğuna dair not (bkz. bölüm 13) geçerliliğini korur — bu
   buton hattın kendisi değil, doğrudan bir iletişim kanalıdır. Yanıt süresi
   veya SLA taahhüdü ima edilmez.
 - **Görüşme talep edin** — `/iletisim` sayfasına gider (mevcut).
+
+Ana sayfada bu butonun ayrıca hero bölümünde tekrarlanan bir kopyası vardı;
+üst menüde zaten göründüğü için kaldırıldı. Sayfa sonundaki "Nereden
+başlanır" bölümündeki CTA olduğu gibi kalıyor.
 
 ---
 
 ## Sayfa envanteri
 
-| # | Sayfa | URL | Durum |
-|---|---|---|---|
-| 1 | Ana Sayfa | `/` | Metin hazır |
-| 2 | Çözümler | `/cozumler` | Metin hazır |
-| 3 | Siber Güvenlik Olgunluk Programı | `/cozumler/olgunluk-programi` | İskelet |
-| 4 | SOC Advisory | `/cozumler/soc-advisory` | İskelet |
-| 5 | Olay Müdahalesi | `/cozumler/olay-mudahalesi` | İskelet |
-| 6 | vCISO | `/cozumler/vciso` | İskelet |
-| 7 | Hakkında | `/hakkinda` | Metin hazır — karar bekliyor |
-| 8 | Blog | `/blog` | Metin hazır |
-| 9 | Ürünler | `/urunler` | Metin hazır |
-| 10 | İletişim | `/iletisim` | Metin hazır — form entegre edildi |
-| 11 | Olay Müdahale Hattı | `/hotline` | Metin hazır |
-| 12 | KVKK Aydınlatma Metni | `/kvkk` | Hukuki metin bekliyor |
-| 13 | 404 | — | Metin hazır |
+| # | Sayfa | URL | Grup | Durum |
+|---|---|---|---|---|
+| 1 | Ana Sayfa | `/` | — | Metin hazır |
+| 2 | Hizmetler | `/cozumler` | — | Metin hazır |
+| 3 | Olay Müdahalesi | `/cozumler/olay-mudahalesi` | Danışmanlık | Metin hazır |
+| 4 | vCISO | `/cozumler/vciso` | Danışmanlık | Metin hazır |
+| 5 | Siber Güvenlik Olgunluk Programı | `/cozumler/olgunluk-programi` | Danışmanlık | İskelet |
+| 6 | MSS — Güvenlik Sağlığı İzleme | `/cozumler/mss` | Operasyonel | Metin hazır (ek kapsam bölümü iskelet) |
+| 7 | Splunk Destek ve Kural İçeriği | `/cozumler/splunk-destek` | Operasyonel | İskelet — brif bekleniyor |
+| 8 | Olay Müdahale Eğitimi | `/cozumler/olay-mudahale-egitimi` | Akademi | Metin hazır |
+| — | ~~SOC Advisory~~ | ~~`/cozumler/soc-advisory`~~ | — | Kaldırıldı — `/cozumler/mss`'e yönlendiriyor |
+| 9 | Hakkında | `/hakkinda` | — | Metin hazır — karar bekliyor |
+| 10 | Blog | `/blog` | — | Metin hazır |
+| 11 | Ürünler | `/urunler` | — | Metin hazır |
+| 12 | İletişim | `/iletisim` | — | Metin hazır — form entegre edildi |
+| 13 | Olay Müdahale Hattı | `/hotline` | — | Metin hazır |
+| 14 | KVKK Aydınlatma Metni | `/kvkk` | — | Hukuki metin bekliyor |
+| 15 | 404 | — | — | Metin hazır |
 
 ---
 
 ## 1. Ana Sayfa — `/`
 
 **Title:** DERESYS — Siber Güvenlik Danışmanlığı
-**Meta description:** Siber güvenlik olgunluk değerlendirmesi, SOC kurulumu ve etkinlik denetimi, olay müdahale hazırlığı.
+**Meta description:** Danışmanlık hizmetleri, operasyonel hizmetler ve siber güvenlik akademisi ile siber güvenlik yapınızı değerlendirir ve geliştiririz.
 
 ### Eyebrow
 SİBER GÜVENLİK DANIŞMANLIĞI
@@ -61,47 +87,37 @@ Güvenli, akıllı, sürekli
 
 ### Açılış
 DERESYS, kurumların siber güvenlik yapısını değerlendiren ve geliştiren bir
-danışmanlık şirketidir. Üç alanda çalışıyoruz: güvenlik olgunluğunun
-ölçülmesi, SOC kurulumu ve etkinlik denetimi, olay müdahale hazırlığı.
+danışmanlık şirketidir. Üç başlıkta çalışıyoruz: danışmanlık hizmetleri,
+operasyonel hizmetler ve siber güvenlik akademisi.
 
 Çalışmalarımız genellikle aynı soruyla başlıyor. Bir güvenlik yatırımı
 yapılmış, araçlar kurulmuş, süreçler tanımlanmış oluyor; ama bunların
 gerçekte ne kadarının çalıştığı kurum içinden bakınca net görünmüyor.
 Yapıyı kuran ekiple onu değerlendiren ekip aynı olduğunda bu normaldir.
 
-[CTA: Görüşme talep edin]
+*(Hero'daki [CTA: Görüşme talep edin] kaldırıldı — bkz. "Site geneli".)*
 
-### H2 — Siber güvenlik olgunluk değerlendirmesi
-Güvenlik kontrollerinizi tanımlı bir çerçeveye göre inceler, mevcut durumu
-puanlar ve önceliklendirilmiş bir iyileştirme planı çıkarırız. Program
-sonunda elinizde yönetime sunabileceğiniz ölçülebilir bir tablo ve
-önümüzdeki dönem için üzerinde anlaşılmış bir yol haritası olur.
+### H2 — Danışmanlık Hizmetleri
+Güvenlik olgunluğunuzu ölçer, olay müdahale hazırlığınızı kurar ve vCISO
+olarak bilgi güvenliği yönetişimini üstleniriz.
 
-Bütçe görüşmesine somut bir gerekçeyle girmek isteyen ekipler için
-genellikle buradan başlamak mantıklı oluyor.
-[Bağlantı: Olgunluk Programı]
+Olay Müdahalesi, vCISO ve Siber Güvenlik Olgunluk Programı bu başlık
+altında.
+[Bağlantı: /cozumler#danismanlik]
 
-### H2 — SOC kurulumu ve etkinlik denetimi
-SOC kurmayı planlıyorsanız tasarım ve devreye alma sürecinde çalışırız.
-Halihazırda bir SOC'unuz ya da hizmet aldığınız bir MSSP varsa, üretilen
-tespitlerin kapsamını ve kalitesini inceleriz.
+### H2 — Operasyonel Hizmetler
+SIEM ortamınızın işletimsel sağlığını ve tespit kapsamını periyodik olarak
+doğrular, Splunk destek ve kural ihtiyaçlarınızı karşılarız.
 
-MSSP etkinlik denetimi en çok şu durumda işe yarıyor: hizmet alıyorsunuz,
-raporlar düzenli geliyor, ama alınan hizmetin gerçekte hangi saldırı
-tekniklerini kapsadığı belirsiz kalıyor.
-[Bağlantı: SOC Advisory]
+MSS ve Splunk Destek ve Kural İçeriği bu başlık altında.
+[Bağlantı: /cozumler#operasyonel]
 
-### H2 — Olay müdahale hazırlığı
-Olay anında işleyen bir müdahale süreci olaydan önce kurulur. Eğitim,
-hazırlık projesi ve masabaşı tatbikatlarla ekibinizin kimin neyi ne zaman
-yapacağını önceden bilmesini sağlarız.
+### H2 — Siber Güvenlik Akademisi
+Bilgi işlem ve güvenlik ekibinizi olay müdahalesinde uygulamalı,
+laboratuvar ağırlıklı eğitimle hazırlarız.
 
-Tatbikatlar çoğu kurumda süreç dokümanındaki boşlukları ilk kez görünür
-kılıyor.
-[Bağlantı: Olay Müdahalesi]
-
-### H2 — vCISO
-[DOLDURULACAK — bir paragraflık özet]
+Olay Müdahale Eğitimi bu başlık altında.
+[Bağlantı: /cozumler#akademi]
 
 ### H2 — Yazdıklarımız
 Nasıl çalıştığımızı görmek isterseniz blogu okuyabilirsiniz. Tespit
@@ -119,181 +135,396 @@ olacağını konuşuruz.
 
 ---
 
-## 2. Çözümler — `/cozumler`
+## 2. Hizmetler — `/cozumler`
 
-**Title:** Çözümler — Siber Güvenlik Danışmanlık Hizmetleri | DERESYS
-**Meta description:** Olgunluk değerlendirmesi, SOC Advisory, olay müdahalesi ve vCISO hizmetleri.
+**Title:** Hizmetler — Siber Güvenlik Danışmanlık Hizmetleri | DERESYS
+**Meta description:** Danışmanlık hizmetleri, operasyonel hizmetler ve siber güvenlik akademisi: olay müdahalesi, vCISO, olgunluk programı, MSS, Splunk destek ve olay müdahale eğitimi.
 
 ### H1
 Siber güvenlik danışmanlık hizmetleri
 
 ### Açılış
-Dört hizmet hattımız var. Her biri ayrı alınabilir, birlikte alındığında
-da birbirini tekrar etmez. Hangisinin uygun olduğu kurumunuzun bugün
-nerede olduğuna bağlı.
+Hizmetlerimizi üç başlıkta topluyoruz: danışmanlık hizmetleri, operasyonel
+hizmetler ve siber güvenlik akademisi. Her biri ayrı alınabilir, birlikte
+alındığında da birbirini tekrar etmez.
 
 Aşağıdaki kısa tariflerden hangisinin durumunuza benzediğine bakabilirsiniz.
 
-### H2 — Siber Güvenlik Olgunluk Programı
-Güvenlik kontrollerinizin mevcut durumunu ölçer, puanlar ve
-önceliklendirilmiş bir iyileştirme planı üretiriz.
+### Grup — Danışmanlık Hizmetleri (`#danismanlik`)
+Kurumunuzun güvenlik yapısını değerlendirir, hazırlar ve yönetişimini
+üstleniriz.
 
-Şu durumda uygun: yatırım yapılmış ama bütünsel resim yok; ya da yönetime
-mevcut durumu ve gidilecek yeri ölçülebilir biçimde anlatmanız gerekiyor.
-[Bağlantı]
-
-### H2 — SOC Advisory
-SOC kurulumu, mevcut SOC'un değerlendirilmesi ve MSSP etkinlik denetimi.
-
-Şu durumda uygun: SOC kurmaya karar verdiniz ve tasarımı doğru yapmak
-istiyorsunuz; ya da hizmet aldığınız MSSP'nin ürettiği tespitlerin
-kapsamını bağımsız bir gözle görmek istiyorsunuz.
-[Bağlantı]
-
-### H2 — Olay Müdahalesi
-Eğitim, hazırlık projesi, masabaşı tatbikat ve müdahale hattı.
-
+**OM — Olay Müdahalesi**
+Hazırlık projesi, masabaşı tatbikat ve müdahale hattıyla ekibinizin olay
+anında ne yapacağını önceden bilmesini sağlarız.
 Şu durumda uygun: bir olay planınız var ama hiç denenmedi; ya da ekipte
 müdahale deneyimi sınırlı ve bunu olay anında keşfetmek istemiyorsunuz.
-[Bağlantı]
+[Bağlantı: /cozumler/olay-mudahalesi]
 
-### H2 — vCISO
-[DOLDURULACAK — iki cümlelik özet ve uygunluk tarifi]
+**vCISO**
+İhtiyacınıza göre üç modelde çalışırız: şirketinizin fiilen CISO'su gibi
+görev alırız, mevcut ekibinize ikinci göz sağlarız ya da doğrudan yönetim
+kurulunuza brifing veririz.
+Şu durumda uygun: tam zamanlı bir CISO'ya bütçeniz yok, ama SPK, BDDK,
+Siber Güvenlik Kanunu veya EPDK gibi bir düzenleme sizi bilgi
+güvenliğinden üst yönetim seviyesinde sorumlu tutuyor.
+[Bağlantı: /cozumler/vciso]
+
+**OP — Siber Güvenlik Olgunluk Programı**
+Güvenlik kontrollerinizin mevcut durumunu ölçer, puanlar ve
+önceliklendirilmiş bir iyileştirme planı üretiriz.
+Şu durumda uygun: yatırım yapılmış ama bütünsel resim yok; ya da yönetime
+mevcut durumu ve gidilecek yeri ölçülebilir biçimde anlatmanız gerekiyor.
+[Bağlantı: /cozumler/olgunluk-programi]
+
+### Grup — Operasyonel Hizmetler (`#operasyonel`)
+Güvenlik çözümlerinizin gün geçtikçe sağlıklı ve güncel kalmasını sürekli
+hâle getiririz.
+
+**MSS — Güvenlik Sağlığı İzleme**
+Splunk ve IBM QRadar gibi SIEM ortamlarınızı periyodik olarak kontrol
+eder, işletimsel sağlığını ve MITRE ATT&CK'e göre tespit kapsamını düzenli
+raporlarla size sunarız.
+Şu durumda uygun: kurumsal bir SIEM'e yatırım yaptınız ama bunu sürekli
+sağlıklı tutacak uzmanlık kapasiteniz sınırlı; ya da hizmet aldığınız bir
+MSSP'nin ürettiği tespitlerin kapsamını bağımsız bir gözle görmek
+istiyorsunuz.
+[Bağlantı: /cozumler/mss]
+
+**Splunk Destek ve Kural İçeriği**
+Splunk ortamınızda kural geliştirme, içerik bakımı ve teknik destek
+sağlarız.
+Şu durumda uygun: Splunk kullanıyorsunuz ve kural/içerik tarafında sürekli
+bir uzmanlık desteğine ihtiyacınız var.
+[Bağlantı: /cozumler/splunk-destek]
+> Not: Bu sayfanın gövde metni henüz brif bekliyor — bkz. bölüm 7.
+
+### Grup — Siber Güvenlik Akademisi (`#akademi`)
+Ekibinizi olay müdahalesinde uygulamalı eğitimle hazırlarız.
+
+**OM-1 — Olay Müdahale Eğitimi**
+Bilgi işlem ve güvenlik ekibiniz için 3 günlük, laboratuvar ağırlıklı
+uygulamalı eğitim; delil bozmadan hareket etme, doğru sırayla toplama,
+zaman çizelgesi çıkarma ve raporlama.
+Şu durumda uygun: ekibinizin olay anında ilk 60 dakikada ne yapacağını
+netleştirmek istiyorsunuz; adli inceleme deneyimi aranmaz.
+[Bağlantı: /cozumler/olay-mudahale-egitimi]
 
 ### H2 — Yapmadığımız işler
 Sızma testi, SOC operasyonu ve MDR hizmeti vermiyoruz.
 
-SOC Advisory kapsamı kurulum ve denetimle sınırlıdır, işletmeyi içermez.
-Bu hizmetlere ihtiyacınız varsa çalıştığımız firmalara yönlendirebiliriz.
+MSS kapsamımız güvenlik sağlığı izleme ve tespit kapsamı denetimiyle
+sınırlıdır; 7/24 SOC operasyonu veya tehdit avcılığı içermez. Bu
+hizmetlere ihtiyacınız varsa çalıştığımız firmalara yönlendirebiliriz.
 
 ---
 
-## 3. Siber Güvenlik Olgunluk Programı — `/cozumler/olgunluk-programi`
-
-**Title:** Siber Güvenlik Olgunluk Değerlendirmesi | DERESYS
-**Meta description:** [DOLDURULACAK]
-
-### H1
-Siber güvenlik olgunluk değerlendirmesi
-
-### Açılış
-[DOLDURULACAK]
-> Gerekli: programın çözdüğü problemin bir paragraflık tanımı.
-
-### H2 — Kullanılan çerçeve
-[DOLDURULACAK]
-> Gerekli: değerlendirmenin dayandığı kontrol seti; domain ve kontrol
-> sayısı; hangi standartlarla eşleştiği.
-
-### H2 — Nasıl ilerliyor
-[DOLDURULACAK]
-> Gerekli: fazlar, her fazın süresi, kurumdan beklenen katılım ve
-> ayrılması gereken adam-gün.
-
-### H2 — Paketler
-[DOLDURULACAK]
-> Gerekli: OP-1, OP-2, OP-3, OP-4 paketlerinin adları ve birbirinden
-> hangi kritere göre ayrıldığı. Fiyat bu sayfada yer almayacak.
-
-### H2 — Çıktılar
-[DOLDURULACAK]
-> Gerekli: teslim edilen doküman ve raporların listesi.
-
-### H2 — Kimler için uygun
-[DOLDURULACAK]
-> Gerekli: bu hizmetin uygun olduğu ve olmadığı kurum profilleri.
-
-[CTA: Görüşme talep edin]
-
----
-
-## 4. SOC Advisory — `/cozumler/soc-advisory`
-
-**Title:** SOC Kurulumu ve MSSP Etkinlik Denetimi | DERESYS
-**Meta description:** [DOLDURULACAK]
-
-### H1
-SOC kurulumu ve SOC etkinlik denetimi
-
-### Açılış
-[DOLDURULACAK]
-> Gerekli: dört hizmeti tek çatı altında toplayan bir paragraf.
-
-### H2 — SOC kurulumu: entegratör ve MSSP'ler için
-[DOLDURULACAK]
-> Gerekli: kapsam, çıktı, süre.
-
-### H2 — SOC kurulumu: son kullanıcı kurumlar için
-[DOLDURULACAK]
-> Gerekli: kapsam, çıktı, süre.
-
-### H2 — MSSP etkinlik denetimi
-[DOLDURULACAK]
-> Gerekli: kapsam, çıktı, süre. Denetimin neyi ölçtüğü — kural kapsamı,
-> tespit kabiliyeti, SLA uyumu vb.
-
-### H2 — Periyodik siber sağlık kontrolü
-[DOLDURULACAK]
-> Gerekli: kapsam, çıktı, periyot.
-
-[CTA: Görüşme talep edin]
-
----
-
-## 5. Olay Müdahalesi — `/cozumler/olay-mudahalesi`
+## 3. Olay Müdahalesi — `/cozumler/olay-mudahalesi` (Danışmanlık)
 
 **Title:** Olay Müdahale Hazırlığı ve Tatbikat | DERESYS
-**Meta description:** [DOLDURULACAK]
+**Meta description:** Olay müdahale hazırlığı: hazırlık projesi, masabaşı tatbikat ve müdahale hattı.
 
 ### H1
 Olay müdahale hazırlığı
 
 ### Açılış
-[DOLDURULACAK]
-> Gerekli: hazırlığın müdahale kalitesini nasıl belirlediğini anlatan
-> bir paragraf.
+Fidye yazılımı fark edildiğinde teoride müdahale başlar. Uygulamada ilk
+gün "kimi arayacağız" sorusu, teklif toplama ve sözleşme müzakeresiyle
+geçer. Bu sürenin tamamı kayıptır: bellek içeriği ve kısa saklama süreli
+kayıtlar silinir, saldırgan yayılmaya devam eder, yasal bildirim süresi
+işler. Olay anında işleyen bir müdahale süreci olaydan önce kurulur.
 
 ### H2 — Olay müdahale eğitimi (OM-1)
-[DOLDURULACAK]
-> Gerekli: hedef katılımcı, süre, içerik başlıkları.
+Ekibiniz ilk 60 dakikada ne yapacağını biliyor mu? 3 gün, uygulamalı,
+laboratuvar ağırlıklı eğitim; ayrıntılı program artık Siber Güvenlik
+Akademisi altında.
+[Bağlantı: Olay Müdahale Eğitimi — bkz. bölüm 8]
 
 ### H2 — Olay müdahale hazırlık projesi (OM-2)
-[DOLDURULACAK]
-> Gerekli: kapsam, çıktı, süre.
+6–8 hafta süren bir çalışmada politika, rol ve eskalasyon matrisi,
+iletişim planı ve KVKK bildirim akışı hazırlarız; beş senaryo için
+playbook yazar, delil hazırlığı boşluk analizi yapar ve tüm ekibe
+dağıtılan bir Olay Anı Kartı üretiriz.
 
 ### H2 — Masabaşı tatbikat (OM-3)
-[DOLDURULACAK]
-> Gerekli: senaryo yapısı, katılımcı profili, süre, çıktı.
+Yılda 2 oturum: biri teknik ekiple, biri yönetim ve kriz masasıyla
+yürütülür. Kuruma özel bir senaryo, zamanlanmış gelişmeler, karar
+sürelerinin ölçümü ve önceliklendirilmiş bir aksiyon listesiyle sonuçlanır.
 
 ### H2 — Olay müdahale hattı (OM-4)
 Abonelik modeliyle sunulacak müdahale hattı hazırlık aşamasındadır.
 [Bağlantı: Olay Müdahale Hattı]
 
+> Not: Kaynak dokümanda (D:\Deresys\hizmetler\Olay Müdahale) OM-4 için
+> "yazılı yanıt süresi taahhüdü" gibi ifadeler var; bu, hattın henüz
+> devreye girmediğini söyleyen mevcut site politikasıyla çelişiyor. Site
+> metnine bilerek eklenmedi — hat açıldığında OM-4 metni ayrıca yazılmalı.
+
 [CTA: Görüşme talep edin]
 
 ---
 
-## 6. vCISO — `/cozumler/vciso`
+## 4. vCISO — `/cozumler/vciso` (Danışmanlık)
 
 **Title:** vCISO Hizmeti | DERESYS
-**Meta description:** [DOLDURULACAK]
+**Meta description:** vCISO hizmeti: Outsource CISO, CISO danışmanlığı ve yönetim kurulu danışmanlığı modelleriyle bilgi güvenliği yönetişimi.
 
 ### H1
 vCISO
 
-> Bu sayfanın tamamı [DOLDURULACAK]. CONTEXT.md bölüm 4.1: hizmetin
-> kapsamı, faz yapısı ve çıktıları henüz tasarlanmamıştır.
->
-> Gerekli: hizmetin tanımı; olgunluk programından farkı; taahhüt edilen
-> zaman modeli; çıktılar; hangi kurum profiline uygun olduğu.
->
-> Not: vCISO taahhüdü eşzamanlı kapasiteyi doğrudan bağlar. Sayfa metni
-> yazılmadan önce aynı anda kaç vCISO müşterisi kabul edileceğine karar
-> verilmesi gerekir.
+### Lead
+Tam zamanlı bir CISO'ya bütçeniz olmayabilir; ama bilgi güvenliği
+yönetişimi sorumluluğu üzerinizde kalmaya devam ediyor. DERESYS bu
+sorumluluğu ihtiyacınıza göre üç modelden birinde üstlenir.
+
+### H2 — Neden vCISO
+SPK, BDDK, Siber Güvenlik Kanunu ve EPDK gibi düzenlemeler kurumları
+bilgi güvenliğinden üst yönetim seviyesinde sorumlu tutuyor. Bankacılık
+dışında bu düzenlemelerin hiçbiri resmi unvanlı, tam zamanlı bir CISO
+atanmasını açıkça şart koşmuyor — ama hepsi, birinin bu sorumluluğu fiilen
+taşımasını bekliyor.
+
+### H2 — Üç model
+**Katman A — Outsource CISO**
+Şirketinizin fiilen CISO'su gibi çalışırız: politika seti, risk
+analizinin yönetimi, pentest ve iç denetim koordinasyonu, olay müdahale
+planı ve yönetim kuruluna düzenli raporlama.
+Resmi bir CISO'su olmayan, SPK / EPDK / kritik altyapı kapsamındaki orta
+ölçekli şirketler için.
+
+**Katman B — CISO Danışmanlığı**
+Mevcut güvenlik ekibinize ikinci göz, regülasyon uzmanlığı ve proje bazlı
+destek sağlarız; politika ve prosedür taslaklarını inceleriz.
+Kendi BT/güvenlik ekibi olan bankalar ve büyük kuruluşlar için.
+
+**Katman C — Yönetim Kurulu Danışmanlığı**
+CISO'nun yerine geçmeden, doğrudan yönetim kurulunuza veya denetim
+komitenize periyodik, anlaşılır ve regülasyona bağlanmış siber risk
+brifingleri sunarız.
+Bankalar, halka açık şirket yönetim kurulları ve büyük kurumlar için.
+
+### H2 — Kapsam dışı
+Sistemlerinize yazma veya değişiklik erişimi talep etmeyiz; teknik
+uygulama kendi ekibinizde veya ayrı bir sözleşme kapsamındaki MSS
+hizmetimizde kalır.
+
+Bu hizmet hukuki danışmanlık yerine geçmez; regülasyon
+değerlendirmelerimiz teknik ve operasyonel niteliktedir. Regülatöre resmi
+bildirim ve beyan kararı ve imzası her zaman sizde kalır, biz yalnızca
+süreç desteği sağlarız.
+
+Risk analizi ve pentest gibi bağımsız değerlendirme gerektiren
+süreçlerde üçüncü taraf sağlayıcılarla koordineli çalışırız; bu süreçleri
+kendimiz yürütmeyiz.
+
+> Not: "Bağımsızlık ilkesi" ifadesi kasıtlı olarak kullanılmadı — yazım
+> kurallarına göre bu ifade sitede yalnızca Hakkında ve Ürünler
+> sayfalarında geçiyor.
+
+### H2 — Kimler için uygun
+Hangi katmanın size uyduğu, kurumunuzun tabi olduğu regülasyona ve mevcut
+güvenlik ekibinizin büyüklüğüne göre değişir. Bunu birlikte netleştiririz.
+
+[CTA: Görüşme talep edin]
+
+> Kaldırılan not: "vCISO taahhüdü eşzamanlı kapasiteyi doğrudan bağlar"
+> uyarısı kaldırıldı çünkü sayfa metninde zaten hiçbir kapasite/sayı
+> iddiası yok (yazım kurallarına uygun).
 
 ---
 
-## 7. Hakkında — `/hakkinda`
+## 5. Siber Güvenlik Olgunluk Programı — `/cozumler/olgunluk-programi` (Danışmanlık)
+
+*(Değişmedi — hâlâ iskelet. Bkz. sürüm 2.)*
+
+**Title:** Siber Güvenlik Olgunluk Değerlendirmesi | DERESYS
+**Meta description:** [DOLDURULACAK]
+
+### H2 — Kullanılan çerçeve
+[DOLDURULACAK] — değerlendirmenin dayandığı kontrol seti; domain ve
+kontrol sayısı; hangi standartlarla eşleştiği.
+
+### H2 — Nasıl ilerliyor
+[DOLDURULACAK] — fazlar, her fazın süresi, kurumdan beklenen katılım ve
+ayrılması gereken adam-gün.
+
+### H2 — Paketler
+[DOLDURULACAK] — OP-1, OP-2, OP-3, OP-4 paketlerinin adları ve
+birbirinden hangi kritere göre ayrıldığı. Fiyat bu sayfada yer almayacak.
+
+### H2 — Çıktılar
+[DOLDURULACAK] — teslim edilen doküman ve raporların listesi.
+
+### H2 — Kimler için uygun
+[DOLDURULACAK] — bu hizmetin uygun olduğu ve olmadığı kurum profilleri.
+
+> Not: D:\Deresys\hizmetler\sgop altında bu programa dair kapsam ve
+> metodoloji dokümanları var; henüz web metnine işlenmedi.
+
+---
+
+## 6. MSS — Güvenlik Sağlığı İzleme — `/cozumler/mss` (Operasyonel)
+
+**Title:** MSS — Güvenlik Sağlığı İzleme | DERESYS
+**Meta description:** Splunk ve IBM QRadar ortamlarınız için periyodik güvenlik sağlığı izleme ve MITRE ATT&CK tespit kapsamı analizi.
+
+### H1
+Güvenlik sağlığı izleme
+
+### Lead
+Güvenlik yatırımlarınızın gerçekten sağlıklı çalıştığından emin olun.
+
+### H2 — Sorun
+Çoğu kurum SIEM, EDR ve DLP gibi güvenlik araçlarına ciddi yatırım
+yapıyor. Ama bu araçların sağlıklı çalışıp çalışmadığını, kurallarının
+güncel kalıp kalmadığını, hangi tehdit tekniklerine karşı hâlâ savunmasız
+olduğunuzu kimse sistematik olarak takip etmiyor. Bu, güvenlik
+yatırımlarının sessizce değer kaybettiği en yaygın kör noktalardan biri.
+
+### H2 — Bu bir SOC hizmeti değildir
+DERESYS 7/24 gerçek zamanlı izleme veya olay müdahalesi taahhüt etmez.
+Sistemlerinize asla yazma veya değişiklik yetkisiyle erişmeyiz — yalnızca
+gözlemler, doğrular ve raporlarız. Karar ve uygulama her zaman sizde
+kalır.
+
+### H2 — Nasıl çalışıyoruz
+1. **Kapsam ve erişim** — hangi sistemlerin kapsama dahil olacağını
+   birlikte belirleriz; erişim her zaman salt-okunurdur.
+2. **İlk değerlendirme (baseline)** — ortamınızın kapsamlı bir ilk
+   değerlendirmesi, sonraki raporlar için karşılaştırma noktası olur.
+3. **Sürekli izleme** — günlük/haftalık aralıklarla işletimsel sağlık ve
+   güvenlik durumu (MITRE ATT&CK'e göre tespit kapsamı) kontrolü.
+4. **Raporlama ve danışmanlık** — günlük özet, haftalık analiz, aylık
+   yönetici değerlendirmesi; kritik bulguda somut aksiyon önerisi.
+
+### H2 — Yaptığımız / yapmadığımız
+| Yaptığımız | Yapmadığımız |
+|---|---|
+| Periyodik (günlük/haftalık) sağlık ve güvenlik durumu kontrolü | 7/24 gerçek zamanlı izleme |
+| MITRE ATT&CK'e göre tespit kapsamı analizi | Tehdit avcılığı (threat hunting) |
+| Düzenli, yapılandırılmış raporlama | Olay müdahalesi (ayrı bir hizmetimiz olarak sunulur) |
+| Somut aksiyon önerisi | Sistemlerinizde değişiklik veya müdahale yapma |
+
+### H2 — Kimler için uygun
+Splunk, IBM QRadar gibi kurumsal SIEM platformlarına yatırım yapmış; kendi
+IT/güvenlik ekibi olan ama bu araçları sürekli sağlıklı tutacak özel
+uzmanlık kapasitesi sınırlı olan orta ve büyük ölçekli kurumlar için
+tasarlandı.
+
+### H2 — Ek kapsam: SOC kurulumu ve etkinlik denetimi
+SOC kurmayı planlıyorsanız tasarım ve devreye alma sürecinde çalışırız.
+Halihazırda bir SOC'unuz ya da hizmet aldığınız bir MSSP varsa, üretilen
+tespitlerin kapsamını ve kalitesini de MSS kapsamımız içinde
+inceleyebiliriz. *(Eski SOC Advisory sayfasından taşındı.)*
+
+**SOC kurulumu: entegratör ve MSSP'ler için** — [DOLDURULACAK: kapsam, çıktı, süre]
+**SOC kurulumu: son kullanıcı kurumlar için** — [DOLDURULACAK: kapsam, çıktı, süre]
+**MSSP etkinlik denetimi** — [DOLDURULACAK: kapsam, çıktı, süre; denetimin neyi ölçtüğü — kural kapsamı, tespit kabiliyeti, SLA uyumu vb.]
+
+[CTA: Görüşme talep edin]
+
+---
+
+## 7. Splunk Destek ve Kural İçeriği — `/cozumler/splunk-destek` (Operasyonel)
+
+**Title:** Splunk Destek ve Kural İçeriği | DERESYS
+**Meta description:** [DOLDURULACAK]
+
+### H1
+Splunk destek ve kural içeriği
+
+### Açılış
+[DOLDURULACAK] — hizmetin bir paragraflık tanımı.
+
+### H2 — Kapsam
+[DOLDURULACAK] — hangi Splunk bileşenleri (Core, ES, ITSI vb.); destek mi,
+kural/içerik geliştirme mi, ikisi birden mi.
+
+### H2 — Çalışma modeli
+[DOLDURULACAK] — proje mi, abonelik mi, saat havuzu mu; sıklık ve iletişim
+kanalı.
+
+### H2 — Çıktılar
+[DOLDURULACAK] — teslim edilecek doküman, kural ve rapor listesi.
+
+### H2 — Kimler için uygun
+[DOLDURULACAK] — hedef müşteri profili.
+
+[CTA: Görüşme talep edin]
+
+> Not: Bu sayfa için hizmetler klasöründe kaynak doküman bulunamadı;
+> içerik Mustafa'dan gelecek kısa brife göre yazılacak.
+
+---
+
+## 8. Olay Müdahale Eğitimi — `/cozumler/olay-mudahale-egitimi` (Akademi)
+
+**Title:** Olay Müdahale Eğitimi | DERESYS Siber Güvenlik Akademisi
+**Meta description:** 3 gün, laboratuvar ağırlıklı, uygulamalı siber olay müdahale eğitimi — OM-1.
+
+### H1
+Olay müdahale eğitimi
+
+### Lead
+Ekibiniz ilk 60 dakikada ne yapacağını biliyor mu? 3 gün, laboratuvar
+ağırlıklı, uygulamalı bir siber olay müdahale eğitimi.
+
+### H2 — Tasarım ilkesi
+Bu bir uygulama eğitimidir. Süre dağılımı yaklaşık %20 anlatım, %80
+laboratuvar çalışması. Katılımcı üç gün boyunca sekiz ayrı olayı kendi
+makinesinde, gerçek emareler üzerinde inceler. Her olay bağımsız bir
+delil setiyle gelir ve somut sorularla biter. Üç günün sonunda
+katılımcının elinde sekiz doldurulmuş bulgu formu ve iki tam zaman
+çizelgesi olur.
+
+### H2 — Program
+**Gün 1 — Uç nokta adli incelemesi:** Lab 0 (delil toplama ve bütünlük),
+Olay 1 (uzak masaüstü üzerinden yetkisiz erişim), Olay 2 (kalıcılık ve
+yürütme kalıntıları), zaman çizelgesi birleştirme.
+
+**Gün 2 — Bellek, zararlı yazılım ve ağ:** Olay 3 (yalnızca bellekte
+çalışan implant), Olay 4 (zararlı yazılım triyajı ve komut satırı
+analizi), Olay 5 (komuta kontrol trafiği ve veri çıkışı).
+
+**Gün 3 — Kimlik, ölçek ve kapanış vakası:** Olay 6 (Microsoft 365 hesap
+ele geçirme), Olay 7 (ölçekte log analizi ve tespit kuralı üretimi),
+Olay 8 (kapanış vakası — uçtan uca fidye olayı).
+
+*(Tam olay listesi ve süreler web sayfasında; kaynak: D:\Deresys\hizmetler\Olay Müdahale\04-deresys-om1-egitim-programi.docx.)*
+
+### H2 — Katılımcı ve ön koşullar
+Hedef kitle: güvenlik operasyonu analistleri, sistem ve ağ yöneticileri,
+bilgi güvenliği uzmanları, olay müdahale ekibi adayları. 8–14 kişi;
+laboratuvarlar bireysel, kapanış vakası 3–4 kişilik gruplarla. Ön bilgi:
+Windows sunucu/dizin hizmeti yönetimi, temel ağ bilgisi, komut satırı;
+adli inceleme deneyimi gerekmez.
+
+**Teknik gereksinim (kritik):** katılımcı başına en az 16 GB bellek
+(tercihen 32 GB), en az 150 GB boş disk, sanallaştırma desteği açık ve
+yönetici yetkisi olan dizüstü bilgisayar. Makineler eğitimden en az bir
+hafta önce hazırlanmalı.
+
+### H2 — Çıktılar
+Eğitim materyal seti ve laboratuvar kılavuzları; sekiz olayın delil
+setleri ve çözüm anahtarları; hızlı referans kartları; doldurulmuş bulgu
+formları ve iki tam zaman çizelgesi; kapanış vakası değerlendirmesi ve
+kuruma yönelik bir yetkinlik özeti.
+
+### H2 — Değerlendirme
+Her olay sonunda bulgu formu üzerinden ilerleme izlenir. Ölçüm kişi bazlı
+raporlanmaz; kuruma yalnızca toplu sonuç ve gelişim alanları bildirilir.
+
+### H2 — İlgili hizmet
+Eğitim, olay müdahale hazırlığının tek bir parçasıdır. Hazırlık projesi,
+masabaşı tatbikat ve müdahale hattı için bkz. bölüm 3 (Olay Müdahalesi).
+
+[CTA: Görüşme talep edin]
+
+---
+
+## 9. Hakkında — `/hakkinda`
+
+*(Değişmedi. Bkz. sürüm 2.)*
 
 **Title:** Hakkında | DERESYS
 **Meta description:** DERESYS Siber Güvenlik ve Teknoloji Ltd. Şti. — çalışma modeli ve yaklaşım.
@@ -342,7 +573,9 @@ içerik, bir müşteri logosuna göre daha fazla bilgi verir.
 
 ---
 
-## 8. Blog — `/blog`
+## 10. Blog — `/blog`
+
+*(Değişmedi. Bkz. sürüm 2.)*
 
 **Title:** Blog — Siber Güvenlik Teknik İçerik | DERESYS
 **Meta description:** Tespit kuralları, SIEM içerik yönetimi, olay müdahalesi ve uyum çerçeveleri üzerine teknik yazılar.
@@ -366,7 +599,9 @@ Aboneliğinizi her e-postadaki bağlantıdan sonlandırabilirsiniz.
 
 ---
 
-## 9. Ürünler — `/urunler`
+## 11. Ürünler — `/urunler`
+
+*(Değişmedi. Bkz. sürüm 2.)*
 
 **Title:** Ürünler | DERESYS
 **Meta description:** Üçüncü taraf siber güvenlik ürünleri tedariki.
@@ -391,7 +626,9 @@ Belirli bir ürün için teklif almak isterseniz iletişime geçebilirsiniz.
 
 ---
 
-## 10. İletişim — `/iletisim`
+## 12. İletişim — `/iletisim`
+
+*(Değişmedi. Bkz. sürüm 2.)*
 
 **Title:** İletişim | DERESYS
 **Meta description:** Görüşme talebi ve iletişim bilgileri.
@@ -433,7 +670,9 @@ Adres: Deresys Siber Güvenlik - Gölbaşı/Ankara
 
 ---
 
-## 11. Olay Müdahale Hattı — `/hotline`
+## 13. Olay Müdahale Hattı — `/hotline`
+
+*(Değişmedi. Bkz. sürüm 2.)*
 
 **Title:** Olay Müdahale Hattı | DERESYS
 **Meta description:** Abonelik modeliyle sunulacak olay müdahale hattı. Hazırlık aşamasında.
@@ -463,7 +702,9 @@ tarafında bugün yapılabilecekler için:
 
 ---
 
-## 12. KVKK Aydınlatma Metni — `/kvkk`
+## 14. KVKK Aydınlatma Metni — `/kvkk`
+
+*(Değişmedi. Bkz. sürüm 2.)*
 
 > Sayfanın tamamı [DOLDURULACAK].
 >
@@ -476,7 +717,9 @@ tarafında bugün yapılabilecekler için:
 
 ---
 
-## 13. 404
+## 15. 404
+
+*(Değişmedi, yalnızca "Çözümler" bağlantı metni "Hizmetler" oldu.)*
 
 ### H1
 Bu sayfa bulunamadı
@@ -484,7 +727,7 @@ Bu sayfa bulunamadı
 ### Metin
 Aradığınız sayfa taşınmış veya adres yanlış yazılmış olabilir.
 
-[Bağlantı: Ana sayfa] · [Bağlantı: Çözümler] · [Bağlantı: Blog]
+[Bağlantı: Ana sayfa] · [Bağlantı: Hizmetler] · [Bağlantı: Blog]
 
 ---
 

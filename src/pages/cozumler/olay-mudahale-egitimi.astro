@@ -1,0 +1,162 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+import Cta from '../../components/Cta.astro';
+
+const days = [
+  {
+    code: 'Gün 1',
+    title: 'Uç nokta adli incelemesi',
+    items: [
+      { name: 'Lab 0 — Delil toplama ve bütünlük', dur: '90 dk', body: 'Canlı sistemden hedefli delil toplama, uçucu veriden kalıcıya öncelik sırası, disk imajı alma, özet değeri hesaplama ve zincir kaydının doldurulması.' },
+      { name: 'Olay 1 — Uzak masaüstü üzerinden yetkisiz erişim', dur: '120 dk', body: 'İnternete açık bırakılmış bir uzak masaüstü hizmeti üzerinden parola denemesiyle giriş yapılmış, ardından ağ içinde hareket edilmiştir. Cevaplanacak sorular: ilk başarılı giriş ne zaman ve hangi adresten yapıldı, hangi hesap kullanıldı, saldırgan hangi ikinci sisteme geçti.' },
+      { name: 'Olay 2 — Kalıcılık ve yürütme kalıntıları', dur: '150 dk', body: 'Sistemde kalıcılık kurulmuş ve çeşitli araçlar çalıştırılmıştır. Katılımcı neyin, ne zaman ve hangi kullanıcı bağlamında çalıştığını çıkarır; zaman damgası müdahalesi ve silinmiş kalıntılar da incelenir.' },
+      { name: 'Zaman çizelgesi birleştirme', dur: '60 dk', body: 'Olay 1 ve 2’nin çıktıları tek bir zaman çizelgesinde birleştirilir; saat dilimi farkı, zaman kayması ve çelişen kayıtlar değerlendirilir.' },
+    ],
+  },
+  {
+    code: 'Gün 2',
+    title: 'Bellek, zararlı yazılım ve ağ',
+    items: [
+      { name: 'Olay 3 — Yalnızca bellekte çalışan implant', dur: '150 dk', body: 'Diskte anlamlı iz bırakmayan, bellekte çalışan bir implant içeren sistemin bellek görüntüsü incelenir. Sistem kapatılsaydı hangi bulguların kaybolacağı somut olarak gösterilir.' },
+      { name: 'Olay 4 — Zararlı yazılım triyajı ve komut satırı analizi', dur: '120 dk', body: 'Müdahale sırasında ele geçen şüpheli dosyanın hızlı triyajı ve gizlenmiş komut satırı içeriğinin çözülmesi. Amaç tersine mühendislik değil, müdahale kararı verecek kadar hızlı bilgi çıkarmaktır.' },
+      { name: 'Olay 5 — Komuta kontrol trafiği ve veri çıkışı', dur: '150 dk', body: 'Ağ trafiği ve güvenlik cihazı kayıtları üzerinden saldırganın dış iletişimi ve veri çıkışı incelenir: hangi adresle iletişim var, ne kadar veri çıktı, veri sızıntısı bildirimi gerekir mi.' },
+    ],
+  },
+  {
+    code: 'Gün 3',
+    title: 'Kimlik, ölçek ve kapanış vakası',
+    items: [
+      { name: 'Olay 6 — Microsoft 365 hesap ele geçirme', dur: '120 dk', body: 'Bir kullanıcı hesabı ele geçirilmiş, posta kutusuna kural konmuş ve tedarikçi yazışması üzerinden sahte ödeme talimatı gönderilmiştir. Kişisel veri ihlali bildirimi gerekip gerekmediği de değerlendirilir.' },
+      { name: 'Olay 7 — Ölçekte log analizi ve tespit kuralı üretimi', dur: '120 dk', body: 'Kurum ölçeğinde log platformu üzerinde, fidye öncesi hazırlık faaliyetinin binlerce olay içinden çıkarılması hedeflenir; bulgular saldırgan teknik çerçevesine eşlenir ve tespit kuralı yazılır.' },
+      { name: 'Olay 8 — Kapanış vakası: uçtan uca fidye olayı', dur: '150 dk', body: 'Daha önce görülmemiş, karma delil setiyle (bellek, olay kaydı, dosya sistemi, ağ, bulut denetim kaydı) gelen bir olay. Gruplar sınırlı sürede tam zaman çizelgesini çıkarır, kök nedeni belirler ve beş dakikalık yönetim brifingi sunar.' },
+    ],
+  },
+];
+---
+<Base
+  title="Olay Müdahale Eğitimi | DERESYS Siber Güvenlik Akademisi"
+  description="3 gün, laboratuvar ağırlıklı, uygulamalı siber olay müdahale eğitimi — OM-1."
+>
+  <PageHead
+    eyebrow="OM-1 · SİBER GÜVENLİK AKADEMİSİ"
+    title="Olay müdahale eğitimi"
+    lead="Ekibiniz ilk 60 dakikada ne yapacağını biliyor mu? 3 gün, laboratuvar ağırlıklı, uygulamalı bir siber olay müdahale eğitimi."
+  />
+
+  <section class="section">
+    <div class="wrap stack stack-12">
+      <div class="block" id="tasarim">
+        <h2 class="h-sm block__title">Tasarım ilkesi</h2>
+        <div class="stack stack-4">
+          <p class="muted">
+            Bu bir uygulama eğitimidir. Süre dağılımı yaklaşık %20 anlatım, %80 laboratuvar
+            çalışması. Katılımcı üç gün boyunca sekiz ayrı olayı kendi makinesinde, gerçek
+            emareler üzerinde inceler. Her olay bağımsız bir delil setiyle gelir ve somut
+            sorularla biter: giriş noktası neresiydi, hangi hesap ele geçirildi, saldırgan ne
+            zaman ve nereye kadar ulaştı, kalıcılık nasıl kuruldu, veri dışarı çıktı mı.
+          </p>
+          <p class="muted">
+            Anlatım blokları kısadır ve her zaman bir laboratuvarın önünde yer alır. Her olayın
+            sonunda bulgu formu doldurulur: tespit, dayanak emare, güven seviyesi. Üç günün
+            sonunda katılımcının elinde sekiz doldurulmuş form ve iki tam zaman çizelgesi olur.
+          </p>
+        </div>
+      </div>
+
+      {days.map((d) => (
+        <div class="block" id={d.code.toLowerCase().replace(' ', '-')}>
+          <div class="day__head">
+            <span class="eyebrow eyebrow--accent">{d.code}</span>
+            <h2 class="h-sm">{d.title}</h2>
+          </div>
+          <div class="stack stack-6 day__items">
+            {d.items.map((it) => (
+              <div class="case">
+                <div class="case__head">
+                  <span class="case__name">{it.name}</span>
+                  <span class="dim small case__dur">{it.dur}</span>
+                </div>
+                <p class="muted small">{it.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+
+      <div class="block" id="katilimci">
+        <h2 class="h-sm block__title">Katılımcı ve ön koşullar</h2>
+        <div class="stack stack-4">
+          <p class="muted">
+            Hedef kitle: güvenlik operasyonu analistleri, sistem ve ağ yöneticileri, bilgi
+            güvenliği uzmanları, olay müdahale ekibi adayları. Grup büyüklüğü 8–14 kişi;
+            laboratuvarlar bireysel yapılır, kapanış vakası 3–4 kişilik gruplarla çalışılır.
+          </p>
+          <p class="muted">
+            Ön bilgi: Windows sunucu ve dizin hizmeti yönetimi, temel ağ bilgisi, komut satırı
+            kullanımı. Adli inceleme deneyimi gerekmez.
+          </p>
+          <p class="muted">
+            <strong>Teknik gereksinim (kritik):</strong> katılımcı başına en az 16 GB bellek
+            (tercihen 32 GB), en az 150 GB boş disk alanı, sanallaştırma desteği açık ve
+            yönetici yetkisi olan bir dizüstü bilgisayar. Katılımcı makineleri eğitimden en az
+            bir hafta önce kontrol listesine göre hazırlanır; hazırlıksız makine ilk gün
+            laboratuvarını kaybeder.
+          </p>
+        </div>
+      </div>
+
+      <div class="block" id="ciktilar">
+        <h2 class="h-sm block__title">Çıktılar</h2>
+        <ul class="prose muted">
+          <li>Eğitim materyal seti ve laboratuvar kılavuzları</li>
+          <li>Sekiz olayın delil setleri ve çözüm anahtarları</li>
+          <li>Hızlı referans kartları: toplama sırası, emare haritası, sık kullanılan sorgular</li>
+          <li>Doldurulmuş bulgu formları ve iki tam zaman çizelgesi</li>
+          <li>Kapanış vakası değerlendirmesi ve kuruma yönelik bir yetkinlik özeti</li>
+        </ul>
+      </div>
+
+      <div class="block" id="degerlendirme">
+        <h2 class="h-sm block__title">Değerlendirme</h2>
+        <p class="muted">
+          Her olay sonunda bulgu formu üzerinden ilerleme izlenir. Ölçüm kişi bazlı
+          raporlanmaz; kuruma yalnızca toplu sonuç ve gelişim alanları bildirilir.
+        </p>
+      </div>
+
+      <div class="block" id="ilgili">
+        <h2 class="h-sm block__title">İlgili hizmet</h2>
+        <div class="stack stack-3">
+          <p class="muted">
+            Eğitim, olay müdahale hazırlığının tek bir parçasıdır. Hazırlık projesi, masabaşı
+            tatbikat ve müdahale hattı için Danışmanlık Hizmetleri altındaki Olay Müdahalesi
+            sayfasına bakabilirsiniz.
+          </p>
+          <a class="arrow-link" href="/cozumler/olay-mudahalesi">
+            Olay Müdahalesi
+            <svg class="chev" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M3 7h8M7.5 3.5 11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule" />
+  <Cta />
+</Base>
+
+<style>
+  .block { display: grid; grid-template-columns: 1fr 2fr; gap: var(--space-16); align-items: start; }
+  .block__title { padding-top: 2px; }
+  .day__head { display: flex; flex-direction: column; gap: var(--space-3); }
+  .day__items { border-top: 1px solid var(--border-subtle); padding-top: var(--space-6); }
+  .case { display: flex; flex-direction: column; gap: var(--space-2); }
+  .case__head { display: flex; justify-content: space-between; gap: var(--space-4); align-items: baseline; }
+  .case__name { font-weight: var(--weight-medium); color: var(--text-primary); }
+  .case__dur { white-space: nowrap; }
+  ul.prose { padding-left: 1.1em; display: grid; gap: var(--space-2); }
+  @media (max-width: 900px) { .block { grid-template-columns: 1fr; gap: var(--space-6); } }
+</style>

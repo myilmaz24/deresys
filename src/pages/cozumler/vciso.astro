@@ -1,30 +1,112 @@
 ---
 import Base from '../../layouts/Base.astro';
 import PageHead from '../../components/PageHead.astro';
-import Draft from '../../components/Draft.astro';
+import Cta from '../../components/Cta.astro';
+
+const tiers = [
+  {
+    code: 'A',
+    title: 'Outsource CISO',
+    body: 'Şirketinizin fiilen CISO’su gibi çalışırız: politika seti, risk analizinin yönetimi, pentest ve iç denetim koordinasyonu, olay müdahale planı ve yönetim kuruluna düzenli raporlama.',
+    fit: 'Resmi bir CISO’su olmayan, SPK / EPDK / kritik altyapı kapsamındaki orta ölçekli şirketler için.',
+  },
+  {
+    code: 'B',
+    title: 'CISO Danışmanlığı',
+    body: 'Mevcut güvenlik ekibinize ikinci göz, regülasyon uzmanlığı ve proje bazlı destek sağlarız; politika ve prosedür taslaklarını inceleriz.',
+    fit: 'Kendi BT/güvenlik ekibi olan bankalar ve büyük kuruluşlar için.',
+  },
+  {
+    code: 'C',
+    title: 'Yönetim Kurulu Danışmanlığı',
+    body: 'CISO’nun yerine geçmeden, doğrudan yönetim kurulunuza veya denetim komitenize periyodik, anlaşılır ve regülasyona bağlanmış siber risk brifingleri sunarız.',
+    fit: 'Bankalar, halka açık şirket yönetim kurulları ve büyük kurumlar için.',
+  },
+];
 ---
-<Base title="vCISO Hizmeti | DERESYS">
-  <PageHead eyebrow="vCISO" title="vCISO" />
+<Base
+  title="vCISO Hizmeti | DERESYS"
+  description="vCISO hizmeti: Outsource CISO, CISO danışmanlığı ve yönetim kurulu danışmanlığı modelleriyle bilgi güvenliği yönetişimi."
+>
+  <PageHead
+    eyebrow="vCISO"
+    title="vCISO"
+    lead="Tam zamanlı bir CISO’ya bütçeniz olmayabilir; ama bilgi güvenliği yönetişimi sorumluluğu üzerinizde kalmaya devam ediyor. DERESYS bu sorumluluğu ihtiyacınıza göre üç modelden birinde üstlenir."
+  />
 
   <section class="section">
-    <div class="wrap stack stack-8">
-      <Draft need={'Hizmetin tanımı; olgunluk programından farkı; taahhüt edilen zaman modeli; çıktılar; hangi kurum profiline uygun olduğu.'} />
-      <div class="note">
-        <span class="eyebrow">NOT</span>
-        <p class="muted small">
-          vCISO taahhüdü eşzamanlı kapasiteyi doğrudan bağlar. Sayfa metni yazılmadan önce
-          aynı anda kaç vCISO müşterisi kabul edileceğine karar verilmesi gerekir.
+    <div class="wrap stack stack-12">
+      <div class="block" id="neden">
+        <h2 class="h-sm block__title">Neden vCISO</h2>
+        <div class="stack stack-4">
+          <p class="muted">
+            SPK, BDDK, Siber Güvenlik Kanunu ve EPDK gibi düzenlemeler kurumları bilgi
+            güvenliğinden üst yönetim seviyesinde sorumlu tutuyor. Bankacılık dışında bu
+            düzenlemelerin hiçbiri resmi unvanlı, tam zamanlı bir CISO atanmasını açıkça şart
+            koşmuyor — ama hepsi, birinin bu sorumluluğu fiilen taşımasını bekliyor.
+          </p>
+        </div>
+      </div>
+
+      <div class="block" id="modeller">
+        <h2 class="h-sm block__title">Üç model</h2>
+        <div class="stack stack-8 tiers">
+          {tiers.map((t) => (
+            <div class="tier">
+              <span class="eyebrow eyebrow--accent">Katman {t.code}</span>
+              <h3 class="subheading">{t.title}</h3>
+              <p class="muted">{t.body}</p>
+              <p class="dim small">{t.fit}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="block" id="kapsam-disi">
+        <h2 class="h-sm block__title">Kapsam dışı</h2>
+        <div class="stack stack-3">
+          <p class="muted">
+            Sistemlerinize yazma veya değişiklik erişimi talep etmeyiz; teknik uygulama kendi
+            ekibinizde veya ayrı bir sözleşme kapsamındaki MSS hizmetimizde kalır.
+          </p>
+          <p class="muted">
+            Bu hizmet hukuki danışmanlık yerine geçmez; regülasyon değerlendirmelerimiz
+            teknik ve operasyonel niteliktedir. Regülatöre resmi bildirim ve beyan kararı ve
+            imzası her zaman sizde kalır, biz yalnızca süreç desteği sağlarız.
+          </p>
+          <p class="muted">
+            Risk analizi ve pentest gibi bağımsız değerlendirme gerektiren süreçlerde üçüncü
+            taraf sağlayıcılarla koordineli çalışırız; bu süreçleri kendimiz yürütmeyiz.
+          </p>
+        </div>
+      </div>
+
+      <div class="block" id="kimler-icin">
+        <h2 class="h-sm block__title">Kimler için uygun</h2>
+        <p class="muted">
+          Hangi katmanın size uyduğu, kurumunuzun tabi olduğu regülasyona ve mevcut güvenlik
+          ekibinizin büyüklüğüne göre değişir. Bunu birlikte netleştiririz.
         </p>
       </div>
     </div>
   </section>
+
+  <hr class="rule" />
+  <Cta />
 </Base>
 
 <style>
-  .note {
-    border-left: 2px solid var(--color-accent);
-    padding-left: var(--space-6);
-    max-width: var(--prose-max-width);
-    display: flex; flex-direction: column; gap: var(--space-3);
+  .block { display: grid; grid-template-columns: 1fr 2fr; gap: var(--space-16); align-items: start; }
+  .block__title { padding-top: 2px; }
+  .tiers { display: grid; gap: var(--space-8); }
+  .tier {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    background: var(--bg-surface-1);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-card);
+    padding: var(--card-padding);
   }
+  @media (max-width: 900px) { .block { grid-template-columns: 1fr; gap: var(--space-6); } }
 </style>

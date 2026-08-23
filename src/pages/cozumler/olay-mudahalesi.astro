@@ -1,31 +1,62 @@
 ---
 import Base from '../../layouts/Base.astro';
 import PageHead from '../../components/PageHead.astro';
-import Draft from '../../components/Draft.astro';
 import Cta from '../../components/Cta.astro';
-
-const sections = [
-  { id: 'om-1', code: 'OM-1', title: 'Olay müdahale eğitimi', need: 'Hedef katılımcı, süre, içerik başlıkları.' },
-  { id: 'om-2', code: 'OM-2', title: 'Olay müdahale hazırlık projesi', need: 'Kapsam, çıktı, süre.' },
-  { id: 'om-3', code: 'OM-3', title: 'Masabaşı tatbikat', need: 'Senaryo yapısı, katılımcı profili, süre, çıktı.' },
-];
 ---
-<Base title="Olay Müdahale Hazırlığı ve Tatbikat | DERESYS">
-  <PageHead eyebrow="OM · OLAY MÜDAHALESİ" title="Olay müdahale hazırlığı">
-    <div class="head-draft"><Draft need="Hazırlığın müdahale kalitesini nasıl belirlediğini anlatan bir paragraf." /></div>
-  </PageHead>
+<Base
+  title="Olay Müdahale Hazırlığı ve Tatbikat | DERESYS"
+  description="Olay müdahale hazırlığı: hazırlık projesi, masabaşı tatbikat ve müdahale hattı."
+>
+  <PageHead
+    eyebrow="OM · DANIŞMANLIK HİZMETLERİ"
+    title="Olay müdahale hazırlığı"
+    lead="Fidye yazılımı fark edildiğinde teoride müdahale başlar. Uygulamada ilk gün “kimi arayacağız” sorusu, teklif toplama ve sözleşme müzakeresiyle geçer. Bu sürenin tamamı kayıptır: bellek içeriği ve kısa saklama süreli kayıtlar silinir, saldırgan yayılmaya devam eder, yasal bildirim süresi işler. Olay anında işleyen bir müdahale süreci olaydan önce kurulur."
+  />
 
   <section class="section">
     <div class="wrap stack stack-12">
-      {sections.map((s) => (
-        <div class="block" id={s.id}>
-          <div class="block__head">
-            <span class="eyebrow eyebrow--accent">{s.code}</span>
-            <h2 class="h-sm">{s.title}</h2>
-          </div>
-          <Draft need={s.need} />
+      <div class="block" id="om-1">
+        <div class="block__head">
+          <span class="eyebrow eyebrow--accent">OM-1</span>
+          <h2 class="h-sm">Olay müdahale eğitimi</h2>
         </div>
-      ))}
+        <div class="stack stack-3">
+          <p class="muted">
+            Ekibiniz ilk 60 dakikada ne yapacağını biliyor mu? 3 gün, uygulamalı, laboratuvar
+            ağırlıklı eğitim; ayrıntılı program artık Siber Güvenlik Akademisi altında.
+          </p>
+          <a class="arrow-link" href="/cozumler/olay-mudahale-egitimi">
+            Olay Müdahale Eğitimi
+            <svg class="chev" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M3 7h8M7.5 3.5 11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="block" id="om-2">
+        <div class="block__head">
+          <span class="eyebrow eyebrow--accent">OM-2</span>
+          <h2 class="h-sm">Olay müdahale hazırlık projesi</h2>
+        </div>
+        <p class="muted">
+          6–8 hafta süren bir çalışmada politika, rol ve eskalasyon matrisi, iletişim planı ve
+          KVKK bildirim akışı hazırlarız; beş senaryo için playbook yazar, delil hazırlığı
+          boşluk analizi yapar ve tüm ekibe dağıtılan bir Olay Anı Kartı üretiriz.
+        </p>
+      </div>
+
+      <div class="block" id="om-3">
+        <div class="block__head">
+          <span class="eyebrow eyebrow--accent">OM-3</span>
+          <h2 class="h-sm">Masabaşı tatbikat</h2>
+        </div>
+        <p class="muted">
+          Yılda 2 oturum: biri teknik ekiple, biri yönetim ve kriz masasıyla yürütülür. Kuruma
+          özel bir senaryo, zamanlanmış gelişmeler, karar sürelerinin ölçümü ve önceliklendirilmiş
+          bir aksiyon listesiyle sonuçlanır.
+        </p>
+      </div>
 
       <div class="block" id="om-4">
         <div class="block__head">
@@ -50,7 +81,6 @@ const sections = [
 </Base>
 
 <style>
-  .head-draft { margin-top: var(--space-8); max-width: var(--prose-max-width); }
   .block { display: grid; grid-template-columns: 1fr 2fr; gap: var(--space-16); align-items: start; }
   .block__head { display: flex; flex-direction: column; gap: var(--space-3); }
   @media (max-width: 900px) { .block { grid-template-columns: 1fr; gap: var(--space-6); } }

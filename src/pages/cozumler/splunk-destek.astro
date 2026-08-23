@@ -1,0 +1,42 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+import Draft from '../../components/Draft.astro';
+import Cta from '../../components/Cta.astro';
+
+const sections = [
+  { id: 'kapsam', title: 'Kapsam', need: 'Hizmetin kapsamı: hangi Splunk bileşenleri (Core, ES, ITSI vb.); destek mi, kural/içerik geliştirme mi, ikisi birden mi.' },
+  { id: 'calisma-modeli', title: 'Çalışma modeli', need: 'Proje mi, abonelik mi, saat havuzu mu; sıklık ve iletişim kanalı.' },
+  { id: 'ciktilar', title: 'Çıktılar', need: 'Teslim edilecek doküman, kural ve rapor listesi.' },
+  { id: 'kimler', title: 'Kimler için uygun', need: 'Hedef müşteri profili.' },
+];
+---
+<Base title="Splunk Destek ve Kural İçeriği | DERESYS">
+  <PageHead
+    eyebrow="OPERASYONEL HİZMETLER"
+    title="Splunk destek ve kural içeriği"
+  >
+    <div class="head-draft"><Draft need="Hizmetin bir paragraflık tanımı." /></div>
+  </PageHead>
+
+  <section class="section">
+    <div class="wrap stack stack-12">
+      {sections.map((s) => (
+        <div class="block" id={s.id}>
+          <h2 class="h-sm block__title">{s.title}</h2>
+          <Draft need={s.need} />
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <hr class="rule" />
+  <Cta />
+</Base>
+
+<style>
+  .head-draft { margin-top: var(--space-8); max-width: var(--prose-max-width); }
+  .block { display: grid; grid-template-columns: 1fr 2fr; gap: var(--space-16); align-items: start; }
+  .block__title { padding-top: 2px; }
+  @media (max-width: 900px) { .block { grid-template-columns: 1fr; gap: var(--space-6); } }
+</style>

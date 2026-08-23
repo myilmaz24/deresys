@@ -1,79 +1,123 @@
 ---
 import Base from '../../layouts/Base.astro';
 import PageHead from '../../components/PageHead.astro';
-import Draft from '../../components/Draft.astro';
 
-const lines = [
+const groups = [
   {
-    code: 'OP',
-    title: 'Siber Güvenlik Olgunluk Programı',
-    body: 'Güvenlik kontrollerinizin mevcut durumunu ölçer, puanlar ve önceliklendirilmiş bir iyileştirme planı üretiriz.',
-    fit: 'Şu durumda uygun: yatırım yapılmış ama bütünsel resim yok; ya da yönetime mevcut durumu ve gidilecek yeri ölçülebilir biçimde anlatmanız gerekiyor.',
-    href: '/cozumler/olgunluk-programi',
+    id: 'danismanlik',
+    eyebrow: 'DANIŞMANLIK HİZMETLERİ',
+    title: 'Danışmanlık Hizmetleri',
+    intro: 'Kurumunuzun güvenlik yapısını değerlendirir, hazırlar ve yönetişimini üstleniriz.',
+    lines: [
+      {
+        code: 'OM',
+        title: 'Olay Müdahalesi',
+        body: 'Hazırlık projesi, masabaşı tatbikat ve müdahale hattıyla ekibinizin olay anında ne yapacağını önceden bilmesini sağlarız.',
+        fit: 'Şu durumda uygun: bir olay planınız var ama hiç denenmedi; ya da ekipte müdahale deneyimi sınırlı ve bunu olay anında keşfetmek istemiyorsunuz.',
+        href: '/cozumler/olay-mudahalesi',
+      },
+      {
+        code: 'vCISO',
+        title: 'vCISO',
+        body: 'İhtiyacınıza göre üç modelde çalışırız: şirketinizin fiilen CISO’su gibi görev alırız, mevcut ekibinize ikinci göz sağlarız ya da doğrudan yönetim kurulunuza brifing veririz.',
+        fit: 'Şu durumda uygun: tam zamanlı bir CISO’ya bütçeniz yok, ama SPK, BDDK, Siber Güvenlik Kanunu veya EPDK gibi bir düzenleme sizi bilgi güvenliğinden üst yönetim seviyesinde sorumlu tutuyor.',
+        href: '/cozumler/vciso',
+      },
+      {
+        code: 'OP',
+        title: 'Siber Güvenlik Olgunluk Programı',
+        body: 'Güvenlik kontrollerinizin mevcut durumunu ölçer, puanlar ve önceliklendirilmiş bir iyileştirme planı üretiriz.',
+        fit: 'Şu durumda uygun: yatırım yapılmış ama bütünsel resim yok; ya da yönetime mevcut durumu ve gidilecek yeri ölçülebilir biçimde anlatmanız gerekiyor.',
+        href: '/cozumler/olgunluk-programi',
+      },
+    ],
   },
   {
-    code: 'SOC',
-    title: 'SOC Advisory',
-    body: 'SOC kurulumu, mevcut SOC\u2019un değerlendirilmesi ve MSSP etkinlik denetimi.',
-    fit: 'Şu durumda uygun: SOC kurmaya karar verdiniz ve tasarımı doğru yapmak istiyorsunuz; ya da hizmet aldığınız MSSP\u2019nin ürettiği tespitlerin kapsamını bağımsız bir gözle görmek istiyorsunuz.',
-    href: '/cozumler/soc-advisory',
+    id: 'operasyonel',
+    eyebrow: 'OPERASYONEL HİZMETLER',
+    title: 'Operasyonel Hizmetler',
+    intro: 'Güvenlik çözümlerinizin gün geçtikçe sağlıklı ve güncel kalmasını sürekli hâle getiririz.',
+    lines: [
+      {
+        code: 'MSS',
+        title: 'MSS — Güvenlik Sağlığı İzleme',
+        body: 'Splunk ve IBM QRadar gibi SIEM ortamlarınızı periyodik olarak kontrol eder, işletimsel sağlığını ve MITRE ATT&CK’e göre tespit kapsamını düzenli raporlarla size sunarız.',
+        fit: 'Şu durumda uygun: kurumsal bir SIEM’e yatırım yaptınız ama bunu sürekli sağlıklı tutacak uzmanlık kapasiteniz sınırlı; ya da hizmet aldığınız bir MSSP’nin ürettiği tespitlerin kapsamını bağımsız bir gözle görmek istiyorsunuz.',
+        href: '/cozumler/mss',
+      },
+      {
+        code: 'SPL',
+        title: 'Splunk Destek ve Kural İçeriği',
+        body: 'Splunk ortamınızda kural geliştirme, içerik bakımı ve teknik destek sağlarız.',
+        fit: 'Şu durumda uygun: Splunk kullanıyorsunuz ve kural/içerik tarafında sürekli bir uzmanlık desteğine ihtiyacınız var.',
+        href: '/cozumler/splunk-destek',
+      },
+    ],
   },
   {
-    code: 'OM',
-    title: 'Olay Müdahalesi',
-    body: 'Eğitim, hazırlık projesi, masabaşı tatbikat ve müdahale hattı.',
-    fit: 'Şu durumda uygun: bir olay planınız var ama hiç denenmedi; ya da ekipte müdahale deneyimi sınırlı ve bunu olay anında keşfetmek istemiyorsunuz.',
-    href: '/cozumler/olay-mudahalesi',
+    id: 'akademi',
+    eyebrow: 'SİBER GÜVENLİK AKADEMİSİ',
+    title: 'Siber Güvenlik Akademisi',
+    intro: 'Ekibinizi olay müdahalesinde uygulamalı eğitimle hazırlarız.',
+    lines: [
+      {
+        code: 'OM-1',
+        title: 'Olay Müdahale Eğitimi',
+        body: 'Bilgi işlem ve güvenlik ekibiniz için 3 günlük, laboratuvar ağırlıklı uygulamalı eğitim; delil bozmadan hareket etme, doğru sırayla toplama, zaman çizelgesi çıkarma ve raporlama.',
+        fit: 'Şu durumda uygun: ekibinizin olay anında ilk 60 dakikada ne yapacağını netleştirmek istiyorsunuz; adli inceleme deneyimi aranmaz.',
+        href: '/cozumler/olay-mudahale-egitimi',
+      },
+    ],
   },
 ];
 ---
 <Base
-  title="Çözümler — Siber Güvenlik Danışmanlık Hizmetleri | DERESYS"
-  description="Olgunluk değerlendirmesi, SOC Advisory, olay müdahalesi ve vCISO hizmetleri."
+  title="Hizmetler — Siber Güvenlik Danışmanlık Hizmetleri | DERESYS"
+  description="Danışmanlık hizmetleri, operasyonel hizmetler ve siber güvenlik akademisi: olay müdahalesi, vCISO, olgunluk programı, MSS, Splunk destek ve olay müdahale eğitimi."
 >
   <PageHead
-    eyebrow="ÇÖZÜMLER"
+    eyebrow="HİZMETLER"
     title="Siber güvenlik danışmanlık hizmetleri"
-    lead="Dört hizmet hattımız var. Her biri ayrı alınabilir, birlikte alındığında da birbirini tekrar etmez. Hangisinin uygun olduğu kurumunuzun bugün nerede olduğuna bağlı."
+    lead="Hizmetlerimizi üç başlıkta topluyoruz: danışmanlık hizmetleri, operasyonel hizmetler ve siber güvenlik akademisi. Her biri ayrı alınabilir, birlikte alındığında da birbirini tekrar etmez."
   >
     <p class="muted prose lead-follow">
       Aşağıdaki kısa tariflerden hangisinin durumunuza benzediğine bakabilirsiniz.
     </p>
   </PageHead>
 
-  <section class="section">
-    <div class="wrap stack stack-6">
-      {lines.map((l) => (
-        <a class="line card--ray" href={l.href}>
-          <div class="line__code"><span class="eyebrow eyebrow--accent">{l.code}</span></div>
-          <div class="line__main">
-            <h2 class="subheading">{l.title}</h2>
-            <p class="muted">{l.body}</p>
-            <p class="dim small">{l.fit}</p>
-          </div>
-          <div class="line__go">
-            <span class="arrow-link">
-              Ayrıntılar
-              <svg class="chev" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                <path d="M3 7h8M7.5 3.5 11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" />
-              </svg>
-            </span>
-          </div>
-        </a>
-      ))}
-
-      <div class="line line--static">
-        <div class="line__code"><span class="eyebrow eyebrow--accent">vCISO</span></div>
-        <div class="line__main">
-          <h2 class="subheading">vCISO</h2>
-          <Draft need="İki cümlelik özet ve uygunluk tarifi." />
+  {groups.map((g) => (
+    <Fragment>
+    <section class="section group" id={g.id}>
+      <div class="wrap stack stack-6">
+        <div class="group__head">
+          <span class="eyebrow eyebrow--accent">{g.eyebrow}</span>
+          <h2 class="h">{g.title}</h2>
+          <p class="muted prose group__intro">{g.intro}</p>
         </div>
-        <div class="line__go"></div>
-      </div>
-    </div>
-  </section>
 
-  <hr class="rule" />
+        {g.lines.map((l) => (
+          <a class="line card--ray" href={l.href}>
+            <div class="line__code"><span class="eyebrow eyebrow--accent">{l.code}</span></div>
+            <div class="line__main">
+              <h3 class="subheading">{l.title}</h3>
+              <p class="muted">{l.body}</p>
+              <p class="dim small">{l.fit}</p>
+            </div>
+            <div class="line__go">
+              <span class="arrow-link">
+                Ayrıntılar
+                <svg class="chev" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                  <path d="M3 7h8M7.5 3.5 11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" />
+                </svg>
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+    <hr class="rule" />
+    </Fragment>
+  ))}
 
   <section class="section">
     <div class="wrap">
@@ -85,8 +129,9 @@ const lines = [
         <div class="stack stack-6">
           <p class="lead prose">Sızma testi, SOC operasyonu ve MDR hizmeti vermiyoruz.</p>
           <p class="muted prose">
-            SOC Advisory kapsamı kurulum ve denetimle sınırlıdır, işletmeyi içermez. Bu
-            hizmetlere ihtiyacınız varsa çalıştığımız firmalara yönlendirebiliriz.
+            MSS kapsamımız güvenlik sağlığı izleme ve tespit kapsamı denetimiyle sınırlıdır;
+            7/24 SOC operasyonu veya tehdit avcılığı içermez. Bu hizmetlere ihtiyacınız varsa
+            çalıştığımız firmalara yönlendirebiliriz.
           </p>
         </div>
       </div>
@@ -96,6 +141,9 @@ const lines = [
 
 <style>
   .lead-follow { margin-top: var(--space-4); }
+
+  .group__head { max-width: var(--prose-max-width); }
+  .group__intro { margin-top: var(--space-3); }
 
   .line {
     position: relative;
@@ -112,7 +160,6 @@ const lines = [
     transition: background-color 140ms ease, border-color 140ms ease;
   }
   a.line:hover { background: var(--bg-surface-2); border-color: var(--border-strong); }
-  .line--static { cursor: default; }
   .line__code { padding-top: 6px; }
   .line__main { display: flex; flex-direction: column; gap: var(--space-3); }
   .line__go { padding-top: 4px; }

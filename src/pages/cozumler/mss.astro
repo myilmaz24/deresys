@@ -1,0 +1,191 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+import Draft from '../../components/Draft.astro';
+import Cta from '../../components/Cta.astro';
+
+const steps = [
+  {
+    code: '1',
+    title: 'Kapsam ve erişim',
+    body: 'Sizinle birlikte hangi sistemlerin (Splunk, IBM QRadar ve ilerleyen aşamalarda EDR, güvenlik duvarı, DLP çözümleriniz) kapsama dahil olacağını belirleriz. Erişim her zaman salt-okunurdur; sistemlerinizde değişiklik, silme veya yapılandırma güncelleme yetkimiz olmaz.',
+  },
+  {
+    code: '2',
+    title: 'İlk değerlendirme (baseline)',
+    body: 'Hizmet başlamadan önce ortamınızın kapsamlı bir ilk değerlendirmesini yaparız. Bu, hem mevcut durumunuzun net bir fotoğrafını verir hem de sonraki raporlar için bir karşılaştırma noktası oluşturur.',
+  },
+  {
+    code: '3',
+    title: 'Sürekli izleme',
+    body: 'Düzenli aralıklarla (günlük ve haftalık) sistemlerinize bağlanır, iki katmanda kontrol yaparız: işletimsel sağlık (sistemleriniz çalışıyor mu, veri akışında kesinti var mı, kapasite/lisans sınırlarına yaklaşıyor musunuz) ve güvenlik durumu (tespit kurallarınız ve politikalarınız güncel mi, MITRE ATT&CK çerçevesine göre hangi tekniklere karşı hâlâ kör noktanız var).',
+  },
+  {
+    code: '4',
+    title: 'Raporlama ve danışmanlık',
+    body: 'Bulgularımızı düzenli olarak paylaşırız: günlük durum özeti, haftalık analiz ve aylık yönetici değerlendirmesi. Kritik bir bulguda somut, uygulanabilir bir aksiyon önerisi sunarız; uygulamayı ne zaman ve nasıl yapacağınıza her zaman siz karar verirsiniz.',
+  },
+];
+
+const table = [
+  { yes: 'Periyodik (günlük/haftalık) sağlık ve güvenlik durumu kontrolü', no: '7/24 gerçek zamanlı izleme' },
+  { yes: 'MITRE ATT&CK’e göre tespit kapsamı analizi', no: 'Tehdit avcılığı (threat hunting)' },
+  { yes: 'Düzenli, yapılandırılmış raporlama', no: 'Olay müdahalesi (ayrı bir hizmetimiz olarak sunulur)' },
+  { yes: 'Somut aksiyon önerisi', no: 'Sistemlerinizde değişiklik veya müdahale yapma' },
+];
+
+const socItems = [
+  { id: 'kurulum-entegrator', title: 'SOC kurulumu: entegratör ve MSSP’ler için', need: 'Kapsam, çıktı, süre.' },
+  { id: 'kurulum-sonkullanici', title: 'SOC kurulumu: son kullanıcı kurumlar için', need: 'Kapsam, çıktı, süre.' },
+  { id: 'mssp-denetim', title: 'MSSP etkinlik denetimi', need: 'Kapsam, çıktı, süre. Denetimin neyi ölçtüğü — kural kapsamı, tespit kabiliyeti, SLA uyumu vb.' },
+];
+---
+<Base
+  title="MSS — Güvenlik Sağlığı İzleme | DERESYS"
+  description="Splunk ve IBM QRadar ortamlarınız için periyodik güvenlik sağlığı izleme ve MITRE ATT&CK tespit kapsamı analizi."
+>
+  <PageHead
+    eyebrow="MSS · OPERASYONEL HİZMETLER"
+    title="Güvenlik sağlığı izleme"
+    lead="Güvenlik yatırımlarınızın gerçekten sağlıklı çalıştığından emin olun."
+  />
+
+  <section class="section">
+    <div class="wrap stack stack-12">
+      <div class="block" id="sorun">
+        <h2 class="h-sm block__title">Sorun</h2>
+        <p class="muted">
+          Çoğu kurum SIEM, EDR ve DLP gibi güvenlik araçlarına ciddi yatırım yapıyor. Ama bu
+          araçların sağlıklı çalışıp çalışmadığını, kurallarının güncel kalıp kalmadığını,
+          hangi tehdit tekniklerine karşı hâlâ savunmasız olduğunuzu kimse sistematik olarak
+          takip etmiyor. Bu, güvenlik yatırımlarının sessizce değer kaybettiği en yaygın kör
+          noktalardan biri.
+        </p>
+      </div>
+
+      <div class="block" id="bu-ne-degil">
+        <h2 class="h-sm block__title">Bu bir SOC hizmeti değildir</h2>
+        <p class="muted">
+          DERESYS 7/24 gerçek zamanlı izleme veya olay müdahalesi taahhüt etmez. Sistemlerinize
+          asla yazma veya değişiklik yetkisiyle erişmeyiz — yalnızca gözlemler, doğrular ve
+          raporlarız. Karar ve uygulama her zaman sizde kalır.
+        </p>
+      </div>
+
+      <div class="block" id="nasil-calisiyoruz">
+        <h2 class="h-sm block__title">Nasıl çalışıyoruz</h2>
+        <div class="stack stack-8 steps">
+          {steps.map((s) => (
+            <div class="step">
+              <span class="eyebrow eyebrow--accent">{s.code}</span>
+              <h3 class="subheading">{s.title}</h3>
+              <p class="muted">{s.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="block" id="kapsam">
+        <h2 class="h-sm block__title">Yaptığımız / yapmadığımız</h2>
+        <div class="scope-table">
+          <div class="scope-table__head">
+            <span>Yaptığımız</span>
+            <span>Yapmadığımız</span>
+          </div>
+          {table.map((row) => (
+            <div class="scope-table__row">
+              <span>{row.yes}</span>
+              <span>{row.no}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="block" id="kimler-icin">
+        <h2 class="h-sm block__title">Kimler için uygun</h2>
+        <p class="muted">
+          Splunk, IBM QRadar gibi kurumsal SIEM platformlarına yatırım yapmış; kendi IT/güvenlik
+          ekibi olan ama bu araçları sürekli sağlıklı tutacak özel uzmanlık kapasitesi sınırlı
+          olan orta ve büyük ölçekli kurumlar için tasarlandı.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <section class="section">
+    <div class="wrap stack stack-8">
+      <div class="ek-kapsam-head">
+        <span class="eyebrow">EK KAPSAM</span>
+        <h2 class="h">SOC kurulumu ve etkinlik denetimi</h2>
+        <p class="muted prose">
+          SOC kurmayı planlıyorsanız tasarım ve devreye alma sürecinde çalışırız. Halihazırda
+          bir SOC’unuz ya da hizmet aldığınız bir MSSP varsa, üretilen tespitlerin kapsamını ve
+          kalitesini de MSS kapsamımız içinde inceleyebiliriz.
+        </p>
+      </div>
+      <div class="stack stack-12">
+        {socItems.map((s) => (
+          <div class="block" id={s.id}>
+            <h3 class="h-sm block__title">{s.title}</h3>
+            <Draft need={s.need} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule" />
+  <Cta />
+</Base>
+
+<style>
+  .block { display: grid; grid-template-columns: 1fr 2fr; gap: var(--space-16); align-items: start; }
+  .block__title { padding-top: 2px; }
+  .steps { display: grid; gap: var(--space-8); }
+  .step {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    background: var(--bg-surface-1);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-card);
+    padding: var(--card-padding);
+  }
+
+  .scope-table {
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+  }
+  .scope-table__head, .scope-table__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-6);
+  }
+  .scope-table__head {
+    background: var(--bg-surface-1);
+    font-family: var(--font-mono);
+    font-size: var(--text-eyebrow);
+    letter-spacing: var(--tracking-eyebrow);
+    color: var(--text-muted);
+    padding: var(--space-4) var(--card-padding);
+  }
+  .scope-table__row {
+    padding: var(--space-4) var(--card-padding);
+    border-top: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+    font-size: var(--text-body-sm);
+  }
+
+  .ek-kapsam-head { max-width: var(--prose-max-width); }
+  .ek-kapsam-head .eyebrow { margin-bottom: var(--space-3); }
+  .ek-kapsam-head h2 { margin-top: 0; }
+  .ek-kapsam-head p { margin-top: var(--space-4); }
+
+  @media (max-width: 900px) {
+    .block { grid-template-columns: 1fr; gap: var(--space-6); }
+    .scope-table__head, .scope-table__row { grid-template-columns: 1fr; gap: var(--space-2); }
+  }
+</style>
