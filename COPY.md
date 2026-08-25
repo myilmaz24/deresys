@@ -9,6 +9,15 @@ ayrı geçişte eklenecektir.
 `[DOLDURULACAK]` işaretli bölümler için doğrulanmış veri bulunmadığından
 boş bırakılmıştır. Her birinin altında hangi bilginin gerektiği yazılıdır.
 
+Sürüm 4 — 2026-08-25
+
+**Sürüm 4'te değişenler:**
+- "Değerlendirdiğimiz kuruma ürün satmıyoruz" mottosu siteden çıkarıldı
+  (agresif bulundu, iş hedefiyle uyumlu değildi). Hakkında sayfasındaki
+  ilgili prensip maddesi, Ürünler sayfasındaki cümle, Olgunluk Programı
+  sayfasının lead metnindeki "— ürün satmadan" eki ve "Yapmadıklarımız"
+  listesindeki ilgili madde kaldırıldı.
+
 Sürüm 3 — 2026-08-23
 
 **Sürüm 3'te değişenler:**
@@ -355,7 +364,7 @@ olarak tekrar ölçen siber güvenlik olgunluk programı.
 Deresys Siber Güvenlik Olgunluk Programı, kurumunuzun güvenlik
 olgunluğunu 99 kontrol üzerinden ölçer, çıkan boşlukları 12 aylık bir
 yol haritasına çevirir, bu yol haritasını sizinle birlikte yürütür ve
-bir yıl sonra aynı kontrol setiyle tekrar ölçer — ürün satmadan.
+bir yıl sonra aynı kontrol setiyle tekrar ölçer.
 
 ### H2 — Bu sayfa size mi?
 Aşağıdakilerden biri sizin durumunuzsa, bu program size göre:
@@ -428,8 +437,6 @@ netleştirilir.
 Tüm çıktılar kurumun mülkiyetindedir.
 
 ### H2 — Yapmadıklarımız
-- Ürün satmıyoruz. Değerlendirdiğimiz kuruma lisans, donanım veya
-  bayilik hizmeti vermiyoruz.
 - 7/24 izleme (SOC/MDR) yapmıyoruz. İhtiyacınız varsa bağımsız bir
   sağlayıcı seçiminde yardımcı oluruz.
 - Sızma testi yapmıyoruz. Kontrolün tasarımına katkı veren taraf aynı
@@ -640,11 +647,6 @@ takip edebilirsiniz.
 Sızma testi, SOC operasyonu ve MDR hizmeti vermiyoruz. Bu ihtiyaçlar için
 yönlendirme yapabiliriz.
 
-**Değerlendirdiğimiz kuruma ürün satmıyoruz.**
-Ürün tedariki ayrı bir iş kolu olarak devam ediyor, ancak iki müşteri
-grubu ayrı tutuluyor. Değerlendirme raporunu yazan tarafın o rapordan
-gelir elde etmemesi bizce doğru olan.
-
 ### H2 — Neden içerik yayınlıyoruz
 Yeni kurulmuş bir şirketiz ve gösterebileceğimiz bir referans listemiz yok.
 Bunun yerine nasıl düşündüğümüzü okuyabilmeniz için yazıyoruz. Teknik
@@ -699,8 +701,7 @@ Aboneliğinizi her e-postadaki bağlantıdan sonlandırabilirsiniz.
 ### Açılış
 Üçüncü taraf üreticilerin siber güvenlik ürünlerini tedarik ediyoruz.
 
-Bu iş kolu danışmanlık hizmetlerimizden ayrı yürüyor. Değerlendirme veya
-olgunluk programı müşterimizseniz size ürün satmıyoruz.
+Bu iş kolu danışmanlık hizmetlerimizden ayrı yürüyor.
 
 ### H2 — Ürün grupları
 [DOLDURULACAK]
