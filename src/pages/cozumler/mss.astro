@@ -27,13 +27,6 @@ const steps = [
   },
 ];
 
-const table = [
-  { yes: 'Periyodik (günlük/haftalık) sağlık ve güvenlik durumu kontrolü', no: '7/24 gerçek zamanlı izleme' },
-  { yes: 'MITRE ATT&CK’e göre tespit kapsamı analizi', no: 'Tehdit avcılığı (threat hunting)' },
-  { yes: 'Düzenli, yapılandırılmış raporlama', no: 'Olay müdahalesi (ayrı bir hizmetimiz olarak sunulur)' },
-  { yes: 'Somut aksiyon önerisi', no: 'Sistemlerinizde değişiklik veya müdahale yapma' },
-];
-
 const socItems = [
   { id: 'kurulum-entegrator', title: 'SOC kurulumu: entegratör ve MSSP’ler için', need: 'Kapsam, çıktı, süre.' },
   { id: 'kurulum-sonkullanici', title: 'SOC kurulumu: son kullanıcı kurumlar için', need: 'Kapsam, çıktı, süre.' },
@@ -80,22 +73,6 @@ const socItems = [
               <span class="eyebrow eyebrow--accent">{s.code}</span>
               <h3 class="subheading">{s.title}</h3>
               <p class="muted">{s.body}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div class="block" id="kapsam">
-        <h2 class="h-sm block__title">Yaptığımız / yapmadığımız</h2>
-        <div class="scope-table">
-          <div class="scope-table__head">
-            <span>Yaptığımız</span>
-            <span>Yapmadığımız</span>
-          </div>
-          {table.map((row) => (
-            <div class="scope-table__row">
-              <span>{row.yes}</span>
-              <span>{row.no}</span>
             </div>
           ))}
         </div>

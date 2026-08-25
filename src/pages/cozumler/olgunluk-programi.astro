@@ -59,12 +59,6 @@ const outputs = [
   { name: 'Dönemsel yönetim raporu', body: 'programın ilerlediğinin kanıtı' },
 ];
 
-const outOfScope = [
-  '7/24 izleme (SOC/MDR) yapmıyoruz. İhtiyacınız varsa bağımsız bir sağlayıcı seçiminde yardımcı oluruz.',
-  'Sızma testi yapmıyoruz. Kontrolün tasarımına katkı veren taraf aynı kontrolü test etmemeli; testi bağımsız bir taraf yapar, biz bulguları yönetiriz.',
-  'Sistemlerinizi işletmiyoruz. Program bir yönetişim çalışmasıdır; kurulum ve bakım BT ekibinizin işidir.',
-  'CISO’nuzun yerine geçmiyoruz. Bu bir ölçüm ve yürütme programıdır; güvenlik yöneticiliğinin dışarıdan üstlenilmesini istiyorsanız bu ayrı bir hizmettir (vCISO).',
-];
 ---
 <Base
   title="Siber Güvenlik Olgunluk Programı | DERESYS"
@@ -163,18 +157,6 @@ const outOfScope = [
         </div>
       </div>
 
-      <div class="block" id="yapmadiklarimiz">
-        <h2 class="h-sm block__title">Yapmadıklarımız</h2>
-        <div class="stack stack-4">
-          <p class="muted">
-            Açıkça yazıyoruz, çünkü ne yapmadığını söylemeyen bir danışmanlık her şeyi
-            yapıyormuş gibi görünür:
-          </p>
-          <ul class="prose muted">
-            {outOfScope.map((o) => <li>{o}</li>)}
-          </ul>
-        </div>
-      </div>
     </div>
   </section>
 

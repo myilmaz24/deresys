@@ -17,6 +17,12 @@ Sürüm 4 — 2026-08-25
   ilgili prensip maddesi, Ürünler sayfasındaki cümle, Olgunluk Programı
   sayfasının lead metnindeki "— ürün satmadan" eki ve "Yapmadıklarımız"
   listesindeki ilgili madde kaldırıldı.
+- Sitedeki tüm "yapmadığımız işler" tarzı kapsam-dışı listeleri de aynı
+  gerekçeyle kaldırıldı: Hakkında sayfasındaki "Kapsamımız dışındaki işi
+  almıyoruz" prensibi, Hizmetler (`/cozumler`) sayfasındaki "Yapmadığımız
+  işler" bölümü, Olgunluk Programı sayfasındaki "Yapmadıklarımız" listesi
+  (kalan 4 madde) ve MSS sayfasındaki "Yaptığımız / yapmadığımız"
+  karşılaştırma tablosu.
 
 Sürüm 3 — 2026-08-23
 
@@ -222,13 +228,6 @@ zaman çizelgesi çıkarma ve raporlama.
 Şu durumda uygun: ekibinizin olay anında ilk 60 dakikada ne yapacağını
 netleştirmek istiyorsunuz; adli inceleme deneyimi aranmaz.
 [Bağlantı: /cozumler/olay-mudahale-egitimi]
-
-### H2 — Yapmadığımız işler
-Sızma testi, SOC operasyonu ve MDR hizmeti vermiyoruz.
-
-MSS kapsamımız güvenlik sağlığı izleme ve tespit kapsamı denetimiyle
-sınırlıdır; 7/24 SOC operasyonu veya tehdit avcılığı içermez. Bu
-hizmetlere ihtiyacınız varsa çalıştığımız firmalara yönlendirebiliriz.
 
 ---
 
@@ -436,18 +435,6 @@ netleştirilir.
 
 Tüm çıktılar kurumun mülkiyetindedir.
 
-### H2 — Yapmadıklarımız
-- 7/24 izleme (SOC/MDR) yapmıyoruz. İhtiyacınız varsa bağımsız bir
-  sağlayıcı seçiminde yardımcı oluruz.
-- Sızma testi yapmıyoruz. Kontrolün tasarımına katkı veren taraf aynı
-  kontrolü test etmemeli; testi bağımsız bir taraf yapar, biz bulguları
-  yönetiriz.
-- Sistemlerinizi işletmiyoruz. Program bir yönetişim çalışmasıdır;
-  kurulum ve bakım BT ekibinizin işidir.
-- CISO'nuzun yerine geçmiyoruz. Bu bir ölçüm ve yürütme programıdır;
-  güvenlik yöneticiliğinin dışarıdan üstlenilmesini istiyorsanız bu ayrı
-  bir hizmettir (vCISO).
-
 [CTA: Görüşme talep edin]
 
 > Not: Fiyatlandırma, sektörel varyasyonlar (EKS/OTG, EPDK, 7545) ve
@@ -490,14 +477,6 @@ kalır.
    güvenlik durumu (MITRE ATT&CK'e göre tespit kapsamı) kontrolü.
 4. **Raporlama ve danışmanlık** — günlük özet, haftalık analiz, aylık
    yönetici değerlendirmesi; kritik bulguda somut aksiyon önerisi.
-
-### H2 — Yaptığımız / yapmadığımız
-| Yaptığımız | Yapmadığımız |
-|---|---|
-| Periyodik (günlük/haftalık) sağlık ve güvenlik durumu kontrolü | 7/24 gerçek zamanlı izleme |
-| MITRE ATT&CK'e göre tespit kapsamı analizi | Tehdit avcılığı (threat hunting) |
-| Düzenli, yapılandırılmış raporlama | Olay müdahalesi (ayrı bir hizmetimiz olarak sunulur) |
-| Somut aksiyon önerisi | Sistemlerinizde değişiklik veya müdahale yapma |
 
 ### H2 — Kimler için uygun
 Splunk, IBM QRadar gibi kurumsal SIEM platformlarına yatırım yapmış; kendi
@@ -642,10 +621,6 @@ kimse istemiyor.
 Bir programın sonunda elinizde ölçülmüş bir durum, üzerinde anlaşılmış
 bir hedef ve ikisi arasındaki adımlar olur. İlerlemeyi bu tablo üzerinden
 takip edebilirsiniz.
-
-**Kapsamımız dışındaki işi almıyoruz.**
-Sızma testi, SOC operasyonu ve MDR hizmeti vermiyoruz. Bu ihtiyaçlar için
-yönlendirme yapabiliriz.
 
 ### H2 — Neden içerik yayınlıyoruz
 Yeni kurulmuş bir şirketiz ve gösterebileceğimiz bir referans listemiz yok.
