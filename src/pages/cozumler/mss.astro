@@ -1,7 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
 import PageHead from '../../components/PageHead.astro';
-import Draft from '../../components/Draft.astro';
 import Cta from '../../components/Cta.astro';
 
 const steps = [
@@ -27,11 +26,6 @@ const steps = [
   },
 ];
 
-const socItems = [
-  { id: 'kurulum-entegrator', title: 'SOC kurulumu: entegratör ve MSSP’ler için', need: 'Kapsam, çıktı, süre.' },
-  { id: 'kurulum-sonkullanici', title: 'SOC kurulumu: son kullanıcı kurumlar için', need: 'Kapsam, çıktı, süre.' },
-  { id: 'mssp-denetim', title: 'MSSP etkinlik denetimi', need: 'Kapsam, çıktı, süre. Denetimin neyi ölçtüğü — kural kapsamı, tespit kabiliyeti, SLA uyumu vb.' },
-];
 ---
 <Base
   title="MSS — Güvenlik Teknolojileri Yönetim ve Takip Hizmeti | DERESYS"
@@ -58,11 +52,18 @@ const socItems = [
 
       <div class="block" id="bu-ne-degil">
         <h2 class="h-sm block__title">Bu bir SOC hizmeti değildir</h2>
-        <p class="muted">
-          DERESYS 7/24 gerçek zamanlı izleme veya olay müdahalesi taahhüt etmez. Sistemlerinize
-          asla yazma veya değişiklik yetkisiyle erişmeyiz — yalnızca gözlemler, doğrular ve
-          raporlarız. Karar ve uygulama her zaman sizde kalır.
-        </p>
+        <div class="stack stack-4">
+          <p class="muted">
+            DERESYS 7/24 gerçek zamanlı izleme veya olay müdahalesi taahhüt etmez. Sistemlerinize
+            asla yazma veya değişiklik yetkisiyle erişmeyiz — yalnızca gözlemler, doğrular ve
+            raporlarız. Karar ve uygulama her zaman sizde kalır.
+          </p>
+          <p class="muted">
+            SOC kurmayı planlıyorsanız ya da mevcut bir SOC/MSSP’nizin etkinliğini bağımsız bir
+            gözle değerlendirmek istiyorsanız, bu kapsam <a href="/cozumler/soc-danismanligi#assure">SOC
+            Danışmanlığı</a> hizmetimizde ele alınır.
+          </p>
+        </div>
       </div>
 
       <div class="block" id="nasil-calisiyoruz">
@@ -85,30 +86,6 @@ const socItems = [
           ekibi olan ama bu araçları sürekli sağlıklı tutacak özel uzmanlık kapasitesi sınırlı
           olan orta ve büyük ölçekli kurumlar için tasarlandı.
         </p>
-      </div>
-    </div>
-  </section>
-
-  <hr class="rule" />
-
-  <section class="section">
-    <div class="wrap stack stack-8">
-      <div class="ek-kapsam-head">
-        <span class="eyebrow">EK KAPSAM</span>
-        <h2 class="h">SOC kurulumu ve etkinlik denetimi</h2>
-        <p class="muted prose">
-          SOC kurmayı planlıyorsanız tasarım ve devreye alma sürecinde çalışırız. Halihazırda
-          bir SOC’unuz ya da hizmet aldığınız bir MSSP varsa, üretilen tespitlerin kapsamını ve
-          kalitesini de MSS kapsamımız içinde inceleyebiliriz.
-        </p>
-      </div>
-      <div class="stack stack-12">
-        {socItems.map((s) => (
-          <div class="block" id={s.id}>
-            <h3 class="h-sm block__title">{s.title}</h3>
-            <Draft need={s.need} />
-          </div>
-        ))}
       </div>
     </div>
   </section>
@@ -155,11 +132,6 @@ const socItems = [
     color: var(--text-secondary);
     font-size: var(--text-body-sm);
   }
-
-  .ek-kapsam-head { max-width: var(--prose-max-width); }
-  .ek-kapsam-head .eyebrow { margin-bottom: var(--space-3); }
-  .ek-kapsam-head h2 { margin-top: 0; }
-  .ek-kapsam-head p { margin-top: var(--space-4); }
 
   @media (max-width: 900px) {
     .block { grid-template-columns: 1fr; gap: var(--space-6); }

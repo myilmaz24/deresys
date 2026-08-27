@@ -1,10 +1,11 @@
 ---
-// Bu sayfa kaldırıldı; içeriği MSS (Operasyonel Hizmetler) altına taşındı.
+// Bu sayfa kaldırıldı; içeriği artık kendi başlığı ve sayfasıyla Danışmanlık
+// Hizmetleri altında: SOC Danışmanlığı (/cozumler/soc-danismanligi).
 // Route dosyası fiziksel olarak silinemediği (dağıtım araçlarının yazma erişimi)
 // için burada kalıcı bir yönlendirme bırakıldı. Eğer repoya doğrudan erişimin
 // varsa bu dosyayı silip astro.config.mjs'e statik bir redirect eklemen daha
-// temiz bir çözüm olur: redirects: { '/cozumler/soc-advisory': '/cozumler/mss' }.
-const target = '/cozumler/mss';
+// temiz bir çözüm olur: redirects: { '/cozumler/soc-advisory': '/cozumler/soc-danismanligi' }.
+const target = '/cozumler/soc-danismanligi';
 ---
 <!DOCTYPE html>
 <html lang="tr">
@@ -17,6 +18,6 @@ const target = '/cozumler/mss';
     <meta name="robots" content="noindex" />
   </head>
   <body>
-    <p>Bu içerik artık <a href={target}>MSS — Güvenlik Sağlığı İzleme</a> sayfasında. Otomatik yönlendirilmediyseniz bağlantıya tıklayın.</p>
+    <p>Bu içerik artık <a href={target}>SOC Danışmanlığı</a> sayfasında. Otomatik yönlendirilmediyseniz bağlantıya tıklayın.</p>
   </body>
 </html>

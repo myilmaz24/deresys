@@ -1,0 +1,106 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+import Cta from '../../components/Cta.astro';
+
+const services = [
+  {
+    id: 'build-e',
+    code: 'BUILD/E',
+    title: 'SOC/MSSP kurulum danışmanlığı — entegratörler için',
+    body: 'SIEM, EDR veya NDR gibi güvenlik ürünleri satan entegratör, distribütör ve MSSP adaylarının, bu ürünlerin üzerine satılabilir ve tekrarlanabilir bir hizmet kurmasını sağlarız: hizmet kataloğu ve kademe tanımlarından SLA setine, vardiya ve rol modelinden playbook’lara, tespit mühendisliğinden müşteri devreye alma sürecine kadar.',
+    fit: 'Şu durumda uygun: ürünü kurabiliyorsunuz ama hizmeti satamıyorsunuz; müşteriniz “bunu kim izleyecek?” dediğinde cevabınız yok. Tipik süre: 8–12 hafta; yalnızca mevcut hizmet olgunluğunuzun değerlendirilmesi için 3–5 günlük bağımsız bir giriş kapsamı da alınabilir.',
+  },
+  {
+    id: 'build-k',
+    code: 'BUILD/K',
+    title: 'SOC kurulum danışmanlığı — kurumlar için',
+    body: 'SOC’u bir ürün alımına indirgemeden ele alırız: tedarik kararından (kur / satın al / hibrit) log kaynak önceliklendirmesine, MITRE ATT&CK temelli tespit stratejisinden operasyon modeline ve mimariye kadar uçtan uca planlarız.',
+    fit: 'Şu durumda uygun: yeni bir CISO atandı, bir denetim bulgusu ya da SIEM lisans yenilemesi SOC kararını gündeme getirdi. Tipik süre: 8–14 hafta; yalnızca tedarik kararı (kur / satın al / hibrit) için 1–2 haftalık bağımsız bir giriş kapsamı da alınabilir.',
+  },
+  {
+    id: 'assure',
+    code: 'ASSURE',
+    title: 'Bağımsız SOC/MDR etkinlik denetimi',
+    body: 'Dışarıdan SOC, MDR veya yönetilen güvenlik hizmeti aldığınız sağlayıcının ürettiği tespitleri bağımsız bir gözle test ederiz: hangi log kaynakları fiilen akıyor, hangi saldırı teknikleri görülebiliyor, kontrollü bir test gerçek bir saldırı olsa fark edilir miydi, sözleşmenizdeki SLA fiilen gerçekleşiyor mu. Denetimin varlığı hizmet sağlayıcınıza bildirilir; test senaryoları ve zamanlaması paylaşılmaz.',
+    fit: 'Şu durumda uygun: sözleşme yenilemenize birkaç ay kaldı, bir olayı kaçırdınız ya da aldığınız raporun gerçekten bir şey söylediğinden emin değilsiniz. Tipik süre: 3–5 hafta; yalnızca kontrollü doğrulama testi için 5–7 günlük bağımsız bir giriş kapsamı da alınabilir.',
+  },
+  {
+    id: 'pulse',
+    code: 'PULSE',
+    title: 'Periyodik siber sağlık kontrolü',
+    body: 'SOC/MDR bütçesi olmayan kurumlar için: uç nokta sağlığından kimlik ve dizin hijyenine, dış yüzeyden yedekleme dayanıklılığına kadar aynı kontrol seti her döngüde tekrar çalıştırılır; sonunda tek sayfalık bir karne ve önceliklendirilmiş bir aksiyon planı teslim edilir.',
+    fit: 'Şu durumda uygun: SOC/MDR’a bütçeniz yok ama KVKK denetimi, bir müşteri güvenlik anketi ya da siber sigorta süreci “durumunuz nedir?” sorusuna cevap vermenizi gerektiriyor. Çeyreklik veya aylık döngülerle abonelik olarak alınır; ilk döngü tek seferlik de denenebilir.',
+  },
+];
+---
+<Base
+  title="SOC Danışmanlığı | DERESYS"
+  description="SOC/MSSP kurulum danışmanlığı, bağımsız SOC/MDR etkinlik denetimi ve periyodik siber sağlık kontrolü: dört hizmetle SOC kurma, denetleme ve sürdürme kararlarınızda yanınızdayız."
+>
+  <PageHead
+    eyebrow="SOC · DANIŞMANLIK HİZMETLERİ"
+    title="SOC danışmanlığı"
+    lead="Deresys SOC satmaz. SOC’un çalışıp çalışmadığını ölçer, kurulmasını sağlar ve alınan hizmetten gerçekten değer üretildiğinden emin olur — kurumunuzun durumuna göre dört ayrı hizmetle."
+  />
+
+  <section class="section">
+    <div class="wrap stack stack-12">
+      <div class="block" id="hizmetler">
+        <h2 class="h-sm block__title">Dört hizmet</h2>
+        <div class="stack stack-8 tiers">
+          {services.map((s) => (
+            <div class="tier" id={s.id}>
+              <span class="eyebrow eyebrow--accent">{s.code}</span>
+              <h3 class="subheading">{s.title}</h3>
+              <p class="muted">{s.body}</p>
+              <p class="dim small">{s.fit}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="block" id="pulse-nedir">
+        <h2 class="h-sm block__title">SOC-PULSE bir MDR değildir</h2>
+        <p class="muted">
+          Sürekli izleme, alarm yanıt SLA’sı veya olay müdahale hizmeti taahhüt etmeyiz —
+          PULSE, döngü başına tekrarlanan, nokta zamanlı bir kontroldür. Bir bulgu olay
+          niteliğindeyse ayrı bir olay müdahalesi kapsamında ele alınır. Bu sınır ticari değil,
+          müşterinin kendini olduğundan fazla korunuyor sanmaması için etik bir gerekliliktir.
+        </p>
+      </div>
+
+      <div class="block" id="kapsam-disi">
+        <h2 class="h-sm block__title">Kapsam dışı</h2>
+        <p class="muted">
+          Dört hizmetin hiçbiri kurulumdan sonraki günlük operasyonel işletimi kapsamaz: 7/24
+          gerçek zamanlı izleme veya alarm yanıtı taahhüt etmeyiz, sistemlerinize yazma ya da
+          değişiklik yetkisiyle erişmeyiz. Sürekli izleme ihtiyacı, ayrı bir hizmet olan{' '}
+          <a href="/cozumler/mss">MSS</a> kapsamında değerlendirilir.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule" />
+  <Cta />
+</Base>
+
+<style>
+  .block { display: grid; grid-template-columns: 1fr 2fr; gap: var(--space-16); align-items: start; }
+  .block__title { padding-top: 2px; }
+  .tiers { display: grid; gap: var(--space-8); }
+  .tier {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    background: var(--bg-surface-1);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-card);
+    padding: var(--card-padding);
+  }
+
+  @media (max-width: 900px) {
+    .block { grid-template-columns: 1fr; gap: var(--space-6); }
+  }
+</style>

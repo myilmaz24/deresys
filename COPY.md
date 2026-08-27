@@ -9,6 +9,43 @@ ayrı geçişte eklenecektir.
 `[DOLDURULACAK]` işaretli bölümler için doğrulanmış veri bulunmadığından
 boş bırakılmıştır. Her birinin altında hangi bilginin gerektiği yazılıdır.
 
+Sürüm 6 — 2026-08-27
+
+**Sürüm 6'da değişenler:**
+- SOC Danışmanlığı sayfasındaki (bölüm 6) üç [DOLDURULACAK] maddesi gerçek
+  içerikle dolduruldu ve dörde çıkarıldı: BUILD/E (entegratörler için
+  kurulum), BUILD/K (kurumlar için kurulum), ASSURE (bağımsız SOC/MDR
+  etkinlik denetimi — eski "MSSP etkinlik denetimi" maddesinin yerini
+  aldı) ve yeni eklenen PULSE (SOC/MDR bütçesi olmayan kurumlar için
+  periyodik siber sağlık kontrolü).
+- Kaynak: `D:\Deresys\hizmetler\danışmanlıklar\SOC` klasörüne eklenen
+  "SOC Hizmet Kapsamı" (v1.0, müşteriye açık) dokümanı. "SOC Pazarlama ve
+  Satış Planı" dokümanı iç kullanım olarak sınıflandırıldığından
+  (kapasite sınırları, itiraz karşılama, fiyatlandırma yüzdeleri vb.)
+  sayfaya taşınmadı; yalnızca konumlandırma cümlesi ("Deresys SOC satmaz…")
+  kullanıldı.
+- Sayfa envanteri tablosunda SOC Danışmanlığı durumu "Metin hazır" olarak
+  güncellendi.
+
+Sürüm 5 — 2026-08-27
+
+**Sürüm 5'te değişenler:**
+- SOC, Danışmanlık Hizmetleri grubunda kendi konu başlığı ve sayfasını
+  aldı: SOC Danışmanlığı (`/cozumler/soc-danismanligi`). Daha önce MSS
+  sayfasına "Ek kapsam" olarak taşınmış olan üç madde (SOC kurulumu:
+  entegratör/MSSP için, SOC kurulumu: son kullanıcı kurumlar için, MSSP
+  etkinlik denetimi) buraya taşındı; üçü de hâlâ [DOLDURULACAK].
+- Eski `/cozumler/soc-advisory` yönlendirmesi artık `/cozumler/mss`
+  yerine `/cozumler/soc-danismanligi`'ye gidiyor.
+- MSS sayfasındaki "Ek kapsam" bölümü kaldırıldı, yerine SOC
+  Danışmanlığı sayfasına kısa bir çapraz referans notu eklendi.
+- Hizmetler (`/cozumler`) sayfasındaki Danışmanlık Hizmetleri grubuna
+  dördüncü satır olarak SOC eklendi.
+- Gerekçe: Hakkında sayfası DERESYS'i "SOC yapılarını kuran ve denetleyen"
+  bir şirket olarak tanımlıyor, ama SOC hiçbir yerde (site, sunum, katalog)
+  ayrı bir konu başlığı değildi — bu tutarsızlık giderildi. İçerik
+  (kapsam/çıktı/süre) hâlâ gerçek veriyle doldurulmayı bekliyor.
+
 Sürüm 4 — 2026-08-25
 
 **Sürüm 4'te değişenler:**
@@ -55,7 +92,7 @@ Sürüm 3 — 2026-08-23
   yeni sekmede açılır. Ön dolgulu mesaj: "Merhaba, bir güvenlik olayıyla
   ilgili DERESYS ile iletişime geçmek istiyorum." Bu, `/hotline` sayfasındaki
   abonelik modelli müdahale hattından farklıdır; hattın "hazırlık
-  aşamasında" olduğuna dair not (bkz. bölüm 13) geçerliliğini korur — bu
+  aşamasında" olduğuna dair not (bkz. bölüm 14) geçerliliğini korur — bu
   buton hattın kendisi değil, doğrudan bir iletişim kanalıdır. Yanıt süresi
   veya SLA taahhüdü ima edilmez.
 - **Görüşme talep edin** — `/iletisim` sayfasına gider (mevcut).
@@ -75,17 +112,18 @@ başlanır" bölümündeki CTA olduğu gibi kalıyor.
 | 3 | Olay Müdahalesi | `/cozumler/olay-mudahalesi` | Danışmanlık | Metin hazır |
 | 4 | vCISO | `/cozumler/vciso` | Danışmanlık | Metin hazır |
 | 5 | Siber Güvenlik Olgunluk Programı | `/cozumler/olgunluk-programi` | Danışmanlık | Metin hazır |
-| 6 | MSS — Güvenlik Sağlığı İzleme | `/cozumler/mss` | Operasyonel | Metin hazır (ek kapsam bölümü iskelet) |
-| 7 | Splunk Destek ve Kural İçeriği | `/cozumler/splunk-destek` | Operasyonel | İskelet — brif bekleniyor |
-| 8 | Olay Müdahale Eğitimi | `/cozumler/olay-mudahale-egitimi` | Akademi | Metin hazır |
-| — | ~~SOC Advisory~~ | ~~`/cozumler/soc-advisory`~~ | — | Kaldırıldı — `/cozumler/mss`'e yönlendiriyor |
-| 9 | Hakkında | `/hakkinda` | — | Metin hazır — karar bekliyor |
-| 10 | Blog | `/blog` | — | Metin hazır |
-| 11 | Ürünler | `/urunler` | — | Metin hazır |
-| 12 | İletişim | `/iletisim` | — | Metin hazır — form entegre edildi |
-| 13 | Olay Müdahale Hattı | `/hotline` | — | Metin hazır |
-| 14 | KVKK Aydınlatma Metni | `/kvkk` | — | Hukuki metin bekliyor |
-| 15 | 404 | — | — | Metin hazır |
+| 6 | SOC Danışmanlığı | `/cozumler/soc-danismanligi` | Danışmanlık | Metin hazır |
+| 7 | MSS — Güvenlik Sağlığı İzleme | `/cozumler/mss` | Operasyonel | Metin hazır |
+| 8 | Splunk Destek ve Kural İçeriği | `/cozumler/splunk-destek` | Operasyonel | İskelet — brif bekleniyor |
+| 9 | Olay Müdahale Eğitimi | `/cozumler/olay-mudahale-egitimi` | Akademi | Metin hazır |
+| — | ~~SOC Advisory~~ | ~~`/cozumler/soc-advisory`~~ | — | Kaldırıldı — `/cozumler/soc-danismanligi`'ye yönlendiriyor |
+| 10 | Hakkında | `/hakkinda` | — | Metin hazır — karar bekliyor |
+| 11 | Blog | `/blog` | — | Metin hazır |
+| 12 | Ürünler | `/urunler` | — | Metin hazır |
+| 13 | İletişim | `/iletisim` | — | Metin hazır — form entegre edildi |
+| 14 | Olay Müdahale Hattı | `/hotline` | — | Metin hazır |
+| 15 | KVKK Aydınlatma Metni | `/kvkk` | — | Hukuki metin bekliyor |
+| 16 | 404 | — | — | Metin hazır |
 
 ---
 
@@ -196,6 +234,15 @@ Güvenlik kontrollerinizin mevcut durumunu ölçer, puanlar ve
 mevcut durumu ve gidilecek yeri ölçülebilir biçimde anlatmanız gerekiyor.
 [Bağlantı: /cozumler/olgunluk-programi]
 
+**SOC — SOC Danışmanlığı**
+SOC kurmayı planlıyorsanız kurulum danışmanlığıyla, mevcut bir SOC/MSSP'niz
+varsa bağımsız etkinlik denetimiyle, SOC bütçeniz yoksa periyodik sağlık
+kontrolüyle yanınızda oluruz.
+Şu durumda uygun: SOC kurmayı planlıyorsunuz, mevcut bir SOC/MSSP'nin
+ürettiği tespitlerin kapsamını bağımsız bir gözle görmek istiyorsunuz ya da
+SOC bütçeniz yokken periyodik bir sağlık kontrolü arıyorsunuz.
+[Bağlantı: /cozumler/soc-danismanligi]
+
 ### Grup — Operasyonel Hizmetler (`#operasyonel`)
 Güvenlik çözümlerinizin gün geçtikçe sağlıklı ve güncel kalmasını sürekli
 hâle getiririz.
@@ -216,7 +263,7 @@ sağlarız.
 Şu durumda uygun: Splunk kullanıyorsunuz ve kural/içerik tarafında sürekli
 bir uzmanlık desteğine ihtiyacınız var.
 [Bağlantı: /cozumler/splunk-destek]
-> Not: Bu sayfanın gövde metni henüz brif bekliyor — bkz. bölüm 7.
+> Not: Bu sayfanın gövde metni henüz brif bekliyor — bkz. bölüm 8.
 
 ### Grup — Siber Güvenlik Akademisi (`#akademi`)
 Ekibinizi olay müdahalesinde uygulamalı eğitimle hazırlarız.
@@ -250,7 +297,7 @@ işler. Olay anında işleyen bir müdahale süreci olaydan önce kurulur.
 Ekibiniz ilk 60 dakikada ne yapacağını biliyor mu? 3 gün, uygulamalı,
 laboratuvar ağırlıklı eğitim; ayrıntılı program artık Siber Güvenlik
 Akademisi altında.
-[Bağlantı: Olay Müdahale Eğitimi — bkz. bölüm 8]
+[Bağlantı: Olay Müdahale Eğitimi — bkz. bölüm 9]
 
 ### H2 — Olay müdahale hazırlık projesi (OM-2)
 6–8 hafta süren bir çalışmada politika, rol ve eskalasyon matrisi,
@@ -444,7 +491,93 @@ Tüm çıktılar kurumun mülkiyetindedir.
 
 ---
 
-## 6. MSS — Güvenlik Sağlığı İzleme — `/cozumler/mss` (Operasyonel)
+## 6. SOC Danışmanlığı — `/cozumler/soc-danismanligi` (Danışmanlık)
+
+**Title:** SOC Danışmanlığı | DERESYS
+**Meta description:** SOC/MSSP kurulum danışmanlığı, bağımsız SOC/MDR etkinlik denetimi ve periyodik siber sağlık kontrolü: dört hizmetle SOC kurma, denetleme ve sürdürme kararlarınızda yanınızdayız.
+
+### H1
+SOC danışmanlığı
+
+### Lead
+Deresys SOC satmaz. SOC'un çalışıp çalışmadığını ölçer, kurulmasını sağlar
+ve alınan hizmetten gerçekten değer üretildiğinden emin olur — kurumunuzun
+durumuna göre dört ayrı hizmetle.
+
+### H2 — Dört hizmet
+
+**BUILD/E — SOC/MSSP kurulum danışmanlığı (entegratörler için)**
+SIEM, EDR veya NDR gibi güvenlik ürünleri satan entegratör, distribütör ve
+MSSP adaylarının, bu ürünlerin üzerine satılabilir ve tekrarlanabilir bir
+hizmet kurmasını sağlarız: hizmet kataloğu ve kademe tanımlarından SLA
+setine, vardiya ve rol modelinden playbook'lara, tespit mühendisliğinden
+müşteri devreye alma sürecine kadar.
+Şu durumda uygun: ürünü kurabiliyorsunuz ama hizmeti satamıyorsunuz;
+müşteriniz "bunu kim izleyecek?" dediğinde cevabınız yok. Tipik süre:
+8–12 hafta; yalnızca mevcut hizmet olgunluğunuzun değerlendirilmesi için
+3–5 günlük bağımsız bir giriş kapsamı da alınabilir.
+
+**BUILD/K — SOC kurulum danışmanlığı (kurumlar için)**
+SOC'u bir ürün alımına indirgemeden ele alırız: tedarik kararından (kur /
+satın al / hibrit) log kaynak önceliklendirmesine, MITRE ATT&CK temelli
+tespit stratejisinden operasyon modeline ve mimariye kadar uçtan uca
+planlarız.
+Şu durumda uygun: yeni bir CISO atandı, bir denetim bulgusu ya da SIEM
+lisans yenilemesi SOC kararını gündeme getirdi. Tipik süre: 8–14 hafta;
+yalnızca tedarik kararı (kur / satın al / hibrit) için 1–2 haftalık
+bağımsız bir giriş kapsamı da alınabilir.
+
+**ASSURE — Bağımsız SOC/MDR etkinlik denetimi**
+Dışarıdan SOC, MDR veya yönetilen güvenlik hizmeti aldığınız sağlayıcının
+ürettiği tespitleri bağımsız bir gözle test ederiz: hangi log kaynakları
+fiilen akıyor, hangi saldırı teknikleri görülebiliyor, kontrollü bir test
+gerçek bir saldırı olsa fark edilir miydi, sözleşmenizdeki SLA fiilen
+gerçekleşiyor mu. Denetimin varlığı hizmet sağlayıcınıza bildirilir; test
+senaryoları ve zamanlaması paylaşılmaz.
+Şu durumda uygun: sözleşme yenilemenize birkaç ay kaldı, bir olayı
+kaçırdınız ya da aldığınız raporun gerçekten bir şey söylediğinden emin
+değilsiniz. Tipik süre: 3–5 hafta; yalnızca kontrollü doğrulama testi için
+5–7 günlük bağımsız bir giriş kapsamı da alınabilir.
+
+**PULSE — Periyodik siber sağlık kontrolü**
+SOC/MDR bütçesi olmayan kurumlar için: uç nokta sağlığından kimlik ve
+dizin hijyenine, dış yüzeyden yedekleme dayanıklılığına kadar aynı kontrol
+seti her döngüde tekrar çalıştırılır; sonunda tek sayfalık bir karne ve
+önceliklendirilmiş bir aksiyon planı teslim edilir.
+Şu durumda uygun: SOC/MDR'a bütçeniz yok ama KVKK denetimi, bir müşteri
+güvenlik anketi ya da siber sigorta süreci "durumunuz nedir?" sorusuna
+cevap vermenizi gerektiriyor. Çeyreklik veya aylık döngülerle abonelik
+olarak alınır; ilk döngü tek seferlik de denenebilir.
+
+### H2 — SOC-PULSE bir MDR değildir
+Sürekli izleme, alarm yanıt SLA'sı veya olay müdahale hizmeti taahhüt
+etmeyiz — PULSE, döngü başına tekrarlanan, nokta zamanlı bir kontroldür.
+Bir bulgu olay niteliğindeyse ayrı bir olay müdahalesi kapsamında ele
+alınır. Bu sınır ticari değil, müşterinin kendini olduğundan fazla
+korunuyor sanmaması için etik bir gerekliliktir.
+
+### H2 — Kapsam dışı
+Dört hizmetin hiçbiri kurulumdan sonraki günlük operasyonel işletimi
+kapsamaz: 7/24 gerçek zamanlı izleme veya alarm yanıtı taahhüt etmeyiz,
+sistemlerinize yazma ya da değişiklik yetkisiyle erişmeyiz. Sürekli izleme
+ihtiyacı, ayrı bir hizmet olan MSS kapsamında değerlendirilir (bkz. bölüm
+7).
+
+[CTA: Görüşme talep edin]
+
+> Not: Bu sayfa, önceden MSS sayfasına "Ek kapsam" olarak taşınmış ve eski
+> `/cozumler/soc-advisory` URL'sinin yönlendirildiği içeriktir; artık
+> Danışmanlık Hizmetleri altında kendi başlığı ve sayfasıyla ayrılmıştır.
+> İçerik `D:\Deresys\hizmetler\danışmanlıklar\SOC` klasöründeki Hizmet
+> Kapsamı dokümanından (v1.0) türetildi; fiyatlandırma formülleri, adam-gün
+> efor rakamları, iç kapasite sınırları ve pazarlama/satış dokümanındaki
+> içerikler (sınıflandırması "iç kullanım — müşteriye sunulmaz") bilinçli
+> olarak sayfaya taşınmadı — yazım kurallarına göre bunlar iç kullanım/
+> teklif dokümanlarında kalıyor.
+
+---
+
+## 7. MSS — Güvenlik Sağlığı İzleme — `/cozumler/mss` (Operasyonel)
 
 **Title:** MSS — Güvenlik Sağlığı İzleme | DERESYS
 **Meta description:** Splunk ve IBM QRadar ortamlarınız için periyodik güvenlik sağlığı izleme ve MITRE ATT&CK tespit kapsamı analizi.
@@ -484,21 +617,15 @@ IT/güvenlik ekibi olan ama bu araçları sürekli sağlıklı tutacak özel
 uzmanlık kapasitesi sınırlı olan orta ve büyük ölçekli kurumlar için
 tasarlandı.
 
-### H2 — Ek kapsam: SOC kurulumu ve etkinlik denetimi
-SOC kurmayı planlıyorsanız tasarım ve devreye alma sürecinde çalışırız.
-Halihazırda bir SOC'unuz ya da hizmet aldığınız bir MSSP varsa, üretilen
-tespitlerin kapsamını ve kalitesini de MSS kapsamımız içinde
-inceleyebiliriz. *(Eski SOC Advisory sayfasından taşındı.)*
-
-**SOC kurulumu: entegratör ve MSSP'ler için** — [DOLDURULACAK: kapsam, çıktı, süre]
-**SOC kurulumu: son kullanıcı kurumlar için** — [DOLDURULACAK: kapsam, çıktı, süre]
-**MSSP etkinlik denetimi** — [DOLDURULACAK: kapsam, çıktı, süre; denetimin neyi ölçtüğü — kural kapsamı, tespit kabiliyeti, SLA uyumu vb.]
+> Not: SOC kurmayı planlıyorsanız ya da mevcut bir SOC/MSSP'nizin
+> etkinliğini bağımsız bir gözle değerlendirmek istiyorsanız, bu kapsam
+> artık ayrı bir sayfada: SOC Danışmanlığı (bkz. bölüm 6).
 
 [CTA: Görüşme talep edin]
 
 ---
 
-## 7. Splunk Destek ve Kural İçeriği — `/cozumler/splunk-destek` (Operasyonel)
+## 8. Splunk Destek ve Kural İçeriği — `/cozumler/splunk-destek` (Operasyonel)
 
 **Title:** Splunk Destek ve Kural İçeriği | DERESYS
 **Meta description:** [DOLDURULACAK]
@@ -530,7 +657,7 @@ kanalı.
 
 ---
 
-## 8. Olay Müdahale Eğitimi — `/cozumler/olay-mudahale-egitimi` (Akademi)
+## 9. Olay Müdahale Eğitimi — `/cozumler/olay-mudahale-egitimi` (Akademi)
 
 **Title:** Olay Müdahale Eğitimi | DERESYS Siber Güvenlik Akademisi
 **Meta description:** 3 gün, laboratuvar ağırlıklı, uygulamalı siber olay müdahale eğitimi — OM-1.
@@ -595,7 +722,7 @@ masabaşı tatbikat ve müdahale hattı için bkz. bölüm 3 (Olay Müdahalesi).
 
 ---
 
-## 9. Hakkında — `/hakkinda`
+## 10. Hakkında — `/hakkinda`
 
 *(Değişmedi. Bkz. sürüm 2.)*
 
@@ -637,7 +764,7 @@ içerik, bir müşteri logosuna göre daha fazla bilgi verir.
 
 ---
 
-## 10. Blog — `/blog`
+## 11. Blog — `/blog`
 
 *(Değişmedi. Bkz. sürüm 2.)*
 
@@ -663,7 +790,7 @@ Aboneliğinizi her e-postadaki bağlantıdan sonlandırabilirsiniz.
 
 ---
 
-## 11. Ürünler — `/urunler`
+## 12. Ürünler — `/urunler`
 
 *(Değişmedi. Bkz. sürüm 2.)*
 
@@ -689,7 +816,7 @@ Belirli bir ürün için teklif almak isterseniz iletişime geçebilirsiniz.
 
 ---
 
-## 12. İletişim — `/iletisim`
+## 13. İletişim — `/iletisim`
 
 *(Değişmedi. Bkz. sürüm 2.)*
 
@@ -733,7 +860,7 @@ Adres: Deresys Siber Güvenlik - Gölbaşı/Ankara
 
 ---
 
-## 13. Olay Müdahale Hattı — `/hotline`
+## 14. Olay Müdahale Hattı — `/hotline`
 
 *(E-posta formu info@deresys.com.tr'ye bağlandı — bkz. sürüm 3. VPS
 entegrasyonu artık gerekmiyor, FormSubmit.co kullanılıyor; bkz. İletişim
@@ -769,7 +896,7 @@ tarafında bugün yapılabilecekler için:
 
 ---
 
-## 14. KVKK Aydınlatma Metni — `/kvkk`
+## 15. KVKK Aydınlatma Metni — `/kvkk`
 
 *(Değişmedi. Bkz. sürüm 2.)*
 
@@ -784,7 +911,7 @@ tarafında bugün yapılabilecekler için:
 
 ---
 
-## 15. 404
+## 16. 404
 
 *(Değişmedi, yalnızca "Çözümler" bağlantı metni "Hizmetler" oldu.)*
 
