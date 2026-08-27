@@ -1,32 +1,77 @@
 ---
 import Base from '../../layouts/Base.astro';
 import PageHead from '../../components/PageHead.astro';
-import Draft from '../../components/Draft.astro';
 import Cta from '../../components/Cta.astro';
 
-const sections = [
-  { id: 'kapsam', title: 'Kapsam', need: 'Hizmetin kapsamı: hangi Splunk bileşenleri (Core, ES, ITSI vb.); destek mi, kural/içerik geliştirme mi, ikisi birden mi.' },
-  { id: 'calisma-modeli', title: 'Çalışma modeli', need: 'Proje mi, abonelik mi, saat havuzu mu; sıklık ve iletişim kanalı.' },
-  { id: 'ciktilar', title: 'Çıktılar', need: 'Teslim edilecek doküman, kural ve rapor listesi.' },
-  { id: 'kimler', title: 'Kimler için uygun', need: 'Hedef müşteri profili.' },
+const components = [
+  {
+    code: 'A',
+    title: 'Kurulum (on-prem)',
+    body: 'Kendi altyapınızda yeni bir Splunk Enterprise ortamının mimarisinin tasarlanması, kurulması, temel yapılandırılması ve ilk veri kaynaklarıyla devreye alınması: ihtiyaç analizi, sizing, indeks tasarımı, Deployment Server ve Universal Forwarder dağıtımı, kabul testi ve devir teslim. Devreye alma sonrası kısa süreli yoğun destek (hypercare) dahildir.',
+    fit: 'Yeni bir Splunk ortamı kuracak kurumlar için. Yalnızca on-prem dağıtımlar kapsamdadır; Splunk Cloud kurulum desteği bu paketin dışındadır.',
+  },
+  {
+    code: 'B',
+    title: 'Bakım (sürekli destek)',
+    body: 'Kurulu bir Splunk platformunun (Deresys tarafından kurulmuş ya da mevcut bir ortam) işletim sağlığının, güncelliğinin ve yapılandırma bütünlüğünün sürekli korunması: haftalık sağlık kontrolü, aylık bakım penceresinde güncelleme ve kapasite gözden geçirmesi, öncelik seviyesine göre destek talebi yanıtı, çeyreklik mimari gözden geçirme.',
+    fit: 'MSS hizmetimizden farkı burada: MSS platformdan gelen güvenlik olaylarını ve kuralları izler, Bakım bileşeni platformun kendisiyle — indexer, search head, lisans, disk, sürüm — ilgilenir. İki hizmet bağımsız alınabilir ya da birlikte yürütülebilir.',
+  },
+  {
+    code: 'C',
+    title: 'Kural Danışmanlığı',
+    body: 'Splunk ortamınızdaki correlation search, alert ve saved search envanterinin MITRE ATT&CK çerçevesine göre değerlendirilmesi, kalite ve kapsam boşluklarının çıkarılması, önceliklendirilmiş bir iyileştirme raporu üretilmesi.',
+    fit: 'İki alt paket: Temel Paket (öneri ve rapor — Deresys yazma erişimi istemez, iyileştirmeyi kendi ekibiniz uygular) ve Üst Paket (danışmanlık + bizzat uygulama — yalnızca correlation search / saved search seviyesinde, müşteri onayı ve değişiklik kaydıyla sınırlı yazma erişimi verilir).',
+  },
+];
+
+const outputs = [
+  { name: 'Mimari tasarım dokümanı ve devir teslim paketi', body: 'Kurulum bileşeninde' },
+  { name: 'Haftalık kontrol notu ve aylık sağlık raporu', body: 'Bakım bileşeninde' },
+  { name: 'MITRE ATT&CK kapsam haritası (heatmap) ve kalite skor tablosu', body: 'Kural Danışmanlığı bileşeninde' },
+  { name: 'Önceliklendirilmiş iyileştirme raporu', body: 'Temel Paket’te teslim edilen; Üst Paket’te uygulanan kural seti ve değişiklik kaydıyla birlikte' },
 ];
 ---
-<Base title="Splunk Destek ve Kural İçeriği | DERESYS">
+<Base
+  title="Splunk Destek ve Kural İçeriği | DERESYS"
+  description="Splunk Enterprise için on-prem kurulum, sürekli bakım ve MITRE ATT&CK bazlı kural danışmanlığı."
+>
   <PageHead
     eyebrow="OPERASYONEL HİZMETLER"
     title="Splunk destek ve kural içeriği"
-  >
-    <div class="head-draft"><Draft need="Hizmetin bir paragraflık tanımı." /></div>
-  </PageHead>
+    lead="MSS hizmetimizden bağımsız, kendi başına alınabilen bir hizmet hattı. Üç bileşen ayrı ayrı satın alınabilir, ama doğal bir yaşam döngüsü izler: kurulum, ardından sürekli bakım ve kural danışmanlığı."
+  />
 
   <section class="section">
     <div class="wrap stack stack-12">
-      {sections.map((s) => (
-        <div class="block" id={s.id}>
-          <h2 class="h-sm block__title">{s.title}</h2>
-          <Draft need={s.need} />
+      <div class="block" id="bilesenler">
+        <h2 class="h-sm block__title">Üç bileşen</h2>
+        <div class="stack stack-8 components">
+          {components.map((c) => (
+            <div class="component">
+              <span class="eyebrow eyebrow--accent">Bileşen {c.code}</span>
+              <h3 class="subheading">{c.title}</h3>
+              <p class="muted">{c.body}</p>
+              <p class="dim small">{c.fit}</p>
+            </div>
+          ))}
         </div>
-      ))}
+      </div>
+
+      <div class="block" id="ciktilar">
+        <h2 class="h-sm block__title">Çıktılar</h2>
+        <ul class="prose muted">
+          {outputs.map((o) => <li><strong>{o.name}</strong> — {o.body}</li>)}
+        </ul>
+      </div>
+
+      <div class="block" id="kimler-icin">
+        <h2 class="h-sm block__title">Kimler için uygun</h2>
+        <p class="muted">
+          On-prem Splunk Enterprise kullanan veya kullanmaya karar vermiş kurumlar için. MSS
+          müşterisi olmanız gerekmez — üç bileşen de bağımsız satın alınabilir; MSS hizmeti
+          alan kurumlar için ileride birlikte paketlenmesi değerlendirilecek.
+        </p>
+      </div>
     </div>
   </section>
 
@@ -35,8 +80,18 @@ const sections = [
 </Base>
 
 <style>
-  .head-draft { margin-top: var(--space-8); max-width: var(--prose-max-width); }
   .block { display: grid; grid-template-columns: 1fr 2fr; gap: var(--space-16); align-items: start; }
   .block__title { padding-top: 2px; }
+  .components { display: grid; gap: var(--space-8); }
+  .component {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    background: var(--bg-surface-1);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-card);
+    padding: var(--card-padding);
+  }
+  ul.prose { padding-left: 1.1em; display: grid; gap: var(--space-2); }
   @media (max-width: 900px) { .block { grid-template-columns: 1fr; gap: var(--space-6); } }
 </style>
