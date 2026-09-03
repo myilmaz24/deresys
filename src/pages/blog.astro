@@ -10,6 +10,8 @@ const collectionPosts = (await getCollection('blog', ({ data }) => !data.draft))
   description: post.data.description,
   pubDate: post.data.pubDate,
   tags: post.data.tags,
+  image: post.data.image,
+  imageAlt: post.data.imageAlt,
 }));
 
 // Yazılar bazen içerik koleksiyonundaki markdown yerine, tablo/CTA gibi özel bir
@@ -23,6 +25,8 @@ const customPosts = [
     description: "Ağustos 2026 Patch Tuesday'de 398 CVE ve 3 zero-day yayınlandı. Hangi üçüne öncelik vermeniz gerektiğini derledik.",
     pubDate: new Date('2026-08-23'),
     tags: ['Tehdit İstihbaratı'],
+    image: '/blog/patch-tuesday-agustos-2026/cover.png',
+    imageAlt: 'Ağustos 2026 Patch Tuesday öncelikli zafiyetleri',
   },
 ];
 
@@ -45,6 +49,9 @@ const dateFmt = new Intl.DateTimeFormat('tr-TR', { day: 'numeric', month: 'long'
     <div class="wrap stack stack-6">
       {posts.map((post) => (
         <a class="line card--ray" href={post.href}>
+          {post.image && (
+            <img class="line__thumb post-thumb" src={post.image} alt={post.imageAlt || post.title} />
+          )}
           <div class="line__main">
             <span class="eyebrow eyebrow--accent">
               <time datetime={post.pubDate.toISOString()}>{dateFmt.format(post.pubDate)}</time>
@@ -100,10 +107,9 @@ const dateFmt = new Intl.DateTimeFormat('tr-TR', { day: 'numeric', month: 'long'
 
   .line {
     position: relative;
-    display: grid;
-    grid-template-columns: 1fr auto;
+    display: flex;
     gap: var(--space-8);
-    align-items: start;
+    align-items: center;
     background: var(--bg-surface-1);
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-card);
@@ -113,8 +119,9 @@ const dateFmt = new Intl.DateTimeFormat('tr-TR', { day: 'numeric', month: 'long'
     transition: background-color 140ms ease, border-color 140ms ease;
   }
   a.line:hover { background: var(--bg-surface-2); border-color: var(--border-strong); }
-  .line__main { display: flex; flex-direction: column; gap: var(--space-3); }
-  .line__go { padding-top: 4px; }
+  .line__thumb { flex: 0 0 200px; width: 200px; height: auto; align-self: stretch; aspect-ratio: auto; }
+  .line__main { flex: 1 1 auto; display: flex; flex-direction: column; gap: var(--space-3); min-width: 0; }
+  .line__go { flex: 0 0 auto; }
 
   .card--ray::before {
     content: "";
@@ -129,7 +136,9 @@ const dateFmt = new Intl.DateTimeFormat('tr-TR', { day: 'numeric', month: 'long'
   }
   a.card--ray:hover::before { opacity: 1; width: 72px; }
 
-  @media (max-width: 900px) {
-    .line { grid-template-columns: 1fr; gap: var(--space-4); }
+  @media (max-width: 640px) {
+    .line { flex-wrap: wrap; gap: var(--space-4); }
+    .line__thumb { flex-basis: 100%; width: 100%; height: auto; aspect-ratio: 16 / 9; align-self: auto; }
+    .line__go { display: none; }
   }
 </style>

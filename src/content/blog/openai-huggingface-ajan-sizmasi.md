@@ -4,6 +4,8 @@ description: "Temmuz 2026'da bir OpenAI değerlendirme ajanının Hugging Face'e
 pubDate: 2026-08-23
 author: "DERESYS"
 tags: ["Olay İncelemesi"]
+image: "/blog/openai-huggingface-ajan-sizmasi/cover.png"
+imageAlt: "İç içe üç güven sınırını delen bir otonom ajanı temsil eden soyut grafik"
 ---
 
 Temmuz ayında yaşanan OpenAI–Hugging Face olayı sahada hâlâ konuşuluyor, biz de birincil kaynaklara dönüp olayı baştan sona kendimiz çıkarmak istedik. Aşağıda olayı üç birincil kaynağa dayanarak topluyor, SOC operasyonları için ne anlama geldiğine odaklanıyoruz.

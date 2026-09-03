@@ -246,6 +246,55 @@ img, svg { display: block; max-width: 100%; }
 .arrow-link .chev { transition: transform 140ms ease; }
 .arrow-link:hover .chev { transform: translateX(4px); }
 
+/* ---------- Blog görselleri ---------- */
+
+.post-thumb {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-surface-1);
+  display: block;
+}
+
+.article__cover {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border-subtle);
+  margin-bottom: var(--space-10);
+  display: block;
+}
+
+.article img {
+  border-radius: var(--radius-control);
+  border: 1px solid var(--border-subtle);
+  margin: var(--space-6) 0;
+}
+.article figure { margin: var(--space-6) 0; }
+.article figcaption {
+  font-size: var(--text-body-sm);
+  color: var(--text-muted);
+  margin-top: var(--space-2);
+  text-align: center;
+}
+.article table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-6) 0;
+  font-size: var(--text-body-sm);
+}
+.article th, .article td {
+  text-align: left;
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--border-subtle);
+  vertical-align: top;
+}
+.article th { font-weight: 600; color: var(--text-primary); }
+.article td { color: var(--text-secondary); }
+
 /* ---------- Kartlar ---------- */
 
 .grid { display: grid; gap: var(--grid-gap); }
