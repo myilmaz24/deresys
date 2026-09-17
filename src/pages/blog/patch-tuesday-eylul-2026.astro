@@ -1,0 +1,387 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+
+const cves = [
+  {
+    id: 'CVE-2026-85880',
+    title: 'Windows Advanced Local Procedure Call (ALPC) — Yetki Yükseltme',
+    cvss: '7.8*',
+    note: 'Exploitation Detected, CISA KEV kaydı mevcut. Windows Server 2019 ve Windows 10 Version 1809 sistemlerini etkiliyor. Öncelik: Acil.',
+  },
+  {
+    id: 'CVE-2026-81963',
+    title: 'Windows Update Stack — Yetki Yükseltme',
+    cvss: '7.8*',
+    note: 'Exploitation Detected, CISA KEV kaydı mevcut. Windows Server 2025 Server Core ve Windows 11 Version 25H2 sistemlerini etkiliyor. Öncelik: Acil.',
+  },
+];
+
+const dist = [
+  { family: 'Windows', count: 724 },
+  { family: 'Office', count: 111 },
+  { family: 'SQL', count: 62 },
+  { family: 'Developer Tools', count: 22 },
+  { family: 'SharePoint Server', count: 16 },
+  { family: 'Azure', count: 12 },
+  { family: 'Skype for Business', count: 10 },
+  { family: 'Exchange Server', count: 9 },
+  { family: 'Other', count: 9 },
+];
+---
+<Base
+  title="Patch Tuesday: Eylül 2026 — Öncelikli Zafiyetler | DERESYS Blog"
+  description="Eylül 2026 Patch Tuesday'de 975 CVE ve aktif istismar edilen 2 Windows yetki yükseltme zero-day'i yayınlandı. Öncelik sırası ve dağıtım kontrol listesi."
+  image="/blog/patch-tuesday-eylul-2026/cover.png"
+>
+  <PageHead
+    eyebrow="BLOG — TEHDİT İSTİHBARATI"
+    title="Patch Tuesday: Eylül 2026 — öncelikli zafiyetler"
+    lead="Bu ayki Patch Tuesday 975 CVE ile geldi; ikisi aktif istismar edilen Windows yetki yükseltme zero-day'i. Yama kapasiteniz sınırlıysa nereden başlamanız gerektiğini derledik."
+  />
+
+  <section class="section section--tight">
+    <div class="wrap">
+      <img
+        class="article__cover"
+        src="/blog/patch-tuesday-eylul-2026/cover.png"
+        alt="Eylül 2026 Patch Tuesday öncelikli zafiyetleri"
+      />
+      <article class="stack stack-8 prose">
+        <p class="muted small">
+          Yayın: 17 Eylül 2026 · Kaynak: Microsoft Security Update Guide — Eylül 2026 sürüm notları, 8 Eylül 2026 yayın tarihi
+        </p>
+
+        <div class="tldr">
+          <span class="eyebrow eyebrow--accent">TL;DR</span>
+          <ul>
+            <li>Eylül 2026 Patch Tuesday'de toplam 975 Microsoft CVE'si yayınlandı.</li>
+            <li>Microsoft, ikisi için aktif istismar tespit edildiğini belirtiyor: CVE-2026-85880 ve CVE-2026-81963 (her ikisi de Windows yetki yükseltme).</li>
+            <li>Yama kapasiteniz kısıtlıysa önce bu iki zero-day'e ve etkilenen sistemlerin hızlı doğrulamasına odaklanın.</li>
+          </ul>
+        </div>
+
+        <p>
+          Microsoft'un Eylül 2026 güncellemeleri, güncel sürüm notlarına göre 975 Microsoft CVE'sini
+          kapsıyor; ayrıca ay içinde 25 Microsoft dışı CVE yeniden yayımlandığından sayılar kaynağa
+          göre farklılaşabiliyor. Eylül ayı yalnızca yüksek CVE hacmi nedeniyle değil, iki aktif
+          istismar edilen Windows zafiyeti nedeniyle de yüksek öncelikli bir yama dönemi — Microsoft'un
+          sürüm notları, iki zero-day'in saldırıların içinde kullanıldığını doğruluyor. Bu durum, CVSS
+          puanından bağımsız olarak ilgili sistemlerin standart yama takviminden önce ele alınmasını
+          gerektiriyor. Bu yazıda, Eylül 2026 Patch Tuesday kapsamında önce hangi sistemlerin kontrol
+          edilmesi gerektiğini, iki zero-day'in neden öncelikli olduğunu ve kontrollü bir kurumsal
+          dağıtım sürecinin nasıl planlanabileceğini özetliyoruz.
+        </p>
+
+        <h2 class="h-sm">Eylül 2026 Patch Tuesday neden yüksek öncelikli?</h2>
+        <p>
+          Microsoft'un 17 Eylül itibarıyla güncellediği Eylül 2026 sürüm notlarında toplam 975
+          Microsoft CVE'si bulunuyor. Zafiyetlerin önemli bölümü Windows ürün ailesinde
+          yoğunlaşırken Office, SQL, SharePoint, Exchange Server, Skype for Business, Azure ve
+          geliştirici araçlarına yönelik güncellemeler de mevcut. Bir kurumun 975 CVE'nin tamamından
+          etkilenmesi beklenmez; doğru yaklaşım, varlık envanteriyle eşleşen ürünleri ve sürümleri
+          belirleyerek maruziyeti somutlaştırmaktır.
+        </p>
+
+        <div class="cve-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Ürün ailesi</th>
+                <th>Ele alınan zafiyet sayısı</th>
+              </tr>
+            </thead>
+            <tbody>
+              {dist.map((d) => (
+                <tr>
+                  <td>{d.family}</td>
+                  <td>{d.count}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <p class="muted small">
+          Bu tablodaki sayılar, Microsoft'un sürüm notlarında ürün aileleri için yayımlanan zafiyet
+          dağılımını yansıtıyor.
+        </p>
+
+        <p>Bu ay için öne çıkan risk göstergeleri şunlardır:</p>
+        <ul>
+          <li>Microsoft'un doğruladığı iki aktif istismar vakası bulunuyor.</li>
+          <li>Etkilenen bileşenler Windows istemci ve sunucu ortamlarını kapsıyor.</li>
+          <li>Windows tarafındaki yüksek zafiyet hacmi, güncelleme kapsamının geniş olduğunu gösteriyor.</li>
+          <li>SQL Server, Exchange Server ve SharePoint Server gibi kurumsal iş yükleri için ayrı test ve değişiklik süreçleri gerekebilir.</li>
+          <li>Microsoft'un sürüm notlarında bazı KB paketleri için bilinen sorunlar yer alıyor; dağıtım öncesinde bunların kontrol edilmesi önemli.</li>
+        </ul>
+
+        <h2 class="h-sm">Önce bunlara bakın</h2>
+        <p class="muted">
+          Aktif istismar bilgisi, saldırganların bir zafiyeti teorik olarak kullanabileceğini değil,
+          pratikte kullanmakta olduğunu gösterir. Bu nedenle risk sıralamasında "kritik" etiketi veya
+          CVSS puanı tek başına belirleyici olmamalıdır. Etkin saldırı sinyali bulunan aşağıdaki iki
+          açık, kurumun maruz kalan sistemlerinde hızla kapatılmalıdır.
+        </p>
+
+        <div class="cve-table">
+          <table>
+            <thead>
+              <tr>
+                <th>CVE</th>
+                <th>Etkilenen bileşen</th>
+                <th>CVSS</th>
+                <th>Not</th>
+              </tr>
+            </thead>
+            <tbody>
+              {cves.map((c) => (
+                <tr>
+                  <td>
+                    <a href={`https://msrc.microsoft.com/update-guide/vulnerability/${c.id}`} target="_blank" rel="noopener noreferrer">
+                      {c.id}
+                    </a>
+                  </td>
+                  <td>{c.title}</td>
+                  <td>{c.cvss}</td>
+                  <td class="muted small">{c.note}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <p class="muted small">
+          * Bağımsız yama takip kaynakları her iki açık için CVSS değerini 7.8 olarak listeliyor ve
+          ikisinin de CISA'nın Bilinen İstismar Edilen Zafiyetler (KEV) kataloğunda yer aldığını
+          belirtiyor. Kurumların öncelikli referansı yine de Microsoft'un ürün ve sürüm bazındaki
+          resmi yönlendirmesi olmalı; Microsoft Security Update Guide üzerinden ilgili CVE'lerin
+          etkilediği platformlar ve dağıtım bilgileri düzenli olarak kontrol edilmelidir.
+        </p>
+
+        <h3 class="subheading">CVE-2026-85880 hangi sistemleri etkiliyor?</h3>
+        <p>
+          CVE-2026-85880, Windows ALPC bileşenindeki aktif istismar edilen bir yetki yükseltme
+          zafiyetidir. ALPC, Windows bileşenleri arasındaki yerel iletişim için kullanılan bir
+          mekanizmadır; bu tür zafiyetler genellikle saldırganın hedef sistemde ilk erişimi elde
+          etmesinden sonra önem kazanır. Örneğin kimlik avı, kötü amaçlı yazılım, ele geçirilmiş
+          kullanıcı hesabı veya başka bir açıklıktan yararlanma yoluyla sisteme erişen bir saldırgan,
+          düşük yetkili konumunu daha yüksek yetkilere taşımayı hedefleyebilir.
+        </p>
+        <p>Microsoft'un Eylül sürüm notlarına göre bu zafiyet aşağıdaki platformları etkiliyor:</p>
+        <ul>
+          <li>Windows 10 Version 1809 — 32-bit sistemler</li>
+          <li>Windows 10 Version 1809 — x64 sistemler</li>
+          <li>Windows Server 2019</li>
+          <li>Windows Server 2019 Server Core kurulumu</li>
+        </ul>
+        <p>
+          Bu nedenle özellikle Windows Server 2019 iş yükleri ile Windows 10 Version 1809 çalıştıran
+          varlıklar hızla belirlenmelidir. Uzun süredir yaşam döngüsü, uyumluluk veya uygulama
+          bağımlılıkları nedeniyle eski sürüm çalıştıran sistemler, yama operasyonlarında gözden
+          kaçmaya daha yatkındır. İlk değerlendirmede şu soruların yanıtlanması gerekir:
+        </p>
+        <ul>
+          <li>Ortamda Windows Server 2019 veya Server Core kurulumu bulunuyor mu?</li>
+          <li>Windows 10 Version 1809 kullanan uç noktalar hâlâ aktif mi?</li>
+          <li>Bu sistemler internete açık servis, yönetici erişimi veya kritik uygulama iş yükü barındırıyor mu?</li>
+          <li>Uç nokta algılama ve müdahale çözümü üzerinde şüpheli yetki yükseltme davranışları araştırıldı mı?</li>
+          <li>İlgili sistemlerde Eylül 2026 güncellemesinin uygulanma durumu doğrulandı mı?</li>
+        </ul>
+
+        <h3 class="subheading">CVE-2026-81963 neden öncelikli ele alınmalı?</h3>
+        <p>
+          CVE-2026-81963, Windows Update Stack bileşenini etkileyen ve aktif istismar edildiği
+          bildirilen bir yetki yükseltme zafiyetidir. Windows Update Stack, işletim sisteminin
+          güncelleme süreçleriyle ilişkili bileşenlerinden oluşur. Güncelleme altyapısını hedefleyen
+          açıklar, saldırganların yüksek yetkiye erişme veya güvenlik kontrollerini etkisizleştirme
+          zincirlerinde değerli olabilir — bu nedenle "güncelleme bileşeni" ifadesi zafiyetin
+          operasyonel önemini azaltmaz, aksine yama doğrulamasını daha kritik hâle getirir.
+        </p>
+        <p>Microsoft'un sürüm notlarında etkilenen platformlar şunlar olarak listeleniyor:</p>
+        <ul>
+          <li>Windows Server 2025 Server Core kurulumu</li>
+          <li>Windows 11 Version 25H2 — ARM64 sistemler</li>
+          <li>Windows 11 Version 25H2 — x64 sistemler</li>
+        </ul>
+        <p>
+          Kuruluşların bu CVE için özellikle Windows Server 2025 Server Core sistemlerini görünür
+          hâle getirmesi gerekir. Server Core dağıtımları, grafik arayüzü olmadan çalıştıkları için
+          bazı ortamlarda standart envanter, kullanıcı deneyimi veya manuel kontrol süreçlerinden
+          farklı şekilde yönetilebilir. Bu zafiyet için önerilen öncelik sırası şöyledir:
+        </p>
+        <ol>
+          <li>Windows Server 2025 Server Core sistemlerini tanımlayın.</li>
+          <li>Windows 11 Version 25H2 cihazlarını envanterden filtreleyin.</li>
+          <li>Güncellemeyi önce temsilî bir pilot grupta test edin.</li>
+          <li>Kritik olmayan üretim sistemlerinden başlayarak dalgalı dağıtım yapın.</li>
+          <li>İş kritik sunucular için tanımlı bakım pencerelerini hızlandırın.</li>
+          <li>Dağıtım sonrasında yama uyumluluğunu merkezi yönetim konsolu veya güvenlik açığı yönetim aracı üzerinden doğrulayın.</li>
+        </ol>
+
+        <h2 class="h-sm">Kurumlar yama önceliklendirmesini nasıl yapmalı?</h2>
+        <p>
+          Eylül ayındaki yüksek CVE hacmi, tüm açıkları aynı anda ele almak yerine risk temelli bir
+          sıralamayı gerekli kılıyor. Yama operasyonunun ilk adımı, dış kaynaklardaki toplam CVE
+          sayısına odaklanmak değil; bu CVE'lerin hangilerinin kurumun envanterindeki ürünler,
+          sürümler ve iş yükleriyle eşleştiğini belirlemektir. Önerilen önceliklendirme modeli
+          aşağıdaki gibi uygulanabilir:
+        </p>
+        <ol>
+          <li>
+            <strong>Aktif istismar edilen zafiyetler:</strong> CVE-2026-85880 ve CVE-2026-81963 için
+            etkilenen sistemleri tespit edin, mümkün olan en kısa bakım penceresinde yamalayın ve
+            geçmiş aktiviteyi inceleyin.
+          </li>
+          <li>
+            <strong>İnternete açık veya kimlik altyapısına bağlı sistemler:</strong> Exchange Server,
+            SharePoint Server, SQL Server ve internetten erişilebilen Windows iş yüklerini ayrı bir
+            risk katmanında değerlendirin.
+          </li>
+          <li>
+            <strong>Kritik iş süreçlerini destekleyen sunucular:</strong> Üretim, finans, ERP, insan
+            kaynakları, dosya paylaşımı ve kimlik doğrulama iş yüklerini destekleyen sistemler için
+            test planını hızlandırın.
+          </li>
+          <li>
+            <strong>Geniş uç nokta grupları:</strong> Windows istemci güncellemelerini pilot halkalar
+            üzerinden dağıtın; uyumluluk sorunlarını izleyerek yayılımı genişletin.
+          </li>
+          <li>
+            <strong>Kalan ürün aileleri:</strong> Office, geliştirici araçları, Azure ilişkili
+            bileşenler ve diğer Microsoft iş yükleri için olağan değişiklik yönetimi sürecini
+            işletin.
+          </li>
+        </ol>
+        <p>
+          Bu yaklaşım, güvenlik ve operasyon ekipleri arasındaki dengeyi korumaya yardımcı olur.
+          Hedef, her güncellemeyi kontrolsüz biçimde aynı anda yaymak değil; aktif istismar edilen
+          açıklara karşı maruziyet süresini azaltırken iş sürekliliğini korumaktır.
+        </p>
+
+        <h2 class="h-sm">Dağıtım öncesinde hangi kontroller yapılmalı?</h2>
+        <p>
+          Microsoft'un Eylül 2026 sürüm notları; Exchange Server, SQL Server ve Windows Server'a
+          yönelik çeşitli KB paketleri için bilinen sorun kayıtları içeriyor. Bu kayıtlar her kurum
+          için sorun yaşanacağı anlamına gelmez; ancak güncelleme paketleri uygulanmadan önce ürün ve
+          sürüm bazında kontrol edilmelidir. Dağıtım planında aşağıdaki kontroller yer almalıdır:
+        </p>
+        <ul>
+          <li>Güncel ve doğrulanmış varlık envanteri</li>
+          <li>İşletim sistemi, sürüm ve mimari bilgisi</li>
+          <li>Kritik uygulama bağımlılıkları</li>
+          <li>Geri dönüş veya kurtarma planı</li>
+          <li>Pilot cihaz ve pilot sunucu grupları</li>
+          <li>Sistem sağlık ve performans izleme eşikleri</li>
+          <li>Yama sonrası doğrulama kriterleri</li>
+          <li>Değişiklik yönetimi ve bakım penceresi onayları</li>
+        </ul>
+        <p>
+          Özellikle Exchange, SQL ve SharePoint gibi kurumsal uygulamalarda güncelleme sonrası servis
+          erişimi, kimlik doğrulama, veri bağlantıları, e-posta akışı, belge erişimi ve uygulama
+          günlükleri kontrol edilmelidir. Windows istemci ortamlarında ise ağ bağlantısı, VPN,
+          yazıcılar, güvenlik ajanları, BitLocker durumu, kurumsal uygulamalar ve kullanıcı oturum
+          açma süreçleri temel test senaryolarına dahil edilmelidir.
+        </p>
+
+        <h2 class="h-sm">Yama sonrası hangi doğrulamalar yapılmalı?</h2>
+        <p>
+          Yamanın yüklenmiş görünmesi yeterli değildir; hizmetlerin ve güvenlik kontrollerinin
+          beklenen şekilde çalıştığı da doğrulanmalıdır. Güncelleme dağıtımından sonra güvenlik
+          ekibi, uyumluluk oranını ve potansiyel saldırı göstergelerini izlemelidir. Özellikle aktif
+          istismar edilen yetki yükseltme zafiyetleri söz konusu olduğunda, yalnızca güncelleme
+          başarısı değil, zafiyetin yama öncesinde kötüye kullanılmış olabileceğine ilişkin sinyaller
+          de araştırılmalıdır. Yama sonrasında aşağıdaki adımlar önerilir:
+        </p>
+        <ul>
+          <li>Varlıkların güncelleme uyumluluğunu merkezi olarak raporlayın.</li>
+          <li>Başarısız, beklemede olan veya yeniden başlatma gerektiren cihazları takip edin.</li>
+          <li>Ayrıcalıklı hesaplarda olağandışı oturum açma ve yetki değişikliği olaylarını inceleyin.</li>
+          <li>EDR/XDR platformunda şüpheli süreçler, servis oluşturma, güvenlik kontrolü kapatma ve yerel yönetici grubu değişikliklerini araştırın.</li>
+          <li>Kritik uygulamalar için fonksiyonel test sonuçlarını belgeleyin.</li>
+          <li>Yama uygulanamayan sistemler için geçici risk azaltıcı kontroller belirleyin.</li>
+          <li>İstisna kayıtlarını, sorumlu kişileri ve hedef kapatma tarihlerini yönetin.</li>
+        </ul>
+        <p>
+          Yama uygulanamayan bir sistem için riskin kabul edilmesi yerine; ağ segmentasyonu, yönetici
+          erişimlerinin sınırlandırılması, uç nokta izleme, saldırı yüzeyi azaltma kuralları ve sıkı
+          erişim kontrolleri gibi telafi edici önlemler devreye alınmalıdır.
+        </p>
+
+        <h2 class="h-sm">Eylül 2026 için kurumlara önerimiz nedir?</h2>
+        <p>
+          Bu ayın en doğru yaklaşımı, aktif istismar edilen iki Windows zafiyetini derhal ele almak ve
+          kalan kapsamı envanter temelli bir planla yönetmektir. CVE-2026-85880 ve CVE-2026-81963,
+          Eylül 2026 Patch Tuesday sürecinin ilk sırasında yer almalıdır — Microsoft'un bu açıklar için
+          aktif istismar tespit ettiğini belirtmesi, yama gecikmesinin tehdit aktörlerine zaman
+          kazandırdığı anlamına gelir. Ardından Windows ağırlıklı geniş güncelleme seti; Office, SQL
+          Server, Exchange Server, SharePoint Server ve geliştirici araçlarıyla birlikte
+          değerlendirilmelidir. Yama yönetiminde başarı yalnızca "güncelleme dağıtıldı" sonucuyla
+          ölçülmez: envanter görünürlüğü, doğru önceliklendirme, kontrollü test, hızlı yayılım,
+          operasyonel doğrulama ve güvenlik izleme birlikte yürütülmelidir.
+        </p>
+
+        <p class="muted small">
+          Bu yazı; Microsoft Eylül 2026 Security Updates sürüm notları, Microsoft Security Update
+          Guide ve güncel bağımsız yama takip verileri temel alınarak hazırlanmıştır.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <section class="section">
+    <div class="wrap">
+      <div class="split">
+        <div>
+          <span class="eyebrow">İLETİŞİM</span>
+          <h2 class="h">Yama önceliklendirmesinde yardım mı lazım?</h2>
+        </div>
+        <div class="stack stack-8">
+          <p class="lead prose">
+            Envanterinizin ne kadarının bu CVE'lerden etkilendiğinden emin değilseniz kısa
+            bir görüşme genellikle yeterli oluyor.
+          </p>
+          <div class="btn-row">
+            <a class="btn btn--primary" href="/iletisim">Görüşme talep edin</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .tldr {
+    background: var(--bg-surface-1);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-card);
+    padding: var(--card-padding);
+  }
+  .tldr .eyebrow { display: block; margin-bottom: var(--space-4); }
+  .tldr ul { margin: 0; padding-left: 1.2em; display: grid; gap: var(--space-3); }
+
+  .cve-table { overflow-x: auto; }
+  .cve-table table { width: 100%; border-collapse: collapse; font-size: 0.92em; }
+  .cve-table th, .cve-table td {
+    text-align: left;
+    padding: var(--space-4) var(--space-5, 16px);
+    border-bottom: 1px solid var(--border-subtle);
+    vertical-align: top;
+  }
+  .cve-table th { font-weight: 600; }
+  .cve-table a { color: var(--color-accent); }
+
+  .split {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: var(--space-16);
+    align-items: start;
+  }
+  .split .eyebrow { margin-bottom: var(--space-4); }
+
+  @media (max-width: 900px) {
+    .split { grid-template-columns: 1fr; gap: var(--space-8); }
+  }
+</style>

@@ -20,6 +20,15 @@ const collectionPosts = (await getCollection('blog', ({ data }) => !data.draft))
 // elle ekleniyor.
 const customPosts = [
   {
+    href: '/blog/patch-tuesday-eylul-2026',
+    title: 'Patch Tuesday: Eylül 2026 — öncelikli zafiyetler',
+    description: "Eylül 2026 Patch Tuesday'de 975 CVE ve aktif istismar edilen 2 Windows yetki yükseltme zero-day'i yayınlandı. Öncelik sırası ve dağıtım kontrol listesi.",
+    pubDate: new Date('2026-09-17'),
+    tags: ['Tehdit İstihbaratı'],
+    image: '/blog/patch-tuesday-eylul-2026/cover.png',
+    imageAlt: 'Eylül 2026 Patch Tuesday öncelikli zafiyetleri',
+  },
+  {
     href: '/blog/patch-tuesday-agustos-2026',
     title: 'Patch Tuesday: Ağustos 2026 — öncelikli zafiyetler',
     description: "Ağustos 2026 Patch Tuesday'de 398 CVE ve 3 zero-day yayınlandı. Hangi üçüne öncelik vermeniz gerektiğini derledik.",
