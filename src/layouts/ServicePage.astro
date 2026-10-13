@@ -38,20 +38,28 @@ const { metaTitle, description, eyebrow, title, lead, componentsTitle, component
         </figure>
       )}
 
-      <div class="block" id="ciktilar">
-        <h2 class="h-sm block__title">Çıktılar</h2>
-        <ul class="prose muted">
-          {outputs.map((o) => <li><strong>{o.name}</strong> — {o.body}</li>)}
-        </ul>
-      </div>
-
-      <div class="block" id="kimler-icin">
-        <h2 class="h-sm block__title">Kimler için uygun</h2>
-        <div class="stack stack-4">
-          <p class="muted">{fit}</p>
-          {note && <p class="dim small">{note}</p>}
+      {outputs && outputs.length > 0 && (
+        <div class="block" id="ciktilar">
+          <h2 class="h-sm block__title">Çıktılar</h2>
+          <ul class="prose muted">
+            {outputs.map((o) => <li><strong>{o.name}</strong> — {o.body}</li>)}
+          </ul>
         </div>
-      </div>
+      )}
+
+      {fit && (
+        <div class="block" id="kimler-icin">
+          <h2 class="h-sm block__title">Kimler için uygun</h2>
+          <p class="muted">{fit}</p>
+        </div>
+      )}
+
+      {note && (
+        <div class="block">
+          <span class="block__title"></span>
+          <p class="dim small">{note}</p>
+        </div>
+      )}
     </div>
   </section>
 

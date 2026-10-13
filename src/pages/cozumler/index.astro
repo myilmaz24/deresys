@@ -2,7 +2,11 @@
 import Base from '../../layouts/Base.astro';
 import PageHead from '../../components/PageHead.astro';
 import SupportedTechnologies from '../../components/SupportedTechnologies.astro';
+import { siem, edrNdr, av, soar, tehdit } from '../../data/services.mjs';
 
+// Banner görseli olan hizmetler listede thumbnail olarak da gösterilir.
+// Görsel yolu ve alt metni services.mjs'ten gelir; başka hizmete banner eklenince
+// ilgili satıra thumb: x.thumb, thumbAlt: x.imageAlt eklemek yeterli.
 const groups = [
   {
     id: 'danismanlik',
@@ -44,6 +48,8 @@ const groups = [
         body: 'Mevcut kontrollerin yakalamadığı aktif ya da geçmiş bir ihlalin izini adli veri toplama ve hipotez bazlı aramayla ararız.',
         fit: 'Şu durumda uygun: ortamınızda bir ihlal olup olmadığını kanıta dayalı olarak doğrulamak ya da tespit kapsamınızı proaktif aramalarla sınamak istiyorsunuz.',
         href: '/cozumler/tehdit-avciligi-compromise-assessment',
+        thumb: tehdit.thumb,
+        thumbAlt: tehdit.imageAlt,
       },
     ],
   },
@@ -66,6 +72,8 @@ const groups = [
         body: 'Kurumsal SIEM platformunuzu kurar, sağlıklı ve güncel tutar, tespit kurallarınızı MITRE ATT&CK kapsamına göre geliştiririz.',
         fit: 'Şu durumda uygun: SIEM kullanıyorsunuz ya da kurmaya karar verdiniz, ama platformu işletecek ve kural içeriğini geliştirecek uzmanlık kapasiteniz sınırlı.',
         href: '/cozumler/siem',
+        thumb: siem.thumb,
+        thumbAlt: siem.imageAlt,
       },
       {
         code: 'EDR',
@@ -73,6 +81,8 @@ const groups = [
         body: 'Uç nokta ve ağ tespit platformlarınızı devreye alır, politika ve kapsamını yönetir, tespit kalitesini ayarlarız.',
         fit: 'Şu durumda uygun: EDR veya NDR yatırımınız var ama konsolu ve kapsamı sürekli yönetecek ayrılmış bir ekibiniz yok.',
         href: '/cozumler/edr-ndr',
+        thumb: edrNdr.thumb,
+        thumbAlt: edrNdr.imageAlt,
       },
       {
         code: 'AV',
@@ -80,6 +90,8 @@ const groups = [
         body: 'Kurumsal antivirüs platformunuzun kurulumunu, sürüm ve güncelleme bakımını, politika ve koruma kapsamı işletimini yaparız.',
         fit: 'Şu durumda uygun: uç nokta koruma ürününüzü sürekli güncel ve eksiksiz kapsamda tutacak bir ekibiniz yok ya da destek süresi dolan sürümler kullanıyorsunuz.',
         href: '/cozumler/av-uc-nokta-koruma',
+        thumb: av.thumb,
+        thumbAlt: av.imageAlt,
       },
       {
         code: 'SOAR',
@@ -87,6 +99,8 @@ const groups = [
         body: 'Tekrarlayan güvenlik operasyon işlerini playbook’lara dönüştürür, SOAR platformunu kurar ve işletiriz.',
         fit: 'Şu durumda uygun: ekibiniz phishing analizi, IOC zenginleştirme ve ticket yönetimi gibi tekrarlayan işlere çok zaman harcıyor.',
         href: '/cozumler/soar-otomasyon',
+        thumb: soar.thumb,
+        thumbAlt: soar.imageAlt,
       },
     ],
   },
@@ -132,8 +146,11 @@ const groups = [
         </div>
 
         {g.lines.map((l) => (
-          <a class="line card--ray" href={l.href}>
+          <a class:list={['line', 'card--ray', { 'line--thumb': l.thumb }]} href={l.href}>
             <div class="line__code"><span class="eyebrow eyebrow--accent">{l.code}</span></div>
+            {l.thumb && (
+              <img class="line__thumb post-thumb" src={l.thumb} alt={l.thumbAlt} width="480" height="270" loading="lazy" decoding="async" />
+            )}
             <div class="line__main">
               <h3 class="subheading">{l.title}</h3>
               <p class="muted">{l.body}</p>
@@ -179,6 +196,8 @@ const groups = [
     transition: background-color 140ms ease, border-color 140ms ease;
   }
   a.line:hover { background: var(--bg-surface-2); border-color: var(--border-strong); }
+  .line--thumb { grid-template-columns: 90px 200px 1fr auto; }
+  .line__thumb { width: 200px; height: auto; aspect-ratio: 16 / 9; }
   .line__code { padding-top: 6px; }
   .line__main { display: flex; flex-direction: column; gap: var(--space-3); }
   .line__go { padding-top: 4px; }
@@ -200,7 +219,8 @@ const groups = [
   .excl .eyebrow { margin-bottom: var(--space-4); }
 
   @media (max-width: 900px) {
-    .line { grid-template-columns: 1fr; gap: var(--space-4); }
+    .line, .line--thumb { grid-template-columns: 1fr; gap: var(--space-4); }
+    .line__thumb { width: 100%; order: -1; }
     .line__code { padding-top: 0; }
     .excl { grid-template-columns: 1fr; gap: var(--space-8); }
   }
