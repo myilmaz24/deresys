@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
-import PageHead from '../../components/PageHead.astro';
+import HeroBanner from '../../components/HeroBanner.astro';
+import { banners } from '../../data/services.mjs';
 import Cta from '../../components/Cta.astro';
 
 const services = [
@@ -35,10 +36,13 @@ const services = [
 ];
 ---
 <Base
+  image={banners.socDanismanligi.image}
   title="SOC Danışmanlığı | DERESYS"
   description="SOC/MSSP kurulum danışmanlığı, bağımsız SOC/MDR etkinlik denetimi ve periyodik siber sağlık kontrolü: dört hizmetle SOC kurma, denetleme ve sürdürme kararlarınızda yanınızdayız."
 >
-  <PageHead
+  <HeroBanner
+    image={banners.socDanismanligi.image}
+    imageAlt={banners.socDanismanligi.imageAlt}
     eyebrow="SOC · DANIŞMANLIK HİZMETLERİ"
     title="SOC danışmanlığı"
     lead="Deresys SOC satmaz. SOC’un çalışıp çalışmadığını ölçer, kurulmasını sağlar ve alınan hizmetten gerçekten değer üretildiğinden emin olur — kurumunuzun durumuna göre dört ayrı hizmetle."

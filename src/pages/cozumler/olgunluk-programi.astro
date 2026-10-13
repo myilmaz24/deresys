@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
-import PageHead from '../../components/PageHead.astro';
+import HeroBanner from '../../components/HeroBanner.astro';
+import { banners } from '../../data/services.mjs';
 import Cta from '../../components/Cta.astro';
 
 const checklist = [
@@ -61,10 +62,13 @@ const outputs = [
 
 ---
 <Base
+  image={banners.olgunluk.image}
   title="Siber Güvenlik Olgunluk Programı | DERESYS"
   description="Deresys Güvenlik Kontrolleri (DGK) ile 18 alanda 99 kontrolü ölçen, önceliklendirilmiş bir yol haritasına çeviren ve yıllık olarak tekrar ölçen siber güvenlik olgunluk programı."
 >
-  <PageHead
+  <HeroBanner
+    image={banners.olgunluk.image}
+    imageAlt={banners.olgunluk.imageAlt}
     eyebrow="OP · OLGUNLUK PROGRAMI"
     title="Siber güvenlik olgunluk programı"
     lead="Deresys Siber Güvenlik Olgunluk Programı, kurumunuzun güvenlik olgunluğunu 99 kontrol üzerinden ölçer, çıkan boşlukları 12 aylık bir yol haritasına çevirir, bu yol haritasını sizinle birlikte yürütür ve bir yıl sonra aynı kontrol setiyle tekrar ölçer."

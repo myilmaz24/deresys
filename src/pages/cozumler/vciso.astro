@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
-import PageHead from '../../components/PageHead.astro';
+import HeroBanner from '../../components/HeroBanner.astro';
+import { banners } from '../../data/services.mjs';
 import Cta from '../../components/Cta.astro';
 
 const tiers = [
@@ -25,10 +26,13 @@ const tiers = [
 ];
 ---
 <Base
+  image={banners.vciso.image}
   title="vCISO Hizmeti | DERESYS"
   description="vCISO hizmeti: Outsource CISO, CISO danışmanlığı ve yönetim kurulu danışmanlığı modelleriyle bilgi güvenliği yönetişimi."
 >
-  <PageHead
+  <HeroBanner
+    image={banners.vciso.image}
+    imageAlt={banners.vciso.imageAlt}
     eyebrow="vCISO"
     title="vCISO"
     lead="Tam zamanlı bir CISO’ya bütçeniz olmayabilir; ama bilgi güvenliği yönetişimi sorumluluğu üzerinizde kalmaya devam ediyor. DERESYS bu sorumluluğu ihtiyacınıza göre üç modelden birinde üstlenir."

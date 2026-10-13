@@ -2,7 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import PageHead from '../../components/PageHead.astro';
 import SupportedTechnologies from '../../components/SupportedTechnologies.astro';
-import { siem, edrNdr, av, soar, tehdit } from '../../data/services.mjs';
+import { siem, edrNdr, av, soar, tehdit, banners } from '../../data/services.mjs';
 
 // Banner görseli olan hizmetler listede thumbnail olarak da gösterilir.
 // Görsel yolu ve alt metni services.mjs'ten gelir; başka hizmete banner eklenince
@@ -20,6 +20,8 @@ const groups = [
         body: 'Hazırlık projesi, masabaşı tatbikat ve müdahale hattıyla ekibinizin olay anında ne yapacağını önceden bilmesini sağlarız.',
         fit: 'Şu durumda uygun: bir olay planınız var ama hiç denenmedi; ya da ekipte müdahale deneyimi sınırlı ve bunu olay anında keşfetmek istemiyorsunuz.',
         href: '/cozumler/olay-mudahalesi',
+        thumb: banners.olayMudahalesi.thumb,
+        thumbAlt: banners.olayMudahalesi.imageAlt,
       },
       {
         code: 'vCISO',
@@ -27,6 +29,8 @@ const groups = [
         body: 'İhtiyacınıza göre üç modelde çalışırız: şirketinizin fiilen CISO’su gibi görev alırız, mevcut ekibinize ikinci göz sağlarız ya da doğrudan yönetim kurulunuza brifing veririz.',
         fit: 'Şu durumda uygun: tam zamanlı bir CISO’ya bütçeniz yok, ama SPK, BDDK, Siber Güvenlik Kanunu veya EPDK gibi bir düzenleme sizi bilgi güvenliğinden üst yönetim seviyesinde sorumlu tutuyor.',
         href: '/cozumler/vciso',
+        thumb: banners.vciso.thumb,
+        thumbAlt: banners.vciso.imageAlt,
       },
       {
         code: 'OP',
@@ -34,6 +38,8 @@ const groups = [
         body: 'Güvenlik kontrollerinizin mevcut durumunu ölçer, puanlar ve önceliklendirilmiş bir iyileştirme planı üretiriz.',
         fit: 'Şu durumda uygun: yatırım yapılmış ama bütünsel resim yok; ya da yönetime mevcut durumu ve gidilecek yeri ölçülebilir biçimde anlatmanız gerekiyor.',
         href: '/cozumler/olgunluk-programi',
+        thumb: banners.olgunluk.thumb,
+        thumbAlt: banners.olgunluk.imageAlt,
       },
       {
         code: 'SOC',
@@ -41,6 +47,8 @@ const groups = [
         body: 'SOC kurmayı planlıyorsanız kurulum danışmanlığıyla, mevcut bir SOC/MSSP’niz varsa bağımsız etkinlik denetimiyle, SOC bütçeniz yoksa periyodik sağlık kontrolüyle yanınızda oluruz.',
         fit: 'Şu durumda uygun: SOC kurmayı planlıyorsunuz, mevcut bir SOC/MSSP’nin ürettiği tespitlerin kapsamını bağımsız bir gözle görmek istiyorsunuz ya da SOC bütçeniz yokken periyodik bir sağlık kontrolü arıyorsunuz.',
         href: '/cozumler/soc-danismanligi',
+        thumb: banners.socDanismanligi.thumb,
+        thumbAlt: banners.socDanismanligi.imageAlt,
       },
       {
         code: 'TH',

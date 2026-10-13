@@ -1,13 +1,17 @@
 ---
 import Base from '../../layouts/Base.astro';
-import PageHead from '../../components/PageHead.astro';
+import HeroBanner from '../../components/HeroBanner.astro';
+import { banners } from '../../data/services.mjs';
 import Cta from '../../components/Cta.astro';
 ---
 <Base
+  image={banners.olayMudahalesi.image}
   title="Olay Müdahale Hazırlığı ve Tatbikat | DERESYS"
   description="Olay müdahale hazırlığı: hazırlık projesi, masabaşı tatbikat ve müdahale hattı."
 >
-  <PageHead
+  <HeroBanner
+    image={banners.olayMudahalesi.image}
+    imageAlt={banners.olayMudahalesi.imageAlt}
     eyebrow="OM · DANIŞMANLIK HİZMETLERİ"
     title="Olay müdahale hazırlığı"
     lead="Fidye yazılımı fark edildiğinde teoride müdahale başlar. Uygulamada ilk gün “kimi arayacağız” sorusu, teklif toplama ve sözleşme müzakeresiyle geçer. Bu sürenin tamamı kayıptır: bellek içeriği ve kısa saklama süreli kayıtlar silinir, saldırgan yayılmaya devam eder, yasal bildirim süresi işler. Olay anında işleyen bir müdahale süreci olaydan önce kurulur."

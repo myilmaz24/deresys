@@ -151,3 +151,27 @@ export const tehdit = {
   ],
   note: 'Çalışma kapsamında toplanan veriler kişisel veri içerebilir. Kapsam, saklama süresi ve imha, çalışma başlamadan sözleşmede ve KVKK çerçevesinde tanımlanır.',
 };
+
+// Ayrı veri yapısı kullanan danışmanlık sayfalarının banner ve thumbnail bilgisi.
+export const banners = {
+  olayMudahalesi: {
+    image: '/cozumler/olay-mudahalesi.webp',
+    thumb: '/cozumler/thumb/olay-mudahalesi.webp',
+    imageAlt: 'Bilgisayar başındaki güvenlik analisti; uyarı simgeli zararlı yazılımlar altıgen hücreli kalkana çarpıyor, yanında yanan alarm lambası',
+  },
+  vciso: {
+    image: '/cozumler/vciso.webp',
+    thumb: '/cozumler/thumb/vciso.webp',
+    imageAlt: 'Şehre bakan bir yönetici ofisinde, radar, kalkan ve uyarı haritası panelleri önünde duran yönetici silüeti; masada satranç taşları',
+  },
+  olgunluk: {
+    image: '/cozumler/olgunluk-programi.webp',
+    thumb: '/cozumler/thumb/olgunluk-programi.webp',
+    imageAlt: 'Basamaklar boyunca yükselen ok ve düğüm ağı; en üstte parlayan bir kalkan',
+  },
+  socDanismanligi: {
+    image: '/cozumler/soc-danismanligi.webp',
+    thumb: '/cozumler/thumb/soc-danismanligi.webp',
+    imageAlt: 'Geniş ekranlı bir güvenlik operasyon merkezinde ekranı gösteren iki kişi; üstte kalkan merkezli insan, süreç ve veri simgeleri',
+  },
+};
