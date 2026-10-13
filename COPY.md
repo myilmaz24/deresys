@@ -9,7 +9,14 @@ ayrı geçişte eklenecektir.
 `[DOLDURULACAK]` işaretli bölümler için doğrulanmış veri bulunmadığından
 boş bırakılmıştır. Her birinin altında hangi bilginin gerektiği yazılıdır.
 
-Sürüm 6 — 2026-08-27
+Sürüm 7 — 2026-10-13
+
+Sürüm 7 notu: SIEM, EDR/NDR, Uç Nokta Koruma, SOAR ve Tehdit Avcılığı sayfaları
+eklendi. Metinleri `src/data/services.mjs` içinde durur (şablon:
+`src/layouts/ServicePage.astro`). Splunk Destek sayfası SIEM sayfasına
+birleştirildi; `/cozumler/splunk-destek` 301 ile `/cozumler/siem`e yönlenir.
+Marka adları hizmet sayfalarında geçmez; yalnızca `SupportedTechnologies`
+bileşeninde (`src/data/technologies.mjs`) yer alır.
 
 **Sürüm 6'da değişenler:**
 - SOC Danışmanlığı sayfasındaki (bölüm 6) üç [DOLDURULACAK] maddesi gerçek
@@ -114,7 +121,11 @@ başlanır" bölümündeki CTA olduğu gibi kalıyor.
 | 5 | Siber Güvenlik Olgunluk Programı | `/cozumler/olgunluk-programi` | Danışmanlık | Metin hazır |
 | 6 | SOC Danışmanlığı | `/cozumler/soc-danismanligi` | Danışmanlık | Metin hazır |
 | 7 | MSS — Güvenlik Sağlığı İzleme | `/cozumler/mss` | Operasyonel | Metin hazır |
-| 8 | Splunk Destek ve Kural İçeriği | `/cozumler/splunk-destek` | Operasyonel | İskelet — brif bekleniyor |
+| 8 | SIEM Kurulum, İşletim ve Kural Geliştirme | `/cozumler/siem` | Operasyonel | Metin hazır (`services.mjs`) — eski `/cozumler/splunk-destek` yönlendiriyor |
+| 8a | EDR / NDR Kurulum ve İşletim | `/cozumler/edr-ndr` | Operasyonel | Metin hazır (`services.mjs`) |
+| 8b | Uç Nokta Koruma Kurulum, Bakım ve İşletim | `/cozumler/av-uc-nokta-koruma` | Operasyonel | Metin hazır — İşletim Tam için hukuk gözden geçirmesi bekliyor |
+| 8c | SOAR ve Güvenlik Otomasyonu | `/cozumler/soar-otomasyon` | Operasyonel | Metin hazır (`services.mjs`) |
+| 8d | Tehdit Avcılığı ve Compromise Assessment | `/cozumler/tehdit-avciligi-compromise-assessment` | Danışmanlık | Metin hazır — veri/KVKK maddesi için hukuk gözden geçirmesi bekliyor |
 | 9 | Olay Müdahale Eğitimi | `/cozumler/olay-mudahale-egitimi` | Akademi | Metin hazır |
 | — | ~~SOC Advisory~~ | ~~`/cozumler/soc-advisory`~~ | — | Kaldırıldı — `/cozumler/soc-danismanligi`'ye yönlendiriyor |
 | 10 | Hakkında | `/hakkinda` | — | Metin hazır — karar bekliyor |

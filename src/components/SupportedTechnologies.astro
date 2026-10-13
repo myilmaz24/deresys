@@ -1,0 +1,94 @@
+---
+import { technologies } from '../data/technologies.mjs';
+import ibm from '../assets/logos/ibm.svg?raw';
+import splunk from '../assets/logos/splunk.svg?raw';
+import paloalto from '../assets/logos/paloalto.svg?raw';
+import crowdstrike from '../assets/logos/crowdstrike.svg?raw';
+
+const logos = { ibm, splunk, paloalto, crowdstrike };
+const { title = 'Destek verdiğimiz teknolojiler' } = Astro.props;
+---
+<section class="tech" aria-labelledby="tech-title">
+  <div class="wrap">
+    <h2 class="tech__title" id="tech-title">{title}</h2>
+    <ul class="tech__list">
+      {technologies.map((t) => (
+        <li class={`tech__item tech__item--${t.id}`}>
+          {t.logo && logos[t.logo]
+            ? <span class="tech__logo" role="img" aria-label={t.name} set:html={logos[t.logo]} />
+            : <span class="tech__word">{t.name}</span>}
+          {t.logo && t.label && <span class="tech__label">{t.label}</span>}
+          {t.sub && <span class="tech__sub">{t.sub}</span>}
+        </li>
+      ))}
+    </ul>
+    <p class="tech__note">Marka adları ve logoları ilgili sahiplerine aittir.</p>
+  </div>
+</section>
+
+<style>
+  .tech {
+    background: #000;
+    border-block: 1px solid var(--border-subtle);
+    padding-block: calc(var(--section-gap) * 0.6);
+  }
+  .tech__title {
+    font-family: var(--font-mono);
+    font-size: var(--text-eyebrow);
+    letter-spacing: var(--tracking-eyebrow);
+    color: var(--text-muted);
+    font-weight: var(--weight-medium);
+    text-transform: none;
+  }
+  .tech__list {
+    list-style: none;
+    margin: var(--space-8) 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: var(--space-8) var(--space-12);
+    align-items: center;
+  }
+  .tech__item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: var(--space-2);
+    min-height: 44px;
+    color: var(--text-muted);
+    transition: color 140ms ease;
+  }
+  .tech__item:hover { color: var(--text-secondary); }
+  .tech__logo { display: block; height: 30px; }
+  .tech__logo :global(svg) { height: 100%; width: auto; max-width: 170px; display: block; fill: currentColor; }
+  .tech__item--splunk .tech__logo { height: 22px; }
+  .tech__item--paloalto .tech__logo { height: 34px; }
+  .tech__item--crowdstrike .tech__logo { height: 18px; }
+  .tech__item--ibm .tech__logo,
+  .tech__item--qradar .tech__logo { height: 30px; }
+  .tech__word {
+    font-family: var(--font-display, 'Space Grotesk', sans-serif);
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+    line-height: 1;
+  }
+  .tech__label {
+    font-family: var(--font-display, 'Space Grotesk', sans-serif);
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1;
+  }
+  .tech__sub {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+  }
+  .tech__note {
+    margin-top: var(--space-8);
+    font-size: var(--text-body-sm);
+    color: var(--text-muted);
+  }
+</style>

@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import PageHead from '../../components/PageHead.astro';
+import SupportedTechnologies from '../../components/SupportedTechnologies.astro';
 
 const groups = [
   {
@@ -37,6 +38,13 @@ const groups = [
         fit: 'Şu durumda uygun: SOC kurmayı planlıyorsunuz, mevcut bir SOC/MSSP’nin ürettiği tespitlerin kapsamını bağımsız bir gözle görmek istiyorsunuz ya da SOC bütçeniz yokken periyodik bir sağlık kontrolü arıyorsunuz.',
         href: '/cozumler/soc-danismanligi',
       },
+      {
+        code: 'TH',
+        title: 'Tehdit Avcılığı ve Compromise Assessment',
+        body: 'Mevcut kontrollerin yakalamadığı aktif ya da geçmiş bir ihlalin izini adli veri toplama ve hipotez bazlı aramayla ararız.',
+        fit: 'Şu durumda uygun: ortamınızda bir ihlal olup olmadığını kanıta dayalı olarak doğrulamak ya da tespit kapsamınızı proaktif aramalarla sınamak istiyorsunuz.',
+        href: '/cozumler/tehdit-avciligi-compromise-assessment',
+      },
     ],
   },
   {
@@ -53,11 +61,32 @@ const groups = [
         href: '/cozumler/mss',
       },
       {
-        code: 'SPL',
-        title: 'Splunk Destek ve Kural İçeriği',
-        body: 'Splunk ortamınızda kural geliştirme, içerik bakımı ve teknik destek sağlarız.',
-        fit: 'Şu durumda uygun: Splunk kullanıyorsunuz ve kural/içerik tarafında sürekli bir uzmanlık desteğine ihtiyacınız var.',
-        href: '/cozumler/splunk-destek',
+        code: 'SIEM',
+        title: 'SIEM Kurulum, İşletim ve Kural Geliştirme',
+        body: 'Kurumsal SIEM platformunuzu kurar, sağlıklı ve güncel tutar, tespit kurallarınızı MITRE ATT&CK kapsamına göre geliştiririz.',
+        fit: 'Şu durumda uygun: SIEM kullanıyorsunuz ya da kurmaya karar verdiniz, ama platformu işletecek ve kural içeriğini geliştirecek uzmanlık kapasiteniz sınırlı.',
+        href: '/cozumler/siem',
+      },
+      {
+        code: 'EDR',
+        title: 'EDR / NDR Kurulum ve İşletim',
+        body: 'Uç nokta ve ağ tespit platformlarınızı devreye alır, politika ve kapsamını yönetir, tespit kalitesini ayarlarız.',
+        fit: 'Şu durumda uygun: EDR veya NDR yatırımınız var ama konsolu ve kapsamı sürekli yönetecek ayrılmış bir ekibiniz yok.',
+        href: '/cozumler/edr-ndr',
+      },
+      {
+        code: 'AV',
+        title: 'Uç Nokta Koruma Kurulum, Bakım ve İşletim',
+        body: 'Kurumsal antivirüs platformunuzun kurulumunu, sürüm ve güncelleme bakımını, politika ve koruma kapsamı işletimini yaparız.',
+        fit: 'Şu durumda uygun: uç nokta koruma ürününüzü sürekli güncel ve eksiksiz kapsamda tutacak bir ekibiniz yok ya da destek süresi dolan sürümler kullanıyorsunuz.',
+        href: '/cozumler/av-uc-nokta-koruma',
+      },
+      {
+        code: 'SOAR',
+        title: 'SOAR ve Güvenlik Otomasyonu',
+        body: 'Tekrarlayan güvenlik operasyon işlerini playbook’lara dönüştürür, SOAR platformunu kurar ve işletiriz.',
+        fit: 'Şu durumda uygun: ekibiniz phishing analizi, IOC zenginleştirme ve ticket yönetimi gibi tekrarlayan işlere çok zaman harcıyor.',
+        href: '/cozumler/soar-otomasyon',
       },
     ],
   },
@@ -80,7 +109,7 @@ const groups = [
 ---
 <Base
   title="Hizmetler — Siber Güvenlik Danışmanlık Hizmetleri | DERESYS"
-  description="Danışmanlık hizmetleri, operasyonel hizmetler ve siber güvenlik akademisi: olay müdahalesi, vCISO, olgunluk programı, MSS, Splunk destek ve olay müdahale eğitimi."
+  description="Danışmanlık hizmetleri, operasyonel hizmetler ve siber güvenlik akademisi: olay müdahalesi, vCISO, olgunluk programı, MSS, SIEM, EDR/NDR, uç nokta koruma, SOAR, tehdit avcılığı ve olay müdahale eğitimi."
 >
   <PageHead
     eyebrow="HİZMETLER"
@@ -125,6 +154,8 @@ const groups = [
     <hr class="rule" />
     </Fragment>
   ))}
+
+  <SupportedTechnologies />
 </Base>
 
 <style>
