@@ -99,7 +99,10 @@ const services = [
       <div class="split">
         <div>
           <span class="eyebrow">BLOG</span>
-          <h2 class="h">Yazdıklarımız</h2>
+          <h2 class="h">Makaleler</h2>
+          <a class="split__thumb-link" href="/blog" tabindex="-1" aria-hidden="true">
+            <img class="split__thumb post-thumb" src="/gorseller/makaleler-thumb.webp" alt="" width="480" height="270" loading="lazy" decoding="async" />
+          </a>
         </div>
         <div class="stack stack-8">
           <p class="lead prose">
@@ -133,7 +136,10 @@ const services = [
       <div class="split">
         <div>
           <span class="eyebrow">İLETİŞİM</span>
-          <h2 class="h">Nereden başlanır</h2>
+          <h2 class="h">Çözümlerimizi keşfetmek için</h2>
+          <a class="split__thumb-link" href="/iletisim" tabindex="-1" aria-hidden="true">
+            <img class="split__thumb post-thumb" src="/gorseller/iletisim-thumb.webp" alt="" width="480" height="270" loading="lazy" decoding="async" />
+          </a>
         </div>
         <div class="stack stack-8">
           <p class="lead prose">
@@ -190,6 +196,9 @@ const services = [
     align-items: start;
   }
   .split .eyebrow { margin-bottom: var(--space-4); }
+
+  .split__thumb-link { display: block; margin-top: var(--space-6); }
+  .split__thumb { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; }
 
   .card__thumb { width: 100%; height: auto; aspect-ratio: 16 / 9; margin-bottom: var(--space-4); }
 

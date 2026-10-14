@@ -187,14 +187,14 @@ laboratuvar ağırlıklı eğitimle hazırlarız.
 Olay Müdahale Eğitimi bu başlık altında.
 [Bağlantı: /cozumler#akademi]
 
-### H2 — Yazdıklarımız
+### H2 — Makaleler
 Nasıl çalıştığımızı görmek isterseniz blogu okuyabilirsiniz. Tespit
 kuralları, SIEM içerik yönetimi, olay müdahale pratiği ve uyum çerçeveleri
 üzerine yazıyoruz.
 [Son 3 blog yazısı]
 [Bağlantı: Tüm yazılar]
 
-### H2 — Nereden başlanır
+### H2 — Çözümlerimizi keşfetmek için
 Hangi hizmetin size uyduğundan emin değilseniz kısa bir görüşme genellikle
 yeterli oluyor. Mevcut durumunuzu dinleyip nereden başlamanın mantıklı
 olacağını konuşuruz.
