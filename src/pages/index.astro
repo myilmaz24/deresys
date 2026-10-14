@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import emblem from '../assets/emblem-orange.svg?raw';
 import { getCollection } from 'astro:content';
+import { groupBanners } from '../data/services.mjs';
 
 const latestPosts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
@@ -11,6 +12,8 @@ const dateFmt = new Intl.DateTimeFormat('tr-TR', { day: 'numeric', month: 'long'
 const services = [
   {
     code: 'DH',
+    thumb: groupBanners.danismanlik.thumb,
+    thumbAlt: groupBanners.danismanlik.imageAlt,
     title: 'Danışmanlık Hizmetleri',
     body: 'Güvenlik olgunluğunuzu ölçer, olay müdahale hazırlığınızı kurar ve vCISO olarak bilgi güvenliği yönetişimini üstleniriz.',
     note: 'Olay Müdahalesi, vCISO, Olgunluk Programı, SOC Danışmanlığı ile Tehdit Avcılığı ve Compromise Assessment bu başlık altında.',
@@ -18,6 +21,8 @@ const services = [
   },
   {
     code: 'OH',
+    thumb: groupBanners.operasyonel.thumb,
+    thumbAlt: groupBanners.operasyonel.imageAlt,
     title: 'Operasyonel Hizmetler',
     body: 'SIEM, EDR/NDR, uç nokta koruma ve SOAR platformlarınızın kurulumunu, işletimsel sağlığını ve tespit kapsamını sürekli hâle getiririz.',
     note: 'MSS, SIEM, EDR/NDR, Uç Nokta Koruma ve SOAR bu başlık altında.',
@@ -25,6 +30,8 @@ const services = [
   },
   {
     code: 'SGA',
+    thumb: groupBanners.akademi.thumb,
+    thumbAlt: groupBanners.akademi.imageAlt,
     title: 'Siber Güvenlik Akademisi',
     body: 'Bilgi işlem ve güvenlik ekibinizi olay müdahalesinde uygulamalı, laboratuvar ağırlıklı eğitimle hazırlarız.',
     note: 'Olay Müdahale Eğitimi bu başlık altında.',
@@ -67,6 +74,7 @@ const services = [
       <div class="grid grid--3">
         {services.map((s) => (
           <a class="card card--ray" href={s.href}>
+            <img class="card__thumb post-thumb" src={s.thumb} alt={s.thumbAlt} width="480" height="270" loading="lazy" decoding="async" />
             <span class="eyebrow eyebrow--accent">{s.code}</span>
             <h2 class="h-sm">{s.title}</h2>
             <p class="muted small">{s.body}</p>
@@ -182,6 +190,8 @@ const services = [
     align-items: start;
   }
   .split .eyebrow { margin-bottom: var(--space-4); }
+
+  .card__thumb { width: 100%; height: auto; aspect-ratio: 16 / 9; margin-bottom: var(--space-4); }
 
   .blog-teaser { border-top: 1px solid var(--border-subtle); padding-top: var(--space-4); }
   .teaser-post {

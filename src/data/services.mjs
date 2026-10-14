@@ -175,3 +175,23 @@ export const banners = {
     imageAlt: 'Geniş ekranlı bir güvenlik operasyon merkezinde ekranı gösteren iki kişi; üstte kalkan merkezli insan, süreç ve veri simgeleri',
   },
 };
+
+// Üç ana başlığın (danışmanlık, operasyonel, akademi) banner ve thumbnail bilgisi.
+// Anasayfa kartlarında thumbnail, /cozumler sayfasında başlık bloğunda banner olarak kullanılır.
+export const groupBanners = {
+  danismanlik: {
+    image: '/cozumler/grup-danismanlik.webp',
+    thumb: '/cozumler/thumb/grup-danismanlik.webp',
+    imageAlt: 'El sıkışan iki iş insanı; arkada hedefe uzanan yol, grafikler, dünya küresi ve büyüteç',
+  },
+  operasyonel: {
+    image: '/cozumler/grup-operasyonel.webp',
+    thumb: '/cozumler/thumb/grup-operasyonel.webp',
+    imageAlt: 'Birbirine geçen dişliler, akış şeması, gösterge paneli ve konveyör üzerinde çalışan robot kol',
+  },
+  akademi: {
+    image: '/cozumler/grup-akademi.webp',
+    thumb: '/cozumler/thumb/grup-akademi.webp',
+    imageAlt: 'Kilit simgeli kalkan, mezuniyet kepi ve takvim; çevresinde parlayan düğüm ağı',
+  },
+};

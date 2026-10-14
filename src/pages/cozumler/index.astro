@@ -2,7 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import PageHead from '../../components/PageHead.astro';
 import SupportedTechnologies from '../../components/SupportedTechnologies.astro';
-import { siem, edrNdr, av, soar, tehdit, banners } from '../../data/services.mjs';
+import { siem, edrNdr, av, soar, tehdit, banners, groupBanners } from '../../data/services.mjs';
 
 // Banner görseli olan hizmetler listede thumbnail olarak da gösterilir.
 // Görsel yolu ve alt metni services.mjs'ten gelir; başka hizmete banner eklenince
@@ -10,6 +10,7 @@ import { siem, edrNdr, av, soar, tehdit, banners } from '../../data/services.mjs
 const groups = [
   {
     id: 'danismanlik',
+    banner: groupBanners.danismanlik,
     eyebrow: 'DANIŞMANLIK HİZMETLERİ',
     title: 'Danışmanlık Hizmetleri',
     intro: 'Kurumunuzun güvenlik yapısını değerlendirir, hazırlar ve yönetişimini üstleniriz.',
@@ -63,6 +64,7 @@ const groups = [
   },
   {
     id: 'operasyonel',
+    banner: groupBanners.operasyonel,
     eyebrow: 'OPERASYONEL HİZMETLER',
     title: 'Operasyonel Hizmetler',
     intro: 'Güvenlik çözümlerinizin gün geçtikçe sağlıklı ve güncel kalmasını sürekli hâle getiririz.',
@@ -114,6 +116,7 @@ const groups = [
   },
   {
     id: 'akademi',
+    banner: groupBanners.akademi,
     eyebrow: 'SİBER GÜVENLİK AKADEMİSİ',
     title: 'Siber Güvenlik Akademisi',
     intro: 'Ekibinizi olay müdahalesinde uygulamalı eğitimle hazırlarız.',
@@ -147,10 +150,14 @@ const groups = [
     <Fragment>
     <section class="section group" id={g.id}>
       <div class="wrap stack stack-6">
-        <div class="group__head">
-          <span class="eyebrow eyebrow--accent">{g.eyebrow}</span>
-          <h2 class="h">{g.title}</h2>
-          <p class="muted prose group__intro">{g.intro}</p>
+        <div class="group__hero">
+          <img class="group__img" src={g.banner.image} alt={g.banner.imageAlt} width="1600" height="900" loading="lazy" decoding="async" />
+          <div class="group__shade" aria-hidden="true"></div>
+          <div class="group__head">
+            <span class="eyebrow eyebrow--accent">{g.eyebrow}</span>
+            <h2 class="h">{g.title}</h2>
+            <p class="muted prose group__intro">{g.intro}</p>
+          </div>
         </div>
 
         {g.lines.map((l) => (
@@ -186,7 +193,20 @@ const groups = [
 <style>
   .lead-follow { margin-top: var(--space-4); }
 
-  .group__head { max-width: var(--prose-max-width); }
+  .group__hero {
+    position: relative; overflow: hidden; background: #000;
+    border: 1px solid var(--border-subtle); border-radius: var(--radius-card);
+    min-height: 260px; display: flex; align-items: center;
+  }
+  .group__img {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; object-position: right center;
+  }
+  .group__shade {
+    position: absolute; inset: 0;
+    background: linear-gradient(90deg, #000 0%, rgba(0,0,0,0.85) 35%, rgba(0,0,0,0) 70%);
+  }
+  .group__head { position: relative; max-width: 46ch; padding: var(--space-8); }
   .group__intro { margin-top: var(--space-3); }
 
   .line {
@@ -227,6 +247,8 @@ const groups = [
   .excl .eyebrow { margin-bottom: var(--space-4); }
 
   @media (max-width: 900px) {
+    .group__img { opacity: 0.45; }
+    .group__shade { background: linear-gradient(180deg, rgba(0,0,0,0.6), #000 100%); }
     .line, .line--thumb { grid-template-columns: 1fr; gap: var(--space-4); }
     .line__thumb { width: 100%; order: -1; }
     .line__code { padding-top: 0; }
