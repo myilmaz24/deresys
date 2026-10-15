@@ -20,6 +20,13 @@ const collectionPosts = (await getCollection('blog', ({ data }) => !data.draft))
 // elle ekleniyor.
 const customPosts = [
   {
+    href: '/blog/patch-tuesday-ekim-2026',
+    title: 'Patch Tuesday: Ekim 2026 — 1.414 kayıt ve 3 zero-day',
+    description: "Ekim 2026 Patch Tuesday'de rekor sayıda 1.414 güvenlik kaydı ve 3 zero-day yayınlandı. Aktif istismar edilen CVE-2026-96951 için aynı gün aksiyon, risk temelli yama planı.",
+    pubDate: new Date('2026-10-13'),
+    tags: ['Tehdit İstihbaratı'],
+  },
+  {
     href: '/blog/patch-tuesday-eylul-2026',
     title: 'Patch Tuesday: Eylül 2026 — öncelikli zafiyetler',
     description: "Eylül 2026 Patch Tuesday'de 975 CVE ve aktif istismar edilen 2 Windows yetki yükseltme zero-day'i yayınlandı. Öncelik sırası ve dağıtım kontrol listesi.",

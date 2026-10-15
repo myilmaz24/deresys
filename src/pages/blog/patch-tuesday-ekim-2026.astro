@@ -1,0 +1,427 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+
+const zeroDays = [
+  {
+    id: 'CVE-2026-96951',
+    title: 'Windows Shell — Güvenlik Özelliği Atlatma (MOTW)',
+    cvss: '8.8',
+    note: 'Aktif istismar, CISA KEV kaydı mevcut. ABD federal kurumları için yamalama son tarihi 16 Ekim 2026. Öncelik: Acil, aynı gün.',
+  },
+  {
+    id: 'CVE-2026-108398',
+    title: '.NET Framework — WDAC Güvenlik Özelliği Atlatma',
+    cvss: '8.8',
+    note: 'Kamuya açık, yayımlanma anında aktif istismar doğrulanmadı. Microsoft değerlendirmesi: Exploitation Less Likely. WDAC kullanan ortamlarda öncelikli.',
+  },
+  {
+    id: 'CVE-2026-92707',
+    title: 'MessagePack-CSharp / SignalR — Hizmet Engelleme',
+    cvss: '5.3',
+    note: 'Kamuya açık, işlevsel istismar kanıtı yok. Dışa açık SignalR uç noktalarında istek boyutu ve hız sınırı kontrol edilmeli.',
+  },
+];
+
+const severity = [
+  { level: 'Kritik', count: '~69' },
+  { level: 'Önemli', count: '~1.337' },
+  { level: 'Düşük', count: '~1' },
+];
+
+const impact = [
+  { type: 'Ayrıcalık Yükseltme (EoP)', count: '677', share: '%48' },
+  { type: 'Uzaktan Kod Çalıştırma (RCE)', count: '317', share: '%22' },
+  { type: 'Bilgi İfşası', count: '254', share: '%18' },
+  { type: 'Hizmet Engelleme (DoS)', count: '73', share: '%5' },
+  { type: 'Güvenlik Özelliği Atlatma', count: '40', share: '%3' },
+  { type: 'Kurcalama ve Sahtecilik', count: '57', share: '%4' },
+];
+
+const products = [
+  { name: 'Windows', count: '~1.102', note: 'Açık ara en büyük grup' },
+  { name: 'Office (Excel, Word, Outlook)', count: '134', note: 'Outlook Reading Pane RCE kümesi öncelikli' },
+  { name: 'SharePoint Server', count: '36', note: 'İnternete açık dağıtımlar kritik' },
+  { name: 'SQL Server', count: '22', note: 'Üretim kümelerini ayrı test halkasına alın' },
+  { name: 'Azure', count: '15', note: 'İş yükü envanteriyle eşleştirin' },
+  { name: 'Exchange Server', count: '7', note: 'E-posta altyapısı yüksek değerli hedef' },
+  { name: 'Defender', count: '4', note: 'Uç nokta koruma katmanı' },
+];
+---
+<Base
+  title="Patch Tuesday: Ekim 2026 — 1.414 kayıt ve 3 zero-day | DERESYS Blog"
+  description="Ekim 2026 Patch Tuesday'de rekor sayıda 1.414 güvenlik kaydı ve 3 zero-day yayınlandı. Aktif istismar edilen CVE-2026-96951 için aynı gün aksiyon, risk temelli yama planı."
+>
+  <PageHead
+    eyebrow="BLOG — TEHDİT İSTİHBARATI"
+    title="Patch Tuesday: Ekim 2026 — 1.414 kayıt ve 3 zero-day"
+    lead="Microsoft'un bugüne kadarki en hacimli aylık güvenlik güncellemesi. Sayı büyük, ama bu ay asıl soru tek: CVE-2026-96951 yamalandı mı?"
+  />
+
+  <section class="section section--tight">
+    <div class="wrap">
+      <article class="stack stack-8 prose">
+        <p class="muted small">
+          Yayın: 13 Ekim 2026 · Kategori: Yama Yönetimi, Tehdit İstihbaratı · Kaynak: Microsoft Security Update Guide, CISA KEV ve bağımsız araştırmacı yayınları
+        </p>
+
+        <div class="tldr">
+          <span class="eyebrow eyebrow--accent">TL;DR</span>
+          <ul>
+            <li>1.414 güvenlik kaydı yayınlandı; Microsoft tarihinin en hacimli aylık Patch Tuesday'i.</li>
+            <li>Aktif istismar edilen ve CISA KEV'e eklenen tek açık: CVE-2026-96951 (Windows Shell, MOTW atlatma). Yaması aynı gün dağıtılmalı.</li>
+            <li>Kamuya açık iki zero-day daha var: CVE-2026-108398 (WDAC atlatma) ve CVE-2026-92707 (DoS). İkisinde de aktif istismar doğrulanmadı.</li>
+            <li>Yaklaşık 69 kritik ve 1.337 önemli kayıt var. En büyük kategoriler Ayrıcalık Yükseltme ve Uzaktan Kod Çalıştırma.</li>
+            <li>Etkilenen alanlar: Windows (~1.102), Office (134), SharePoint (36), Exchange (7).</li>
+          </ul>
+        </div>
+
+        <h2 class="h-sm">Bu ay neden farklı?</h2>
+        <p>
+          Ekim 2026 Patch Tuesday, Microsoft'un şimdiye kadar yayımladığı en büyük aylık güvenlik
+          güncellemesi. Microsoft'un resmî Security Update Guide envanterinde 1.414 güvenlik kaydı
+          yer alıyor: 1.413'ü doğrudan Microsoft tarafından atanan CVE, biri ise yeniden yayımlanan
+          üçüncü taraf bir açık (Raw Image Extension, CVE-2026-21413). Tedarikçi raporlarında
+          1.407–1.416 arasında değişen rakamlar görülebilir; fark, kapsam metodolojilerinden
+          kaynaklanıyor.
+        </p>
+        <p>
+          Eylül 2026'da 975 CVE ile rekor kıran Microsoft, bu ay o rakamı da geride bıraktı.
+          Sektörde "vulnpocalypse çağı" olarak anılan bu dönemde yapay zeka destekli güvenlik açığı
+          araştırması, keşfedilen açık sayısını hızla artırıyor. Bu hem bir önceliklendirme
+          zorluğu hem de yama olgunluğunu sınama fırsatı.
+        </p>
+
+        <h2 class="h-sm">Açıklar hangi kategorilerde toplandı?</h2>
+        <div class="cve-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Önem derecesi</th>
+                <th>Sayı</th>
+              </tr>
+            </thead>
+            <tbody>
+              {severity.map((s) => (
+                <tr>
+                  <td>{s.level}</td>
+                  <td>{s.count}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p class="muted small">
+          Dağılım, Tenable'ın 1.407 CVE'lik kapsamına dayanıyor. Microsoft, 1.414'lük resmî envanter
+          için aynı metodolojide tek bir kritiklik tablosu yayımlamadı.
+        </p>
+
+        <div class="cve-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Etki türü</th>
+                <th>Sayı</th>
+                <th>Pay</th>
+              </tr>
+            </thead>
+            <tbody>
+              {impact.map((i) => (
+                <tr>
+                  <td>{i.type}</td>
+                  <td>{i.count}</td>
+                  <td>{i.share}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Açıkların neredeyse yarısı (%48) Ayrıcalık Yükseltme kategorisinde. Bu açıklar tek başına
+          sistem ele geçirmez; ancak ilk erişimi sağlayan bir saldırgan SYSTEM veya yönetici
+          yetkisine ulaşmak, kalıcılık kazanmak ya da ağda yatay hareket etmek için bunları
+          kullanır.
+        </p>
+
+        <h2 class="h-sm">Bu ayın zero-day'leri</h2>
+        <p>
+          Üç zero-day farklı risk profilleri taşıyor. Biri gerçek saldırılarda aktif olarak
+          kullanılıyor; diğer ikisi yama çıkmadan önce kamuya açıklandı, ancak şu an için işlevsel
+          istismar kanıtı yok.
+        </p>
+
+        <div class="cve-table">
+          <table>
+            <thead>
+              <tr>
+                <th>CVE</th>
+                <th>Etkilenen bileşen</th>
+                <th>CVSS</th>
+                <th>Not</th>
+              </tr>
+            </thead>
+            <tbody>
+              {zeroDays.map((c) => (
+                <tr>
+                  <td>
+                    <a href={`https://msrc.microsoft.com/update-guide/vulnerability/${c.id}`} target="_blank" rel="noopener noreferrer">
+                      {c.id}
+                    </a>
+                  </td>
+                  <td>{c.title}</td>
+                  <td>{c.cvss}</td>
+                  <td class="muted small">{c.note}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <h3 class="subheading">CVE-2026-96951 — Windows Shell (CISA KEV, aktif istismar)</h3>
+        <p>
+          Bu ayın en kritik açığı. Microsoft ve CISA gerçek saldırılarda kullanıldığını doğruladı;
+          açık aynı gün CISA'nın Bilinen İstismar Edilen Açıklar (KEV) kataloğuna eklendi ve ABD
+          federal kurumları için yamalama son tarihi 16 Ekim 2026 olarak belirlendi.
+        </p>
+        <p>
+          Saldırgan, internetten indirilen dosyalara Windows'un uyguladığı Mark of the Web (MOTW)
+          korumasını atlayan, özel hazırlanmış bir dosya kullanıyor. MOTW; Office Protected View'i,
+          SmartScreen uyarılarını ve tarayıcı indirme uyarılarını tetikleyen kritik bir katman.
+          Bu katman devre dışı kaldığında:
+        </p>
+        <ul>
+          <li>Kullanıcı kötü amaçlı bir eki veya bağlantıyı açtığında koruma mekanizmaları devreye girmez.</li>
+          <li>İstismar ağ üzerinden, düşük karmaşıklıkla ve ek ayrıcalık gerektirmeden gerçekleşebilir.</li>
+          <li>Kimlik avı ve sosyal mühendislik saldırılarının etkinliği doğrudan artar.</li>
+        </ul>
+        <p>
+          <strong>Aksiyon:</strong> Tüm desteklenen Windows istemci ve sunucularına yamayı aynı gün
+          dağıtın.
+        </p>
+
+        <h3 class="subheading">CVE-2026-108398 — .NET Framework (WDAC atlatma, kamuya açık)</h3>
+        <p>
+          Yama çıkmadan kamuya duyuruldu; yayımlanma anında aktif istismar veya çalışan PoC kodu
+          doğrulanmadı. Microsoft "Exploitation Less Likely" değerlendirmesi verdi. Kimliği
+          doğrulanmış, düşük ayrıcalıklı bir saldırgan, özel hazırlanmış bir .NET assembly'sini
+          korunan bir süreçte yükleterek Windows Defender Application Control (WDAC) politikasını
+          atlayabilir. WDAC yetkisiz yazılım çalıştırmayı engelleyen bir katman olduğundan,
+          atlatılması daha kapsamlı saldırı zincirlerinde güçlü bir basamak olabilir.
+        </p>
+        <p>
+          <strong>Aksiyon:</strong> WDAC kullanan ortamlarda .NET güncellemelerini önceliklendirin.
+        </p>
+
+        <h3 class="subheading">CVE-2026-92707 — MessagePack / SignalR (DoS, kamuya açık)</h3>
+        <p>
+          MessagePack kütüphanesinin deserileştirme davranışındaki zayıflık aşırı kaynak tüketimine
+          veya servisin durmasına yol açabilir. SignalR ile gerçek zamanlı iletişim kullanan .NET
+          uygulamaları etkilenebilir.
+        </p>
+        <p>
+          <strong>Aksiyon:</strong> MessagePack bağımlılık envanterini çıkarın, güncellemeleri
+          uygulama sahipleriyle doğrulayın; dışa açık uç noktalarda istek boyutu ve hız sınırı
+          korumalarını gözden geçirin.
+        </p>
+
+        <h2 class="h-sm">Hangi ürünler ve bileşenler öne çıkıyor?</h2>
+        <p>
+          Kayıtların büyük bölümü Windows'ta yoğunlaşıyor; ancak Exchange ve SharePoint gibi
+          altyapı ürünleri de dikkat gerektiriyor.
+        </p>
+        <div class="cve-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Ürün / bileşen</th>
+                <th>CVE</th>
+                <th>Öncelik notu</th>
+              </tr>
+            </thead>
+            <tbody>
+              {products.map((p) => (
+                <tr>
+                  <td>{p.name}</td>
+                  <td>{p.count}</td>
+                  <td class="muted small">{p.note}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <h3 class="subheading">Öne çıkan yüksek öncelikli açıklar</h3>
+        <ul>
+          <li>
+            <strong>Active Directory Domain Services — CVE-2026-70229 (RCE, CVSS 8.1):</strong>
+            Microsoft "Exploitation More Likely" etiketi verdi. Kimlik altyapısında uzaktan kod
+            çalıştırma riski taşıdığı için etki alanı denetleyicileri hızla yamalanmalı.
+          </li>
+          <li>
+            <strong>Exchange Server — CVE-2026-70571 (RCE) ve CVE-2026-70279 (Spoofing):</strong>
+            İnternetten erişilebilir Exchange sunucuları ve hibrit yapılandırmalar öncelikli
+            kontrol kapsamına alınmalı.
+          </li>
+          <li>
+            <strong>Ağ servisleri — DHCP, QUIC ve MSMQ:</strong> Windows DHCP Server
+            (CVE-2026-96934), Microsoft QUIC (CVE-2026-100219, raporlanan CVSS 9.8) ve Message
+            Queuing (CVE-2026-100202) için ilgili sunucu rolleri hızlandırılmış test ve dağıtım
+            planına alınmalı.
+          </li>
+          <li>
+            <strong>Outlook / Office — Reading Pane kümesi:</strong> Bazı Outlook RCE
+            senaryolarında kötü amaçlı e-postanın Okuma Bölmesi'nde görüntülenmesiyle kod
+            çalıştırılabildiği raporlandı. Kurumsal Outlook istemcilerini hızlandırılmış yama
+            halkasına alın; e-posta ağ geçidinde ek tarama, sandbox ve makro politikalarını gözden
+            geçirin.
+          </li>
+        </ul>
+
+        <h2 class="h-sm">Risk temelli önceliklendirme</h2>
+        <p>
+          1.414 kaydı CVSS sırasına göre yamalamak operasyonel olarak sürdürülebilir değil. Aşağıdaki
+          sıralama risk odaklı bir yaklaşım sunuyor.
+        </p>
+
+        <h3 class="subheading">P0 — Aynı gün / ilk 24 saat</h3>
+        <p>CVE-2026-96951 için acil aksiyon gerekli.</p>
+        <ul>
+          <li>Tüm desteklenen Windows istemci ve sunucularına yamayı dağıtın.</li>
+          <li>E-posta, Teams veya tarayıcı üzerinden harici dosya alan uç noktalara öncelik verin.</li>
+          <li>
+            Yama öncesi ve sonrası tehdit avcılığı yapın: MOTW işareti olmayan, internetten
+            indirilmiş arşiv/ISO/LNK/Office dosyalarını, SmartScreen veya Protected View'i atlayan
+            yürütmeleri ve olağandışı <code>Zone.Identifier</code> ADS davranışlarını araştırın.
+          </li>
+          <li>EDR'de Office ve Outlook'tan doğan şüpheli child process'leri, LOLBin kullanımını ve anormal dosya yürütme zincirlerini sorgulayın.</li>
+          <li>Kullanıcılara hedefli bir farkındalık mesajı gönderin: beklenmedik dosyaları açmayın, MOTW uyarılarını dikkate alın.</li>
+        </ul>
+        <p>
+          Yamanın uygulanması, daha önce gerçekleşmiş olabilecek bir uzlaşmayı ortadan kaldırmaz.
+          KEV yamasıyla birlikte tehdit avcılığı ve olay müdahalesi prosedürlerinizi de
+          etkinleştirin.
+        </p>
+
+        <h3 class="subheading">P1 — 48–72 saat</h3>
+        <p>Çekirdek altyapı ve internete açık sistemler:</p>
+        <ul>
+          <li>Exchange, SharePoint, AD DS, DHCP, QUIC/HTTP/3 ve MSMQ rollerini maruziyete göre önceliklendirin.</li>
+          <li>Dış erişim noktalarını, WAF/ters vekil kurallarını ve gereksiz servisleri gözden geçirin.</li>
+          <li>WDAC kullanan ortamlar için .NET güncellemelerini dağıtın (CVE-2026-108398).</li>
+          <li>SignalR/MessagePack bağımlılık envanterini çıkarın, paket güncelleme durumunu uygulama sahipleriyle doğrulayın.</li>
+          <li>Kurumsal Outlook istemcilerini hızlandırılmış yama halkasına alın; e-posta güvenlik ağ geçidinde ek tarama ve makro politikalarını gözden geçirin.</li>
+        </ul>
+
+        <h3 class="subheading">P2 — Planlı bakım penceresi</h3>
+        <ul>
+          <li>
+            <strong>Risk kohortu yaklaşımı:</strong> Microsoft bu ay dosya sistemleri/depolama/yedekleme
+            ile Office belge ve posta istemcilerini ortak değerlendirme alanları olarak
+            gruplandırmayı önerdi. 1.414 kaydı tek tek CVSS sırasına dizmek yerine bu gruplamayı
+            kullanmak daha operasyonel.
+          </li>
+          <li>SQL Server, Azure iş yükleri, geliştirici araçları ve Defender güncellemelerini varlık envanterinizle eşleştirip pilot grup, ardından geniş dağıtım modeliyle test edin.</li>
+          <li>
+            <strong>Başarı ölçütlerini tanımlayın:</strong> güncelleme uyumluluk oranı, yeniden
+            başlatma bekleyen cihaz sayısı, KEV kapsamındaki varlıkların sıfırlanması, başarısız KB
+            kurulumları ve kritik iş uygulaması smoke test sonuçları.
+          </li>
+        </ul>
+
+        <h2 class="h-sm">Destek sonu uyarısı</h2>
+        <p>
+          Desteksiz işletim sistemlerinde yamalamadan önce strateji belirlenmeli. Bu ay özellikle
+          şu durumlara dikkat edin:
+        </p>
+        <ul>
+          <li><strong>Windows 11 24H2 Home/Pro:</strong> güvenlik güncellemesi desteği sona erdi.</li>
+          <li><strong>Windows 10 Enterprise LTSB 2016:</strong> destek penceresi kapandı.</li>
+          <li><strong>Windows Server 2012/2012 R2:</strong> son Genişletilmiş Güvenlik Güncellemeleri (ESU) dönemi de tamamlandı.</li>
+        </ul>
+        <p>
+          Bu sistemler için yama beklemek artık bir seçenek değil. Yükseltme planı yapın, ağ
+          segmentasyonu ve uygulama allowlisting uygulayın, erişimi azaltın; desteksiz sistemleri
+          ağda izole edip kurumsal risk kaydına taşıyın.
+        </p>
+
+        <h2 class="h-sm">Sonuç: "Kaç açık?" değil, "Hangisi bu gece?"</h2>
+        <p>
+          Ekim 2026 Patch Tuesday'in asıl mesajı sayıdan çok önceliklendirme disiplini. 1.414 kayıt,
+          tek bir ekibin bir gecede kapatabileceği bir hacim değil. Doğru soru "kaç açık var" değil,
+          "hangisi bu gece istismar edilebilir ve buna hazır mıyım" olmalı.
+        </p>
+        <p>
+          Bu ayın cevabı net: CVE-2026-96951 aktif olarak istismar ediliyor, CISA KEV'de yer alıyor
+          ve tek bir kullanıcı etkileşimiyle MOTW korumasını atlıyor. Bu, aynı gün müdahale
+          gerektiriyor. Geri kalan 1.400'ü aşkın kayıt ise varlık envanterinize, maruziyetinize ve
+          risk iştahınıza göre sistematik biçimde ele alınmalı. CVSS tek başına öncelik vermez; KEV
+          kaydı, Microsoft'un "Exploitation More Likely" değerlendirmesi, internet maruziyeti ve
+          altyapı etkisi birlikte değerlendirilmeli.
+        </p>
+
+        <p class="muted small">
+          Bu yazı; Microsoft Ekim 2026 Security Update Guide, CISA KEV ve bağımsız güvenlik
+          araştırmacılarının yayınları temel alınarak hazırlanmıştır. CVSS değerleri ve açık
+          sayıları, kaynak metodolojilerine göre tedarikçiden tedarikçiye hafif farklılık
+          gösterebilir.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <section class="section">
+    <div class="wrap">
+      <div class="split">
+        <div>
+          <span class="eyebrow">İLETİŞİM</span>
+          <h2 class="h">Yama önceliklendirmesinde yardım mı lazım?</h2>
+        </div>
+        <div class="stack stack-8">
+          <p class="lead prose">
+            Envanterinizin ne kadarının bu CVE'lerden etkilendiğinden emin değilseniz kısa
+            bir görüşme genellikle yeterli oluyor.
+          </p>
+          <div class="btn-row">
+            <a class="btn btn--primary" href="/iletisim">Görüşme talep edin</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .tldr {
+    background: var(--bg-surface-1);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-card);
+    padding: var(--card-padding);
+  }
+  .tldr .eyebrow { display: block; margin-bottom: var(--space-4); }
+  .tldr ul { margin: 0; padding-left: 1.2em; display: grid; gap: var(--space-3); }
+
+  .cve-table { overflow-x: auto; }
+  .cve-table table { width: 100%; border-collapse: collapse; font-size: 0.92em; }
+  .cve-table th, .cve-table td {
+    text-align: left;
+    padding: var(--space-4) var(--space-5, 16px);
+    border-bottom: 1px solid var(--border-subtle);
+    vertical-align: top;
+  }
+  .cve-table th { font-weight: 600; }
+  .cve-table a { color: var(--color-accent); }
+
+  .split {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: var(--space-16);
+    align-items: start;
+  }
+  .split .eyebrow { margin-bottom: var(--space-4); }
+
+  @media (max-width: 900px) {
+    .split { grid-template-columns: 1fr; gap: var(--space-8); }
+  }
+</style>
