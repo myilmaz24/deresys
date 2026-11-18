@@ -1,0 +1,168 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+---
+<Base
+  title="Kariyer | DERESYS"
+  description="DERESYS'te açık pozisyonlara başvuru yapın."
+>
+  <PageHead
+    eyebrow="KARİYER"
+    title="İş başvurusu"
+    lead="Aşağıdaki formu doldurup CV'nizi yükleyerek başvurunuzu iletebilirsiniz. Başvuru için siteye kayıt olmanız gerekmiyor."
+  />
+
+  <section class="section">
+    <div class="wrap apply">
+      <p id="a-success" class="form-success" hidden>
+        Başvurunuz alındı. İncelendikten sonra size dönüş yapacağız.
+      </p>
+      <form
+        id="a-form"
+        class="form-grid apply-form"
+        method="post"
+        action="https://formsubmit.co/info@deresys.com.tr"
+        enctype="multipart/form-data"
+      >
+        <input type="hidden" name="_subject" value="Yeni iş başvurusu — deresys.com.tr" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_next" value="https://deresys.com.tr/kariyer?gonderildi=1" />
+        <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+        <div class="field">
+          <label for="a-name">Ad soyad</label>
+          <input id="a-name" name="ad" type="text" autocomplete="name" required />
+        </div>
+        <div class="field">
+          <label for="a-mail">E-posta</label>
+          <input id="a-mail" name="eposta" type="email" autocomplete="email" required />
+        </div>
+        <div class="field">
+          <label for="a-tel">Telefon <span class="dim">(opsiyonel)</span></label>
+          <input id="a-tel" name="telefon" type="tel" autocomplete="tel" />
+        </div>
+        <div class="field">
+          <label for="a-position">Başvurulan pozisyon</label>
+          <input id="a-position" name="pozisyon" type="text" placeholder="Örn. SOC Analisti" required />
+        </div>
+
+        <div class="field field--full">
+          <label for="a-cv">CV <span class="dim">(PDF, DOC veya DOCX — en fazla 10 MB)</span></label>
+          <input id="a-cv" name="attachment" type="file" accept=".pdf,.doc,.docx" required />
+        </div>
+
+        <div class="field field--full">
+          <label for="a-msg">Ön yazı <span class="dim">(opsiyonel)</span></label>
+          <textarea id="a-msg" name="mesaj"></textarea>
+        </div>
+
+        <div class="field--full consent">
+          <label class="checkbox">
+            <input type="checkbox" name="kvkk_onay" required />
+            <span>
+              <a class="link" href="/kvkk">KVKK Aydınlatma Metni</a>'ni okudum, kişisel verilerimin bu
+              başvuru kapsamında değerlendirilmek üzere işlenmesini onaylıyorum.
+            </span>
+          </label>
+
+          <label class="checkbox">
+            <input type="checkbox" name="havuz_onay" value="Evet" />
+            <span>
+              Bu başvuruya uygun bir pozisyon bulunmasa da bilgilerimin sonraki aday aramalarında
+              değerlendirilmek üzere saklanmasını ve kullanılmasını onaylıyorum.
+            </span>
+          </label>
+        </div>
+
+        <div class="field--full">
+          <button class="btn btn--primary" type="submit">Başvuruyu gönder</button>
+        </div>
+      </form>
+
+      <p class="form-note mt">
+        Zorunlu onay yalnızca bu başvuru için geçerlidir; aday havuzu onayı isteğe bağlıdır ve
+        ayrı olarak verilir.
+      </p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .apply-form { max-width: 720px; }
+  .mt { margin-top: var(--space-6); }
+
+  .consent {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    margin-top: var(--space-2);
+  }
+  .checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    cursor: pointer;
+  }
+  .checkbox input[type="checkbox"] {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+    margin-top: 2px;
+    border: 1px solid var(--border-strong);
+    border-radius: 4px;
+    background: var(--bg-surface-1);
+    cursor: pointer;
+    position: relative;
+  }
+  .checkbox input[type="checkbox"]:checked {
+    border-color: var(--color-accent);
+    background: var(--color-accent);
+  }
+  .checkbox input[type="checkbox"]:checked::after {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 1px;
+    width: 5px;
+    height: 9px;
+    border: solid var(--color-black);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+  .checkbox input[type="checkbox"]:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+  .checkbox span {
+    font-size: var(--text-body-sm);
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .field input[type="file"] {
+    padding: 10px 16px;
+    font-size: var(--text-body-sm);
+    color: var(--text-secondary);
+  }
+
+  /* Spam tuzağı — iletisim.astro ile aynı desen */
+  .honey { display: none; }
+  .form-success {
+    margin: 0 0 var(--space-6);
+    padding: var(--space-4);
+    border: 1px solid var(--color-accent);
+    border-radius: var(--radius-control);
+    color: var(--text-primary);
+    font-size: var(--text-body-sm);
+  }
+</style>
+
+<script>
+  // FormSubmit, gönderimden sonra _next ile ?gonderildi=1 parametresine döner.
+  if (new URLSearchParams(window.location.search).has('gonderildi')) {
+    document.getElementById('a-success')?.removeAttribute('hidden');
+    document.getElementById('a-form')?.setAttribute('hidden', '');
+    window.history.replaceState({}, '', window.location.pathname);
+  }
+</script>
