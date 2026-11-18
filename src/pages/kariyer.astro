@@ -21,7 +21,7 @@ import PageHead from '../components/PageHead.astro';
         id="a-form"
         class="form-grid apply-form"
         method="post"
-        action="https://formsubmit.co/info@deresys.com.tr"
+        action="https://formsubmit.co/ik@deresys.com.tr"
         enctype="multipart/form-data"
       >
         <input type="hidden" name="_subject" value="Yeni iş başvurusu — deresys.com.tr" />
@@ -44,6 +44,10 @@ import PageHead from '../components/PageHead.astro';
         <div class="field">
           <label for="a-position">Başvurulan pozisyon</label>
           <input id="a-position" name="pozisyon" type="text" placeholder="Örn. SOC Analisti" required />
+        </div>
+        <div class="field">
+          <label for="a-salary">Maaş beklentisi <span class="dim">(opsiyonel)</span></label>
+          <input id="a-salary" name="maas_beklentisi" type="text" placeholder="Örn. net 60.000 TL" />
         </div>
 
         <div class="field field--full">
